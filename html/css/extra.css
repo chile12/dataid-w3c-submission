@@ -1,5 +1,6 @@
 body {
     text-align: justify;
+    max-width: 1366px;
 }
 
 h1 {
@@ -56,14 +57,39 @@ h1 {
     font-weight:bold;
 }
 
-h3 {
-    margin-top: 3px;
-    padding-bottom: 5px;
-    border-bottom: 1px solid navy;
-}
-
 h2 {
     margin-top:40px;
+}
+h3 {
+    margin-top:30px;
+}
+h4 {
+    margin-top:30px;
+}
+
+.post-container {
+    margin: 20px 0 0 0;
+    border-top: double;
+    border-top-width: medium;
+    overflow: auto
+}
+.post-thumb {
+    float: right
+}
+.post-thumb img {
+    display: block;
+    margin-left: 10px;
+}
+.post-content {
+}
+.post-content h4 {
+    color: firebrick;
+    font-size: large;
+    margin-top: 30px !important;
+}
+.post-title {
+    font-weight: bold;
+    font-size: 200%
 }
 
 .dotted {
@@ -129,7 +155,7 @@ pre span {
     word-wrap:break-word;
     white-space: normal;
     margin-bottom: 5px;
-    background: #76e547;
+    background: #e8eef7;
 }
 
 table, th, td {
