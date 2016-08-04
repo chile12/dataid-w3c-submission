@@ -38,10 +38,10 @@
     <node id="n1">
       <data key="d6">
         <y:GenericNode configuration="com.yworks.entityRelationship.big_entity">
-          <y:Geometry height="285.0092428711896" width="243.75" x="739.2614372663614" y="86.04256917360402"/>
+          <y:Geometry height="285.0092428711896" width="237.75" x="745.2614372663614" y="86.04256917360402"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="100.052734375" x="71.84863281250011" y="4.0">dataid:Distribution</y:NodeLabel>
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="100.052734375" x="68.8486328125" y="4.0">dataid:Distribution</y:NodeLabel>
           <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="195.115234375" modelName="custom" textColor="#000000" visible="true" width="231.4609375" x="2.0" y="30.701171875">subClassOf: dcat:Distribution, prov:Entity
 
 dct:title : rdfs:Literal
@@ -217,10 +217,10 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
     <edge id="e0" source="n1" target="n5">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-121.85686981317565" sy="-4.357097314405195" tx="0.0" ty="0.0"/>
+          <y:Path sx="-118.85731609469747" sy="-4.357097314405195" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="60.6953125" x="-83.13985604133836" y="-9.350586636846998">dct:license<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="60.6953125" x="-86.13796395149461" y="-9.35058663684697">dct:license<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -235,10 +235,10 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
     <edge id="e1" source="n1" target="n0">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-121.84069478859385" sy="-92.25912998826044" tx="-8.668052864588049" ty="6.1721043799067274"/>
+          <y:Path sx="-118.84153922456692" sy="-92.25912998826044" tx="-8.668052864588049" ty="6.1721043799067274"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="110.728515625" x="-115.71866527270106" y="-9.350580736483494">dataid:distributionOf<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="110.728515625" x="-115.71634593676356" y="-9.350580736483494">dataid:distributionOf<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -254,8 +254,8 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="70.2340090651773" sy="0.0" tx="-36.0" ty="142.49979605259642">
-            <y:Point x="825.1364372663614" y="526.9845675871929"/>
+          <y:Path sx="70.2340090651773" sy="0.0" tx="-35.113846153846154" ty="142.49979605259642">
+            <y:Point x="829.0225911125153" y="526.9845675871929"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="3.0"/>
           <y:Arrows source="none" target="white_delta"/>
@@ -267,8 +267,8 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="0.0" sy="0.0" tx="-36.0" ty="142.5150140060071">
-            <y:Point x="825.1364372663614" y="451.23276591133475"/>
+          <y:Path sx="0.0" sy="0.0" tx="-35.113846153846154" ty="142.5150140060071">
+            <y:Point x="829.0225911125153" y="451.23276591133475"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="3.0"/>
           <y:Arrows source="none" target="white_delta"/>
@@ -280,8 +280,8 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-51.31167486338808" sy="0.0" tx="-36.0" ty="142.5190370386277">
-            <y:Point x="825.1364372663614" y="526.9845675871929"/>
+          <y:Path sx="-51.31167486338808" sy="0.0" tx="-35.113846153846154" ty="142.5190370386277">
+            <y:Point x="829.0225911125153" y="526.9845675871929"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="3.0"/>
           <y:Arrows source="none" target="white_delta"/>
@@ -293,8 +293,8 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
       <data key="d8"/>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-51.31167486338794" sy="0.0" tx="-36.0" ty="142.48755495178278">
-            <y:Point x="825.1364372663614" y="451.23276591133475"/>
+          <y:Path sx="-51.31167486338794" sy="0.0" tx="-35.113846153846154" ty="142.48755495178278">
+            <y:Point x="829.0225911125153" y="451.23276591133475"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="3.0"/>
           <y:Arrows source="none" target="white_delta"/>
@@ -305,10 +305,10 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
     <edge id="e6" source="n1" target="n7">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-97.29692193340964" sy="75.26422558859582" tx="0.0" ty="0.0"/>
+          <y:Path sx="-94.90192077812569" sy="75.26422558859582" tx="0.0" ty="0.0"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="84.033203125" x="-89.02707591723231" y="-9.350571106892858">dcat:checksum<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="94.046875" x="-99.02512279223231" y="-9.350571106892858">dataid:checksum<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>
@@ -323,12 +323,12 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
     <edge id="e7" source="n1" target="n8">
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-56.0" sy="142.4804856018618" tx="3.228943823446002" ty="0.0">
-            <y:Point x="805.1364372663614" y="393.052562031128"/>
+          <y:Path sx="-54.62153846153846" sy="142.4804856018618" tx="3.228943823446002" ty="0.0">
+            <y:Point x="809.514898804823" y="393.052562031128"/>
           </y:Path>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="three_center" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="89.376953125" x="-125.87673348274461" y="12.63129738269049">dcat:mediaType<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="three_center" modelPosition="center" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="89.376953125" x="-128.06598171742007" y="12.63129738269049">dcat:mediaType<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
           </y:EdgeLabel>
           <y:BendStyle smoothed="false"/>
         </y:PolyLineEdge>
@@ -338,10 +338,10 @@ dataid:softwareRquirement: dataid:SS<y:LabelModel>
       <data key="d9"><![CDATA[ewfwefadqwdqwd]]></data>
       <data key="d10">
         <y:PolyLineEdge>
-          <y:Path sx="-7.781052861085746" sy="-13.827895620093267" tx="-64.61124999999993" ty="-112.25912998826044"/>
+          <y:Path sx="-7.781052861085746" sy="-13.827895620093267" tx="-63.020819230769156" ty="-112.25912998826044"/>
           <y:LineStyle color="#000000" type="line" width="1.0"/>
           <y:Arrows source="none" target="standard"/>
-          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="88.046875" x="20.46291114616156" y="-9.350588365878025">dcat:distribution<y:LabelModel>
+          <y:EdgeLabel alignment="center" backgroundColor="#FFFFFF" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" visible="true" width="88.046875" x="23.47896339225531" y="-9.350588365878025">dcat:distribution<y:LabelModel>
               <y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/>
             </y:LabelModel>
             <y:ModelParameter>

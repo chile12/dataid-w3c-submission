@@ -42,10 +42,24 @@
     <dl>
         <dt>Authors:</dt>
         <dd><a href="http://wiki.dbpedia.org/Association/Persons/Freudenberg"
-               title="Institute for Communication Systems, University of Surrey">Markus Freudenberg</a>, <a
-                href="http://bis.informatik.uni-leipzig.de/en" title="Department for Business Information Systems, University Leipzig">
-            Department for Business Information Systems, University Leipzig</a>
+               title="Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig">Markus Freudenberg</a>, <a
+                href="http://infai.org/en/Welcome" title="Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig">Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig</a>
        </dd>
+    </dl>
+    <dl>
+        <dt>Contributors:</dt>
+        <dd><a href="http://wiki.dbpedia.org/Association/Persons/Freudenberg"
+               title="Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig">Martin Brümmer</a>,
+            <a href="http://infai.org/en/Welcome" title="Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig">Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig</a>
+        </dd>
+        <dd><a href="http://wiki.dbpedia.org/Association/Persons/Freudenberg"
+               title="Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig">Dimitris Kontokostas</a>,
+            <a href="http://infai.org/en/Welcome" title="Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig">Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig</a>
+        </dd>
+        <dd><a href="http://wiki.dbpedia.org/Association/Persons/Freudenberg"
+               title="Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig">Sebastian Hellmann</a>,
+            <a href="http://infai.org/en/Welcome" title="Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig">Institute for Applied Informatics (InfAI), AKSW/KILT, University Leipzig</a>
+        </dd>
     </dl>
     <dl>
         <dt id="sec-acknowledgements"> Acknowledgements:</dt>
@@ -67,7 +81,10 @@
 <div class="abstract">
     <h2 id="abstract">Abstract</h2>
     <p><span class="notetoeditor">
-                    The DBpedia DataID vocabulary is a meta-data system for detailed descriptions of datasets and their different manifestations, as well as relations to agents like persons or organizations, in regard to their rights and responsibilities. Established vocabularies like DCAT, VoID, Prov-O and FOAF are reused for maximum compatibility to establish a uniform and accepted way to describe and deliver dataset metadata for arbitrary datasets and to put existing standards into practice.
+        The DataID core ontology is the central part of the DataID multilayer metadata system, describing datasets and their different manifestations,
+        as well as relations to agents, like persons or organisations, in regard to their rights and responsibilities.
+        This extensive metadata vocabulary is based on DCAT[needs link] for a structured representation of datasets and PROV-O[needs link] to portray the relations between agents and dataset entities.
+        We introduced multiple concepts and properties, as well as incorporating different external concepts to provide a well structured, comprehensive format to approach a unified view of dataset metadta.
                 </span></p>
 
     <h2 id="namespaceuri">Namespace URI of DataID core</h2>
@@ -97,11 +114,15 @@
 
     <ol id="toc">
         <li><a href="#intro">Introduction</a></li>
-        <li><a href="#namespaces">Namespace Declarations</a></li>
-        <li><a href="#keywords">Keyword Declarations</a></li>
+        <ol>
+            <li><a href="#scope">Scope</a></li>
+            <li><a href="#namespaces">Namespace Declarations</a></li>
+            <li><a href="#keywords">Keywords</a></li>
+        </ol>
+        <li><a href="#motivation">Motivation</a></li>
         <li><a href="#onion">Multilayer Concept</a></li>
-        <li><a href="#core">DataID core Ontology</a></li>
         <li><a href="#glance">DataID core Ontology at Glance</a></li>
+        <li><a href="#core">DataID core Ontology</a></li>
         <li><a href="#terms">DataID core term descriptions</a></li>
         <li><a href="#references">References</a></li>
     </ol>
@@ -113,33 +134,42 @@
     <div class="div1">
         <h2 id="intro">1. Introduction</h2>
         <p>
-            In 2011, the European Commission published its <a href="http://europa.eu/rapid/press-release_IP-11-1524_en.htm?locale=en">Open Data Strategy</a> defining the following <a href="http://europa.eu/rapid/press-release_MEMO-11-891_en.htm">six barriers</a> for “open public data”,
-            reflecting pressing need for reliable dataset metadata, be it for public or commercial use:
+            This document describes the set of classes, properties, and restrictions that constitute the DataID core ontology in OWL2 Web Ontology Language encoding [OWL2-OVERVIEW].
+            This ontology specification provides the essential concepts to provide structured dataset metadata for any domain, type of data or dataset structure.
+            We placed particular emphasis on the ability to extend easily on the one hand, while preserving interoperability with other existing dataset metadata formats
+            (ontologies, XSLT schemata etc.) on the other hand.
+        </p>
+        <p>
+            DataID core is a midweight ontology that can be adopted in a wide range of scenarios. We intended to provide an ontology which reflects the essential
+            concepts and properties needed to describe a dataset and all its manifestations comprehensively. We focused particularly on providing dataset metadata for
+            (1)provenance, (2)licensing and (3)access. To achieve this, we incorporated well established (e.g. PROV-O) and ground-breaking vocabularies (like ODRL).
+            Qualifying relations between agents and dataset entities, by introducing a flexible management of roles, actions and responsibilities,
+            is the second focal point of this vocabulary.
+        </p>
+        <p>
+            Disregarding the imported axioms of other ontologies, DataID core was constructed with with the compliance to OWL2 RL profile[needs link] in mind.
+            As a result we do not offer any cardinality restrictions, supporting our goal of easy extensibility.
+        </p>
+        <p>
+            This document is partly based on the following publications:
             <ul>
-                <li>a lack of information that certain data actually exists and is available;</li>
-                <li>a lack of clarity of which public authority holds the data;</li>
-                <li>a lack of clarity about the terms of re-use;</li>
-                <li>data made available in formats that are difficult or expensive to use;</li>
-                <li>complicated licensing procedures or prohibitive fees;</li>
-                <li>exclusive re-use agreements with one commercial actor or re-use restricted to a government-owned company.</li>
+                <li>DataID: Towards Semantically Rich Metadata forComplex Datasets (2014)[needs link]</li>
+                <li>The Metadata Ecosystem of DataID (2016)[needs link]</li>
+            </ul>
+            In addition we make use of existing DataID descriptions of DBpedia[needs link] datasets, donating the examples used in this document.
+        </p>
+        <p>
+            The remainder of this document is structured as follows:
+            <ul>
+                <li>We expend shortly on our motivation and basic decisions.</li>
+                <li>We introduce the DataID multilayer ontology model.</li>
+                <li>We give an overview of DataID core.</li>
+                <li>We use a running example to explain important aspects of the ontology.</li>
+                <li>We provide a detailed example on the subject of Authorizations.</li>
+                <li>We provide a complete list of all classes, properties and individuals declared by DataID core.</li>
             </ul>
 
-            Taking these as a starting point, enriched by requirements of multiple use cases, we contrived the following short list of important aspects of dataset metadata:
-
-        <p><strong>Provenance: </strong> A crucial aspect of data, required to assess correctness and completeness of data conversion, as well as the basis for trustworthiness of the data source (no trust without provenance).</p>
-        <p><strong>Licensing: </strong> Machine-readable licensing information provides the possibility to automatically publish, distribute and consume only data that explicitly allows these actions.</p>
-        <p><strong>Access: </strong> Publishing and maintaining this kind of metadata together with the data itself serves as documentation benefiting the potential user of the data as well as the creator by making it discoverable and crawlable.</p>
-        <p><strong>Extensibility: </strong> Extending a given core metadata model in an easy and reusable way, while leaving the original model uncompromised expands its application possibilities fitting many different use cases.</p>
-        <p><strong>Interoperability: </strong> Interoperability with other metadata models is a hallmark for a widely usable and reusable dataset metadata model.</p>
-
-        <p>
-        When regarding aspects <strong>Extensibility</strong> and <strong>Interoperability</strong>, taking into account the intricate requirements of many use cases, <strong>Extensibility</strong> and <strong>Interoperability</strong> seem contradictory when leaving the more general levels of a domain description.
-        A vocabulary capable of interacting with other metadata vocabularies might be too general to fit certain scenarios of use. Restrictive extensions to a vocabulary might encroach on its ability to translate into other useful metadata formats.
-        This notion is corroborated by this document on <a href="https://www.w3.org/Protocols/Design/Interevol.html">Interoperability  and  Evolvability</a> Note: We (the authors) do not differentiate between <strong>Extensibility</strong> and <strong>Evolvability</strong>, as opposed to the author of the document discussed.
-        Letting features 'die out' over time (or replacing them with new ones) does not impact, in our understanding, the aspect of <strong>Extensibility</strong> of a system.
-        </p>
-
-        <h3 id="#scope">1.1 Scope <span class="backlink"> back to <a href="#toc">ToC</a></span></h3>
+        <h3 id="scope">1.1 Scope <span class="backlink"> back to <a href="#toc">ToC</a></span></h3>
         <p>This document is aimed at both dataset publishers (those involved in maintaining, administering and hosting datasets), and data users (those involved in finding, querying, crawling and indexing datasets).</p>
         <p>
             Readers of this document should be familiar with the core concepts of <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">RDF</a> [<a href="#ref-RDF-PRIMER">RDF-PRIMER</a>],
@@ -188,10 +218,6 @@
                 <tr>
                     <td>foaf</td>
                     <td>http://xmlns.com/foaf/0.1/</td>
-                </tr>
-                <tr>
-                    <td>litre</td>
-                    <td>http://www.essepuntato.it/2010/06/literalreification/</td>
                 </tr>
                 <tr>
                     <td>lvont</td>
@@ -251,7 +277,7 @@
                 The following keywords are used throughout the text without any further explanation.
             </p>
             <p>
-                In general keywords like: <em class="keyword">MediaType</em> (and their plural form) refer to instances of the concept with the same name in the DataID core ontology.
+                In general, keywords like <em class="keyword">MediaType</em> (and their plural form) refer to instances of the concept with the same name, or to named individuals in the DataID core ontology.
                 This is only true for concepts of this ontology. When referring to a <em class="keyword">Distribution</em>, we do mean an instance of dataid:Distribution and not, for example,
                 the concept with the same name in the DCAT [needs ref] vocabulary. There is one exception, <em class="keyword">Entity</em> refers to an instance of the concept prov:Entity.
                 It is generally used in the context of this document to summarize all instances of concepts in the DataID core ontology which are subclasses of prov:Entity: dataid:DataId, dataid:Dataset and dataid:Distribution.
@@ -259,7 +285,7 @@
             <p>In some cases we abbreviate the following concept names: <em class="keyword">Role</em> is the same as <em class="keyword">AgentRole</em> and <em class="keyword">Action</em> is the same as <em class="keyword">AuthorizedAction</em>.</p>
             <p>We also introduce the keyword <em class="keyword">Subset</em> as a short word for a <em class="keyword">Dataset</em> which is a sub dataset of a different <em class="keyword">Dataset</em>.</p>
             <p>When referring to concepts or properties itself (and not their instances), we do so by using its name together with the appropriate prefix (e.g. dataid:authorizedFor).</p>
-            <p>We also adopted the five important aspects of dataset metadata (see <a href="#intro">section 1</a>) as keywords: <em class="keyword">Provenance</em>, <em class="keyword">Licensing</em>, <em class="keyword">Access</em>, <em class="keyword">Extensibility</em>, <em class="keyword">Interoperability</em>.</p>
+            <p>We also adopted the five important aspects of dataset metadata (see <a href="#intro">section 2</a>) as keywords: <em class="keyword">Provenance</em>, <em class="keyword">Licensing</em>, <em class="keyword">Access</em>, <em class="keyword">Extensibility</em>, <em class="keyword">Interoperability</em> (also <em class="keyword">Evolvability</em>).</p>
             <p>
                 There are multiple interpretations of the word/acronym <em class="keyword">DataID</em>. On the one hand we use it to refer to a metadata document,
                 resulting from the appliance of the described ontology to one or more datasets, as demonstrated in the example below.
@@ -274,19 +300,62 @@
         </div>
     </div>
     <div class="div1">
-        <h2 id="onion">4. Multilayer Concept<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+        <h2 id="motivation">2. Motivation<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+
+        In 2011, the European Commission published its <a href="http://europa.eu/rapid/press-release_IP-11-1524_en.htm?locale=en">Open Data Strategy</a> defining the following <a href="http://europa.eu/rapid/press-release_MEMO-11-891_en.htm">six barriers</a> for “open public data”,
+        reflecting pressing need for reliable dataset metadata, be it for public or commercial use:
+        <ul>
+            <li>a lack of information that certain data actually exists and is available;</li>
+            <li>a lack of clarity of which public authority holds the data;</li>
+            <li>a lack of clarity about the terms of re-use;</li>
+            <li>data made available in formats that are difficult or expensive to use;</li>
+            <li>complicated licensing procedures or prohibitive fees;</li>
+            <li>exclusive re-use agreements with one commercial actor or re-use restricted to a government-owned company.</li>
+        </ul>
+
+        Taking these as a starting point, enriched by requirements of multiple use cases, we contrived the following short list of important aspects of dataset metadata:
+
+        <p><strong><em class="keyword">Provenance</em>: </strong> A crucial aspect of data, required to assess correctness and completeness of data conversion, as well as the basis for trustworthiness of the data source (no trust without provenance).</p>
+        <p><strong><em class="keyword">Licensing</em>: </strong> Machine-readable licensing information provides the possibility to automatically publish, distribute and consume only data that explicitly allows these actions.</p>
+        <p><strong><em class="keyword">Access</em>: </strong> Publishing and maintaining this kind of metadata together with the data itself serves as documentation benefiting the potential user of the data as well as the creator by making it discoverable and crawlable.</p>
+        <p><strong><em class="keyword">Extensibility</em>: </strong> Extending a given core metadata model in an easy and reusable way, while leaving the original model uncompromised expands its application possibilities fitting many different use cases.</p>
+        <p><strong><em class="keyword">Interoperability</em>: </strong> Interoperability with other metadata models is a hallmark for a widely usable and reusable dataset metadata model.</p>
+        <p>
+            These five aspects are the linchpin objectives in our effort to present a comprehensive, extensible and interoperable metadata vocabulary.
+        </p>
+        <h3>Note on Extensibility vs. Interoperability</h3>
+        <p>
+            When regarding aspects <em class="keyword">Extensibility</em> and <em class="keyword">Interoperability</em>, taking into account the intricate requirements of many use cases, <strong>Extensibility</strong> and <strong>Interoperability</strong> seem contradictory when leaving the more general levels of a domain description.
+            A vocabulary capable of interacting with other metadata vocabularies might be too general to fit certain scenarios of use. Restrictive extensions to a vocabulary might encroach on its ability to translate into other useful metadata formats.
+            This notion is corroborated by this document on <a href="https://www.w3.org/Protocols/Design/Interevol.html">Interoperability  and  Evolvability</a>[needs reference]. The discrepancies with \interoperability are true for both concepts.
+        </p>
+        <p>
+            We do not differentiate between <em class="keyword">Extensibility</em> and <em class="keyword">Evolvability</em> , as opposed to the author of the document discussed.
+            Letting features 'die out' over time (or replacing them with new ones) does not impact, in our understanding, the aspect of <em class="keyword">Extensibility</em> of a system.
+        </p>
+        <p>
+            One approach to this problem is the
+            modularization of a growing ontology into multiple components. The multilayer metadata system, introduced by the next section, is manifestation of this approach in the context of DataID.
+        </p>
+    </div>
+    <div class="div1">
+        <h2 id="onion">3. Multilayer Concept<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
         <p>
             While this section does not directly describe the DataID core ontology, it serves as a backdrop, necessary to understand certain design decisions made in the core ontology.
             We modularised the former DataID ontology (version 1.0.0) into a multilayer composition arranged around a single core ontology. This was necessary to preserve
             <em class="keyword">Extensibility</em> and <em class="keyword">Interoperability</em>, as the vocabulary was growing due to a plethora of requirements of different use cases.
-            While only DataID core <em class="rfc2119" title="MUST">MUST</em> be imported into a use case specific metadata extension, many use cases may profit by importing one or more extensions (as we will see in the example in the next section).
-            In general, any ontology may be used in connection with DataID core, depending on the scenario at hand.
+            Our scaling approach adopts principles of the modular programming technique, separating concepts and properties of a large ontology into independent, interchangeable modules,
+            specialized to fit common use cases, dependend only on DataID core.
+        </p>
+        <p>
+            Therefore, DataID core <em class="rfc2119" title="MUST">MUST</em> be imported into a use case specific metadata extension, many use cases may profit by importing one or more extensions
+            (as we will see in the example of the next section).  In general, any ontology may be used in connection with DataID core, depending on the scenario at hand.
         </p>
         <p>
             Alongside DataID core we created first extensions, to satisfy different use cases in a reusable manner.
             The onion-like layer model below illustrates the import restrictions of the different ontologies.
             <ul>
-                <li>Every ontology <em class="rfc2119" title="MUST">MUST</em> import DataID core.</li>
+                <li>Every ontology (in the DataID sphere) <em class="rfc2119" title="MUST">MUST</em> import DataID core.</li>
                 <li>An ontology of a certain layer <em class="rfc2119" title="SHALL">SHALL</em> only import ontologies from layers below its own.</li>
             </ul>
             The latter restriction does not affect the import of ontologies outside the DataID sphere.
@@ -294,56 +363,221 @@
         <img src="images/DataID onion.png" alt="alt tag" width="800px" style="max-width:100%;" />
 
         <p><strong>DataID core</strong> provides the basic description of a dataset and serves as foundation for all extensions in the mid-layer or use case specificontology extensions.</p>
-        <p><strong>Linked Data</strong> extends DataID core with many concepts of the VOID vocabulary and some additional properties specific to LOD datasets.</p>
-        <p><strong>Activities & Plans</strong> provides provenance information of activities which generated, changed or used datasets. The goal is to record all activities needed to replicate a dataset as described by a DataID. Plans can describe which steps(activities, precautionary measures) are put in place to reach a certain goal. This extension relies heavily on the Prov-O ontology.</p>
-        <p><strong>Statistics</strong> will provide the necessary measures to publish multi-dimensional data, such as statistics about datasets. This recently created ontology will be based on the Data Cube Vocabulary.</p>
-        <p><strong>Other Ontologies</strong> of similar general character, which could be useful in multiple use cases.</p>
+        <p><strong>Linked Data</strong> extends DataID core with many concepts of the VOID vocabulary[needs link] and some additional properties specific to LOD datasets.</p>
+        <p><strong>Activities & Plans</strong> provides provenance information of activities which generated, changed or used datasets. The goal is to record all activities needed to replicate a dataset as described by a DataID. Plans can describe which steps(activities, precautionary measures) are put in place to reach a certain goal. This extension relies heavily on the Prov ontology[needs link].</p>
+        <p><strong>Statistics</strong> will provide the necessary measures to publish multi-dimensional data, such as statistics about datasets or surveys as a dataset. This recently created ontology will be based on the Data Cube Vocabulary.</p>
+        <p><strong>Other Ontologies</strong> of similar general character, as the ontologies of that layer, which could be useful in multiple use cases.</p>
         <p>
-            Authors of a common extension (or mid-layer) <em class="rfc2119" title="MUST">MUST</em> provide information about the reason for the new extension,
-            its <em class="keyword">Interoperability</em> with other extensions of this layer as well as information on conformity with OWL profiles.
+            We plan to enforce multiple requirements on the adoption of new ontologies in the common (or mid) layer of the DataID sphere.<br/>
+            They will might contain (while not being restricted to):
+            <ul>
+                <li>Authors <em class="rfc2119" title="MUST">MUST</em> provide information about the reason for the new extension (and why the expected result is no achievable with existing extensions).</li>
+                <li>Authors <em class="rfc2119" title="MUST">MUST</em> document the <em class="keyword">Interoperability</em> with other extensions of this layer (and where problems are to be expected).</li>
+                <li>Authors <em class="rfc2119" title="MUST">MUST</em> inform about conformity with OWL profiles.</li>
+            </ul>
         </p>
         <p>
             Deciding on which combination of DataID ontologies to use for a dataset description, is a domain and problem dependend process.
-            In addition it may be necessary to add additional properties on top of the provided metadata vocabularies.
-            For example, a DataID based ontology for Linked Data datasets dealing with multi dimensional data, may look schematically like this:
+            In addition it may be necessary to add additional properties on top of the provided metadata vocabularies.<br/>
+            For example, a DataID based ontology for Linked Data datasets dealing with multi dimensional data, may look schematically like this:<br/>
+            (importing DataID core and the extensions for Linked Data and Statistics)
         </p>
-        <img src="images/DataIDonionSliced.png" alt="alt tag" width="600px" style="max-width:100%;" />
-        <p>Ontologies under the DataID multilayer concept do not offer cardinality restrictions, making them easy to extend and adhere to OWL profiles. </p>
+        <img src="images/DataIDonionSliced.png" alt="alt tag" width="500px" style="max-width:100%;" />
+        <p>
+            DataID is more than its core ontology, with multiple extensions for common use cases we make regular use of its extensibility.
+            From the growing number of requirements from multiple use cases, covering multiple domains, arose the need to modularize the DataID ontology.
+            As a result we introduced a multilayer metadata model providing the opportunity to introduce specialized dataset metadata extension, maximising the reusability of the vocabularies described.
+        </p>
+    </div>
+    <div class="div1">
+        <h2 id="glance">4. DataID core Ontology at Glance<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+        <p>An alphabetical index of DataID core terms, by class (concepts) and properties are given below. All the
+            terms are hyperlinked to their detailed description for quick reference.</p>
+
+        <div>
+            <a href="#classes"><strong>Classes</strong>:</a>
+            <ul class="hlist">
+                <li><a href="#d4e31" title="http://dataid.dbpedia.org/ns/core#Agent"><span>Agent</span></a></li>
+                <li><a href="#d4e49" title="http://dataid.dbpedia.org/ns/core#AgentRole"><span>AgentRole</span></a></li>
+                <li><a href="#d4e137" title="http://dataid.dbpedia.org/ns/core#Authorization"><span>Authorization</span></a>
+                </li>
+                <li><a href="#d4e150" title="http://dataid.dbpedia.org/ns/core#AuthorizedAction"><span>AuthorizedAction</span></a></li>
+                <li><a href="#d4e259" title="http://dataid.dbpedia.org/ns/core#DataId"><span>DataId</span></a></li>
+                <li><a href="#d4e341" title="http://dataid.dbpedia.org/ns/core#Dataset"><span>Dataset</span></a></li>
+                <li><a href="#d4e491" title="http://dataid.dbpedia.org/ns/core#Directory"><span>Directory</span></a></li>
+                <li><a href="#d4e505" title="http://dataid.dbpedia.org/ns/core#Distribution"><span>Distribution</span></a></li>
+                <li><a href="#d4e581" title="http://dataid.dbpedia.org/ns/core#EntitledAction"><span>EntitledAction</span></a>
+                </li>
+                <li><a href="#d4e596" title="http://dataid.dbpedia.org/ns/core#FileCollection"><span>FileCollection</span></a>
+                </li>
+                <li><a href="#d4e677" title="http://dataid.dbpedia.org/ns/core#Identifier"><span>Identifier</span></a></li>
+                <li><a href="#d4e738" title="http://dataid.dbpedia.org/ns/core#MediaType"><span>MediaType</span></a></li>
+                <li><a href="#d4e987" title="http://dataid.dbpedia.org/ns/core#ResponsibleAction"><span>ResponsibleAction</span></a>
+                </li>
+                <li><a href="#d4e1002" title="http://dataid.dbpedia.org/ns/core#ServiceEndpoint"><span>ServiceEndpoint</span></a></li>
+                <li><a href="#d4e1017" title="http://dataid.dbpedia.org/ns/core#SimpleStatement"><span>SimpleStatement</span></a></li>
+                <li><a href="#d4e1047" title="http://dataid.dbpedia.org/ns/core#SingleFile"><span>SingleFile</span></a></li>
+            </ul>
+            <a href="#objectproperties"><strong>Object Properties:</strong></a>
+            <ul class="hlist">
+                <li><a href="#d4e1082" title="http://dataid.dbpedia.org/ns/core#accessProcedure"><span>accessProcedure</span></a></li>
+                <li><a href="#d4e1097" title="http://dataid.dbpedia.org/ns/core#allowsFor"><span>allowsFor</span></a></li>
+                <li><a href="#d4e1112" title="http://dataid.dbpedia.org/ns/core#associatedAgent"><span>associatedAgent</span></a></li>
+                <li><a href="#d4e1148" title="http://dataid.dbpedia.org/ns/core#authorityAgentRole"><span>authorityAgentRole</span></a></li>
+                <li><a href="#d4e1403" title="http://dataid.dbpedia.org/ns/core#authorizedAction"><span>authorizedAction</span></a>
+                </li>
+                <li><a href="#d4e1438" title="http://dataid.dbpedia.org/ns/core#authorizedAgent"><span>authorizedAgent</span></a></li>
+                <li><a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>authorizedFor</span></a>
+                </li>
+                <li><a href="#d4e1463" title="http://dataid.dbpedia.org/ns/core#checksum"><span>checksum</span></a></li>
+                <li><a href="#d4e1471" title="http://dataid.dbpedia.org/ns/core#dataDescription"><span>dataDescription</span></a></li>
+                <li><a href="#d4e1486" title="http://dataid.dbpedia.org/ns/core#growth"><span>growth</span></a></li>
+                <li><a href="#d4e1501" title="http://dataid.dbpedia.org/ns/core#hasAuthorization"><span>hasAuthorization</span></a>
+                </li>
+                <li><a href="#d4e1522" title="http://dataid.dbpedia.org/ns/core#identifier"><span>identifier</span></a></li>
+                <li><a href="#d4e1533" title="http://dataid.dbpedia.org/ns/core#identifierScheme"><span>identifierScheme</span></a>
+                </li>
+                <li><a href="#d4e1550" title="http://dataid.dbpedia.org/ns/core#inCatalog"><span>inCatalog</span></a></li>
+                <li><a href="#d4e1548" title="http://dataid.dbpedia.org/ns/core#innerMediaType"><span>innerMediaType</span></a>
+                </li>
+                <li><a href="#d4e1568" title="http://dataid.dbpedia.org/ns/core#isDistributionOf"><span>isDistributionOf</span></a>
+                </li>
+                <li><a href="#d4e1604" title="http://dataid.dbpedia.org/ns/core#latestVersion"><span>latestVersion</span></a>
+                </li>
+                <li><a href="#d4e1619" title="http://dataid.dbpedia.org/ns/core#needsSpecialAuthorization"><span>needsSpecialAuthorization</span></a>
+                </li>
+                <li><a href="#d4e1638" title="http://dataid.dbpedia.org/ns/core#nextVersion"><span>nextVersion</span></a></li>
+                <li><a href="#d4e1653" title="http://dataid.dbpedia.org/ns/core#openness"><span>openness</span></a></li>
+                <li><a href="#d4e1668" title="http://dataid.dbpedia.org/ns/core#preview"><span>preview</span></a></li>
+                <li><a href="#d4e1683" title="http://dataid.dbpedia.org/ns/core#previousVersion"><span>previousVersion</span></a></li>
+                <li><a href="#d4e1698" title="http://dataid.dbpedia.org/ns/core#reuseAndIntegration"><span>reuseAndIntegration</span></a></li>
+                <li><a href="#d4e1713" title="http://dataid.dbpedia.org/ns/core#similarData"><span>similarData</span></a></li>
+                <li><a href="#d4e1729" title="http://dataid.dbpedia.org/ns/core#similarDataset"><span>similarDataset</span></a>
+                </li>
+                <li><a href="#d4e1747" title="http://dataid.dbpedia.org/ns/core#softwareRquirement"><span>softwareRquirement</span></a></li>
+                <li><a href="#d4e1777" title="http://dataid.dbpedia.org/ns/core#transitiveSubset"><span>transitiveSubset</span></a>
+                </li>
+                <li><a href="#d4e1821" title="http://dataid.dbpedia.org/ns/core#typeReference"><span>typeReference</span></a>
+                </li>
+                <li><a href="#d4e1872" title="http://dataid.dbpedia.org/ns/core#underAuthorization"><span>underAuthorization</span></a></li>
+                <li><a href="#d4e1892" title="http://dataid.dbpedia.org/ns/core#usefulness"><span>usefulness</span></a></li>
+            </ul>
+            <a href="#dataproperties"><strong>Data Properties:</strong></a>
+            <ul class="hlist">
+                <li><a href="#d4e1586" title="http://dataid.dbpedia.org/ns/core#isInheritable"><span>isInheritable</span></a>
+                </li>
+                <li><a href="#d4e1762" title="http://dataid.dbpedia.org/ns/core#statement"><span>statement</span></a></li>
+                <li><a href="#d4e1790" title="http://dataid.dbpedia.org/ns/core#typeExtension"><span>typeExtension</span></a>
+                </li>
+                <li><a href="#d4e1805" title="http://dataid.dbpedia.org/ns/core#typeName"><span>typeName</span></a></li>
+                <li><a href="#d4e1836" title="http://dataid.dbpedia.org/ns/core#typeTemplate"><span>typeTemplate</span></a></li>
+                <li><a href="#d4e1854" title="http://dataid.dbpedia.org/ns/core#uncompressedByteSize"><span>uncompressedByteSize</span></a></li>
+                <li><a href="#d4e1907" title="http://dataid.dbpedia.org/ns/core#validFrom"><span>validFrom</span></a></li>
+                <li><a href="#d4e1926" title="http://dataid.dbpedia.org/ns/core#validUntil"><span>validUntil</span></a></li>
+            </ul>
+            <a href="#authoritychainproperties"><strong>Authority Chain Properties:</strong></a>
+            <ul class="hlist">
+                <li><a href="#d4e1166" title="http://dataid.dbpedia.org/ns/core#authoritySubChain1"><span>authoritySubChain1</span></a></li>
+                <li><a href="#d4e1210" title="http://dataid.dbpedia.org/ns/core#authoritySubChain2"><span>authoritySubChain2</span></a></li>
+                <li><a href="#d4e1247" title="http://dataid.dbpedia.org/ns/core#authoritySubChain3"><span>authoritySubChain3</span></a></li>
+                <li><a href="#d4e1283" title="http://dataid.dbpedia.org/ns/core#authoritySubChain4"><span>authoritySubChain4</span></a></li>
+                <li><a href="#d4e1311" title="http://dataid.dbpedia.org/ns/core#authoritySubChain5"><span>authoritySubChain5</span></a></li>
+                <li><a href="#d4e1339" title="http://dataid.dbpedia.org/ns/core#authoritySubChain6"><span>authoritySubChain6</span></a></li>
+                <li><a href="#d4e1367" title="http://dataid.dbpedia.org/ns/core#authoritySubChain7"><span>authoritySubChain7</span></a></li>
+            </ul>
+            <a href="#namedindividuals"><strong>Named Individuals:</strong></a>
+            <ul class="hlist">
+                <li><a href="#d4e64" title="http://dataid.dbpedia.org/ns/core#AgentRoleScheme"><span>AgentRoleScheme</span></a>
+                </li>
+                <li><a href="#d4e77" title="http://dataid.dbpedia.org/ns/core#AgentSupervision"><span>AgentSupervision</span></a></li>
+                <li><a href="#d4e99" title="http://dataid.dbpedia.org/ns/core#AllEntitlements"><span>AllEntitlements</span></a>
+                </li>
+                <li><a href="#d4e118" title="http://dataid.dbpedia.org/ns/core#AllResponsibilities"><span>AllResponsibilities</span></a></li>
+                <li><a href="#d4e163" title="http://dataid.dbpedia.org/ns/core#AuthorizedActionScheme"><span>AuthorizedActionScheme</span></a>
+                </li>
+                <li><a href="#d4e178" title="http://dataid.dbpedia.org/ns/core#Contact"><span>Contact</span></a></li>
+                <li><a href="#d4e211" title="http://dataid.dbpedia.org/ns/core#Contributor"><span>Contributor</span></a></li>
+                <li><a href="#d4e236" title="http://dataid.dbpedia.org/ns/core#Creator"><span>Creator</span></a></li>
+                <li><a href="#d4e470" title="http://dataid.dbpedia.org/ns/core#DeleteContent"><span>DeleteContent</span></a>
+                </li>
+                <li><a href="#d4e609" title="http://dataid.dbpedia.org/ns/core#Guest"><span>Guest</span></a></li>
+                <li><a href="#d4e634" title="http://dataid.dbpedia.org/ns/core#GuestAgent"><span>GuestAgent</span></a></li>
+                <li><a href="#d4e655" title="http://dataid.dbpedia.org/ns/core#GuestAuthorization"><span>GuestAuthorization</span></a></li>
+                <li><a href="#d4e700" title="http://dataid.dbpedia.org/ns/core#Maintainer"><span>Maintainer</span></a></li>
+                <li><a href="#d4e751" title="http://dataid.dbpedia.org/ns/core#ModifyAgentRoles"><span>ModifyAgentRoles</span></a></li>
+                <li><a href="#d4e772" title="http://dataid.dbpedia.org/ns/core#ModifyAuthorization"><span>ModifyAuthorization</span></a></li>
+                <li><a href="#d4e793" title="http://dataid.dbpedia.org/ns/core#ModifyAuthorizedAgents"><span>ModifyAuthorizedAgents</span></a>
+                </li>
+                <li><a href="#d4e815" title="http://dataid.dbpedia.org/ns/core#ModifyContent"><span>ModifyContent</span></a>
+                </li>
+                <li><a href="#d4e836" title="http://dataid.dbpedia.org/ns/core#Publisher"><span>Publisher</span></a></li>
+                <li><a href="#d4e881" title="http://dataid.dbpedia.org/ns/core#PublishingDecision"><span>PublishingDecision</span></a></li>
+                <li><a href="#d4e902" title="http://dataid.dbpedia.org/ns/core#ReadContent"><span>ReadContent</span></a></li>
+                <li><a href="#d4e923" title="http://dataid.dbpedia.org/ns/core#ReadDataId"><span>ReadDataId</span></a></li>
+                <li><a href="#d4e944" title="http://dataid.dbpedia.org/ns/core#ResponseToContact"><span>ResponseToContact</span></a>
+                </li>
+                <li><a href="#d4e966" title="http://dataid.dbpedia.org/ns/core#ResponseToLifeCycleEvent"><span>ResponseToLifeCycleEvent</span></a>
+                </li>
+                <li><a href="#d4e1060" title="http://dataid.dbpedia.org/ns/core#UpdateDataId"><span>UpdateDataId</span></a></li>
+            </ul>
+        </div>
+
     </div>
     <div class="div1">
         <h2 id="core">5. DataID core Ontology<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
         <p>
-            This section grants an overview of the DataID core ontology, highlighting important features.
+            This section grants an overview of the DataID core ontology, sectioned by concepts.
             The depiction below provides most of the concepts and properties which make up DataID core.
-            A complete description of all concepts, properties and individuals is available in section 7.
+            A complete description of all concepts, properties and individuals is available in <a href="#terms">section 6</a>.
         </p>
         <p>
-            DataID core is founded on two pillars: the DCAT and Prov ontologies[needs links]. The base structure of DCAT (Catalog, CatalogRecord, Dataset and Distribution)
-            is clearly visible in the upper part of this diagram. The Prov ontology is used to qualify the relation an Agent might have with an Entity.
+            DataID core is founded on two pillars: the DCAT and PROV ontologies[needs links]. The base structure of DCAT (Catalog, CatalogRecord, Dataset and Distribution)
+            is clearly visible in the upper part of this diagram. The PROV ontology is used to qualify the relation an Agent might have with an Entity.
             The Role an Agent has in regard to this Entity and what this Role might entail (the lower part of the diagram).
         </p>
         <img src="images/DataIdOntology.png" alt="alt tag" style="max-width:100%;" />
         <p>
-            For illustration purposes we will weave a running example into the descriptions of concepts and properties.
-            This example is a reduced version of an <a href="http://downloads.dbpedia.org/2015-10/core-i18n/af/2015-10_dataid_af.ttl">original DataID of the Afrikaans DBpedia</a> (release: 2015-04).
-            Under the main dataset only two sub-datasets remain (as opposed to 50). We also left out some instances referenced in the example for reasons of redundancy.
-            Also we refrain to list the more common properties of DCTERMS [needs link] and RDFS [needs link] like dc:title, dc:description, cd:modified, dc:issued and rdfs:label to make this example more easy to read.
-            The example was constructed in a way to cover many aspects of DataID core and to provide an easy use case which could arise in a similar fashion outside the DBpedia domain.
-            We added remarks in the next to some statements, explaining their use and our decisions.
-            The example is provided in full as a Turtle file at the end of this section.
-            The basic structure of its DataID is outlined below.
+            Throughout DataID core we opted to restrict ranges of imported properties (like dct:language, dct:temporal or dataid:checksum) to concepts of vocabularies, which have proven either to be
+            sound and expressive enough, or have been widely adopted in the Linked Data community. This step is necessary to provide a unified model of structured data without ambiguity.
+            If the need arises these restrictions shall either be extended to cover additional concepts or be abolished all together. For example, we use the ODRL ontology[needs link] to describe
+            licenses and other policies (dct:license), or to specify dct:language we use the very useful Lexvo ontology and dataset[needs link].
         </p>
-        <h4 id="#exoverview"><strong>Overview</strong></h4>
-        <img src="images/DataIDExampleStructure.png" alt="alt tag" style="max-width:100%;" />
-        <p>The base URI used in our example is:</p>
-<pre>
-@base &lt;http://downloads.dbpedia.org/2015-10/core-i18n/core-i18n/af/2015-10_&gt;
-</pre>
+
+
     <div id="#container">
+        <div class="post-container">
+            <div class="post-thumb"><img src="images/DataIDExampleStructure.png" alt="alt tag" /></div>
+            <div class="post-content">
+                <h4 id="exoverview"><strong>Example Overview</strong></h4>
+                <p>
+                    For illustration purposes we will weave a running example into the descriptions of concepts and properties.
+                    This example is a reduced version of an <a href="http://downloads.dbpedia.org/2015-10/core-i18n/ar/2015-10_dataid_ar.ttl">original DataID of the Arabic DBpedia</a> (release: 2015-04).
+                    Under the main dataset only two sub-datasets remain (as opposed to 50). We also left out some instances referenced in the example for reasons of redundancy.
+                    Also we refrain to list the more common properties of DCTERMS [needs link] and RDFS [needs link] like dc:title, dc:description, cd:modified, dc:issued and rdfs:label to make this example more easy to read.
+                    The example was constructed in a way to cover many aspects of DataID core and to provide an easy use case which could arise in a similar fashion outside the DBpedia domain.
+                    We added remarks in the next to some statements, explaining their use and our decisions.
+                    The full example is available in Turtle serialization here: <a href="/dataid-w3c-submission/html/2015-10_dataid_ar.ttl">2015-10_dataid_ar.ttl</a>.
+                    The basic structure of its DataID is outlined on the right.
+                </p>
+                <ul>
+                    <li>DataId:                 dataid_ar.ttl</li>
+                    <li>MainDataset:            dataid_ar.ttl?set=maindataset</li>
+                    <li>Dataset A:              dataid_ar.ttl?set=interlanguage_links</li>
+                    <li>Dataset C:              dataid_ar.ttl?set=long_abstracts_en_uris</li>
+                    <li>Distribution A1:        dataid_ar.ttl?file=interlanguage_links_ar.ttl.bz2</li>
+                    <li>Distribution A2:        dataid_ar.ttl?file=interlanguage_links_ar.tql.bz2</li>
+                    <li>Distribution C1:        dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2</li>
+                    <li>Distribution C2:        dataid_ar.ttl?file=long_abstracts_en_uris_ar.tql.bz2</li>
+                    <li>Distribution C3:        dataid_ar.ttl?sparql=DBpediaSparqlEndpoint</li>
+                </ul>
+                <p>The base URI used in our example is:</p>
+            </div>
+        </div>
+        <pre>@base &lt;http://downloads.dbpedia.org/2015-10/core-i18n/ar/2015-10_&gt;</pre>
         <div class="post-container">
             <div class="post-thumb"><img src="images/ClassDataId.png" alt="alt tag" /></div>
             <div class="post-content">
-                <h4 id="#exdataid"><strong>DataId</strong></h4>
+                <h4 id="exdataid"><strong>DataId</strong></h4>
                 <p>
                     The class <a href="#d4e259">dataid:DataId</a> subsumes
                     dcat:CatalogRecord, which describes a dataset entry in a dcat:Catalog. It does not represent a dataset,
@@ -365,16 +599,16 @@
         dataid:underAuthorization  &lt;dataid_ar.ttl?auth=maintainerAuthorization&gt; ,             <span>#the inverse property of dataid:authorizedFor helps to identify responsible Agents for an Entity</span>
             &lt;dataid_ar.ttl?auth=creatorAuthorization&gt; ;
         dataid:inCatalog           &lt;dataid_catalog.ttl&gt;                                       <span>#we want to point out the dcat:Catalog this DataID is recorded in.</span>
-        dc:title                   "DataID metadata for the Afrikaans DBpedia"@en ;
-        dc:publisher               &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;            <span>#while the DataID system of providing provenance on Agents is in place, using established properties to point out Agents does not come amiss</span>
-        dc:creator                 &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        foaf:primaryTopic          &lt;dataid_ar.ttl?set=dataset&gt; .                              <span>#foaf:primaryTopic points out the main dataset described by a DataID.</span>
+        dct:title                   "DataID metadata for the Afrikaans DBpedia"@en ;
+        dct:publisher               &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;           <span>#while the DataID system of providing provenance on Agents is in place, using established properties to point out Agents does not come amiss</span>
+        dct:creator                 &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
+        foaf:primaryTopic          &lt;dataid_ar.ttl?set=maindataset&gt; .                              <span>#foaf:primaryTopic points out the main dataset described by a DataID.</span>
             </pre>
 
         <div class="post-container">
             <div class="post-thumb"><img src="images/ClassDataset.png" alt="alt tag" style="max-width:100%;" /></div>
             <div class="post-content">
-                <h4 id="#exdataset"><strong>Dataset</strong></h4>
+                <h4 id="exdataset"><strong>Dataset</strong></h4>
                 <p>
                     The VOID vocabulary[needs link] plays a central role in DataID core as well, as the dataset concept of both the DCAT and VOID were merged into <a href="#d4e341">dataid:Dataset</a>,
                     providing useful properties about the content of a dataset from both ontologies. In particular, the property <a href="https://www.w3.org/TR/void/#subset">void:subset</a> allows for
@@ -383,24 +617,18 @@
                     We have to differentiate between the main (or root) dataset of a DataID (referenced via foaf:primaryTopic) and optional Subsets, hierarchically below the main dataset.
                 </p>
                 <p>
-                    Throughout DataID core we opted to restrict ranges of imported properties (like dc:language, dc:temporal or dataid:checksum) to concepts of vocabularies, which have proven either to be
-                    sound and expressive enough, or have been widely adopted in the Linked Data community. This step is necessary to provide a unified model of structured data without ambiguity.
-                    If the need arises these restrictions shall either be extended to cover additional concepts or be abolished all together. For example, we use the ODRL ontology[needs link] to describe
-                    licenses and other policies (dc:license), or to specify dc:language we use the very useful Lexvo ontology and dataset[needs link].
-                </p>
-                <p>
-                    The main dataset of our example is a container of other Datasets without any actual manifestations (Distributions), which can be seen in the first snipped below (&lt;dataid_ar.ttl?set=dataset&gt;).
-                    The second Dataset (&lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;) is a Subset of the first and provides actual data (Distributins). We use dc:isPartOf as a quasi-inverse property of void:subset.
+                    The main dataset of our example is a container of other Datasets without any actual manifestations (Distributions), which can be seen in the first snipped below (&lt;dataid_ar.ttl?set=maindataset&gt;).
+                    The second Dataset (&lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;) is a Subset of the first and provides actual data (Distributins). We use dct:isPartOf as a quasi-inverse property of void:subset.
                     As we are portraying a Linked Data Dataset we are using properties like void:triples and dataid-ld:graphName.
                 </p>
             </div>
         </div>
                     <pre>
-&lt;dataid_ar.ttl?set=dataset&gt;
+&lt;dataid_ar.ttl?set=maindataset&gt;
         a                       dataid:Dataset ;
-        dc:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;                          <span>#Languages in use are referenced by using instances of the lexvo.org dataset.</span>
-        dc:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;           <span>#License cc-by-sa3.0 is further described as an instance of odrl:Policy here: todo</span>
-        dc:creator              &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
+        dct:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;                         <span>#Languages in use are referenced by using instances of the lexvo.org dataset.</span>
+        dct:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;          <span>#License cc-by-sa3.0 is further described as an instance of odrl:Policy here: todo</span>
+        dct:creator              &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
         void:subset             &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;,                   <span>#void:subset points to sub-datasets</span>
             &lt;dataid_ar.ttl?set=interlanguage_links&gt; ;
         void:vocabulary         &lt;http://downloads.dbpedia.org/2015-04/dbpedia_2015-10.owl&gt; ;  <span>#The ontology/schema used for structuring the underlying data.</span>
@@ -411,10 +639,10 @@
         <pre>
 &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;                                                    <span>#This dataset has actual manifestations: see dcat:distribution</span>
         a                       dataid:Dataset ;
-        dc:isPartOf             &lt;dataid_ar.ttl?set=dataset&gt; ;                                 <span>#As a sub-dataset this dataset is part of &lt;dataid_ar.ttl?set=dataset&gt;</span>
-        dc:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;
-        dc:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
-        dc:publisher            &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
+        dct:isPartOf             &lt;dataid_ar.ttl?set=maindataset&gt; ;                                <span>#As a sub-dataset this dataset is part of &lt;dataid_ar.ttl?set=maindataset&gt;</span>
+        dct:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;
+        dct:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
+        dct:publisher            &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
         void:triples            232801 ;                                                      <span>#Since this is a LOD dataset, making use of properties specific for this context (like void:triples) is a useful contribution.</span>
         dcat:distribution       &lt;dataid_ar.ttl?sparql=DBpediaSparqlEndpoint&gt; ,                <span>#dcat:distribution points out the actual manifestations of a dataset. In this case the dataset is available in two different RDF serializations and via a SPARQL endpoint.</span>
             &lt;dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2&gt; ,
@@ -426,231 +654,169 @@
         <div class="post-container">
             <div class="post-thumb"><img src="images/ClassDistribution.png" alt="alt tag" style="max-width:100%;" /></div>
             <div class="post-content">
-                <h4 id="#exdistribution"><strong>Distribution</strong></h4>
+                <h4 id="exdistribution"><strong>Distribution</strong></h4>
                 <p>
-                    The class <a href="https://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a> is the technical description of the data itself,
-                    as well as documentation of how to access the data described (via <a href="https://www.w3.org/TR/vocab-dcat/#Property:distribution_accessurl">dcat:accessURL</a> or <a href="https://www.w3.org/TR/vocab-dcat/#Property:distribution_downloadurl">dcat:downloadURL</a>).
-                    This concept is crucial to be able to automatically retrieve and use the data described in a DataID, simplifying, for example, data analysis. We introduced additional subclasses to further distinguish how the data is available on the web:
+                    The class <a href="#d4e505">dataid:Distribution</a> is a subclass of <a href="https://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a> and
+                    provides the technical description of the data itself, as opposed to the Dataset concept. In addition it serves as documentation of how to access the data described
+                    (via <a href="https://www.w3.org/TR/vocab-dcat/#Property:distribution_accessurl">dcat:accessURL</a> or <a href="https://www.w3.org/TR/vocab-dcat/#Property:distribution_downloadurl">dcat:downloadURL</a>),
+                    and which conditions apply (e.g. <a href="#d4e1082" title="http://dataid.dbpedia.org/ns/core#accessProcedure"><span>dataid:accessProcedure</span></a>,
+                    <a href="#d4e1747" title="http://dataid.dbpedia.org/ns/core#softwareRquirement"><span>dataid:softwareRquirement</span></a>).
+                    Every Distribution of a Dataset <em class="rfc2119" title="MUST">MUST</em> contain the whole Dataset in the format and location described.
+                    It <em class="rfc2119" title="MAY">MAY</em> contain additional data on top of that, for example when describing a ServiceEndpoint. This practice is
+                    <em class="rfc2119" title="NOT RECOMMENDED">NOT RECOMMENDED</em> outside of this example.
+                    Two Distributions of the same Dataset therefore must either contain the exact same data (for example in two different serializations), or one  Distribution must
+                    completely subsume the other.
+                    The distribution concept, introduced by the DCAT vocabulary[needs link], is crucial to be able to automatically retrieve and use the data described in a DataID,
+                    simplifying, for example, data analysis. We introduced additional subclasses to further distinguish how the data is available on the web:
                     <ul>
                         <li><a href="#d4e1047">dataid:SingleFile</a></li>
                         <li><a href="#d4e491">dataid:Directory</a></li>
                         <li><a href="#d4e596">dataid:FileCollection</a></li>
                         <li><a href="#d4e1002">dataid:ServiceEndpoint</a></li>
                     </ul>
-                    The dataid:checksum property is restricted to instances of spdx:Checksum
+                    The range of dataid:checksum is <a href="http://spdx.org/rdf/terms/classes/Checksum___-238837136.html">spdx:Checksum</a>,
+                    providing <a href="http://spdx.org/rdf/terms/dataproperties/checksumValue___-1263904517.html">spdx:checksumValue</a>
+                    and <a href="http://spdx.org/rdf/terms/objectproperties/algorithm___-1614899588.html">spdx:algorithm</a> properties.
+                    The <a href="http://www.w3.org/ns/dcat#mediaType">dcat:mediaType</a> property is restricted to the range of <a href="#d4e738">dataid:MediaType</a>.
+                    Similar to <a href="http://www.w3.org/ns/dcat#size">dcat:byteSize</a>, <a href="#d4e1854">dataid:uncompressedByteSize</a> provides an integer value for the number of bytes a compression or archive file has stored as
+                    content inside. A glimpse of the (uncompressed) data of a Distribution can be offered with the property <a href="#d4e1668">dataid:preview</a>.
+                    This is useful when data providers want to convey the format or serialization of a very large or compressed file as an example.
+                </p>
+                <p>
+                    The first example is an instance of <a href="#d4e1047">dataid:SingleFile</a>, describing a single RDF file (which contains the whole Dataset) in
+                    <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle</a> serialization, compressed with the bzip2 compression.
+                    It can directly be downloaded (without any intermediate steps), hence the property <a href="http://www.w3.org/ns/dcat#downloadURL">dcat:downloadURL</a>
+                    is used to point out the resource on the web. Since it is a compression file we provide its compressed and uncompressed size in bytes.
                 </p>
             </div>
         </div>
-                    <pre>
-&lt;dataid_ar.ttl?set=dataset&gt;
-        a                       dataid:Dataset ;                                              <span>#The main dataset is a container of other datasets accessible via void:subset. It has no actual manifestations (dcat:distribution) and is therefore more of a root-dataset of a dataset hierarchy.</span>
-        dc:hasVersion           &lt;dataid_ar.ttl?version=1.0&gt; ;
-        dc:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;                          <span>#Languages in use are referenced by using instances of the lexvo.org dataset.</span>
-        dc:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;           <span>#License cc-by-sa3.0 is further described as an instance of odrl:Policy here: todo</span>
-        dc:creator              &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        void:subset             &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;,                   <span>#void:subset points to sub-datasets</span>
-            &lt;dataid_ar.ttl?set=interlanguage_links&gt; ;
-        void:vocabulary         &lt;http://downloads.dbpedia.org/2015-04/dbpedia_2015-10.owl&gt; ;  <span>#The ontology/schema used for structuring the underlying data.</span>
-        dcat:keyword            &quot;DBpedia&quot;@en , &quot;dataset&quot;@en ;
-        dcat:landingPage        &lt;http://dbpedia.org/&gt; ;
-        foaf:isPrimaryTopicOf   &lt;dataid_ar.ttl&gt;                                               <span>#inverse of foaf:primaryTopic</span>
-            </pre>
-
+        <pre>
+&lt;dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2&gt;
+        a                        dataid:SingleFile ;
+        dct:license               &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
+        dct:publisher             &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
+        dataid:uncompressedByteSize      186573907 ;                                          <span>#Since .bz2 indicates that this is an bzip2 archive file, we can use this property to specify the uncompressed size of the content in bytes.</span>
+        dcat:byteSize                    33428372 ;                                           <span>#dcat:byteSize specifies the the size of the file described in bytes.</span>
+        dcat:downloadURL         &lt;long_abstracts_en_uris_ar.ttl.bz2&gt; ;                        <span>#dcat:downloadURL points out the url under which this file is available.</span>
+        dcat:mediaType           dataid:MediaType_turtle_x-bzip2                              <span>#The media type of the content described with this instance of a distribution (see bottom of this example).</span>
+        </pre>
+        <p>
+            The second example is an instance of dataid-ld:SparqlEndpoint, a subclass of dataid:ServiceEndpoint which was introduced with the DataID extension for Linked Data (dataid-ld).
+            Both examples are Distributions of Dataset &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;.
+        </p>
+        <pre>
+&lt;dataid_ar.ttl?sparql=DBpediaSparqlEndpoint&gt;
+        a                        dataid-ld:SparqlEndpoint ;
+        dataid:accessProcedure   &lt;dataid_ar.ttl?stmt=sparqlaccproc&gt; ;                         <span>#Provides a statement about how to access the data provided with this endpoint (see section <a href="#dataid_ar.ttl?set=interlanguage_links">statements</a>).</span>
+        dataid-ld:graphName      &lt;http://dbpedia.org&gt; ;                                       <span>#The graph under which the data of this dataset is available at this endpoint.</span>
+        dct:hasVersion            &lt;dataid_ar.ttl?version=1.0&gt; ;
+        dct:license               &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
+        void:sparqlEndpoint      &lt;http://dbpedia.org/sparql&gt; ;                                <span>#In this case void:sparqlEndpoint and dcat:accessURL are the same.</span>
+        dcat:accessURL           &lt;http://dbpedia.org/sparql&gt; ;                                <span>#Opposed to dataid:SingleFile, dataid:ServiceEndpoint provides a dcat:accessURL. The data is accessible via this URL (e.g. by providing a query).</span>
+        dcat:mediaType           &lt;http://dataid.dbpedia.org/ns/mt#MediaType_sparql-results+xml&gt; .
+        </pre>
         <div class="post-container">
             <div class="post-thumb"><img src="images/ClassMediaType.png" alt="alt tag" style="max-width:100%;" /></div>
             <div class="post-content">
-                <h4 id="#exmediatype"><strong>MediaType</strong></h4>
+                <h4 id="exmediatype"><strong>MediaType</strong></h4>
                 <p>
-                    The class dataid:DataId subsumes
-                    dcat:CatalogRecord, which describes a dataset entry in a dcat:Catalog. It does not represent a dataset,
-                    but provenance information about dataset entries in a catalog. It is the root entity in any DataID description.
-                    Most general information about the DataID document and the relations to its context (e.g. to a Catalog, Repository) are entered here.
+                    DCAT does not offer an intrinsic way of specifying the exact format of the content described by a distribution. While the property <a href="http://www.w3.org/ns/dcat#mediaType">dcat:mediaType</a> does exist,
+                    its expected range dct:MediaTypeOrExtend is an empty concept, not extended by the DCAT vocabulary.
+                    Therefore, we created <a href="#d4e738" title="http://dataid.dbpedia.org/ns/core#MediaType"><span>dataid:MediaType</span></a> to better qualify this crucial piece of information.
+                    Besides a name and a reference the following properties are of interest:
+                    <ul>
+                    <li><a href="#d4e1836" title="http://dataid.dbpedia.org/ns/core#typeTemplate"><span>dataid:typeTemplate</span></a> - the IANA[needs link] media- or mime type </li>
+                    <li><a href="#d4e1790" title="http://dataid.dbpedia.org/ns/core#typeExtension"><span>dataid:typeExtension</span></a> - common file extension for the type described</li>
+                    </ul>
+                    With the property <a href="#d4e1548" title="http://dataid.dbpedia.org/ns/core#innerMediaType"><span>dataid:innerMediaType</span></a>
+                    we can describe nested formats, useful in pipeline processing.
+                </p>
+                <p>
+                    The following snipped exemplifies the use of this property:<br/>
+                    (note: we use the namespace http://dataid.dbpedia.org/ns/mt# for common MediaTypes on a preliminary basis)
                 </p>
             </div>
         </div>
-                    <pre>
-&lt;dataid_ar.ttl?set=dataset&gt;
-        a                       dataid:Dataset ;                                              <span>#The main dataset is a container of other datasets accessible via void:subset. It has no actual manifestations (dcat:distribution) and is therefore more of a root-dataset of a dataset hierarchy.</span>
-        dc:hasVersion           &lt;dataid_ar.ttl?version=1.0&gt; ;
-        dc:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;                          <span>#Languages in use are referenced by using instances of the lexvo.org dataset.</span>
-        dc:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;           <span>#License cc-by-sa3.0 is further described as an instance of odrl:Policy here: todo</span>
-        dc:creator              &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        void:subset             &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;,                   <span>#void:subset points to sub-datasets</span>
-            &lt;dataid_ar.ttl?set=interlanguage_links&gt; ;
-        void:vocabulary         &lt;http://downloads.dbpedia.org/2015-04/dbpedia_2015-10.owl&gt; ;  <span>#The ontology/schema used for structuring the underlying data.</span>
-        dcat:keyword            &quot;DBpedia&quot;@en , &quot;dataset&quot;@en ;
-        dcat:landingPage        &lt;http://dbpedia.org/&gt; ;
-        foaf:isPrimaryTopicOf   &lt;dataid_ar.ttl&gt;                                               <span>#inverse of foaf:primaryTopic</span>
-            </pre>
+        <pre>
+&lt;http://dataid.dbpedia.org/ns/mt#MediaType_turtle_x-bzip2&gt;
+        a                      dataid:MediaType ;
+        dataid:innerMediaType  &lt;http://dataid.dbpedia.org/ns/mt#MediaType_turtle&gt; ;           <span>#We are pointing to the MediaType of the file inside the compression file.</span>
+        dataid:typeName        "Turtle Bzip2" ;
+        dataid:typeExtension   &quot;.bz2&quot; ;                                                       <span>#the extension of the outer most format</span>
+        dataid:typeTemplate    &quot;application/x-bzip2&quot;                                          <span>#the IANA mime type string of the outer most format</span>
 
+&lt;http://dataid.dbpedia.org/ns/mt#MediaType_turtle&gt;
+        a                     dataid:MediaType ;
+        dataid:typeName       "Turtle" ;
+        dataid:typeExtension  &quot;.ttl&quot; ;
+        dataid:typeTemplate   &quot;application/x-turtle&quot; ;                                        <span>#there are MediaTypes with multiple valid mime types</span>
+        dataid:typeTemplate   &quot;text/turtle&quot; .
+        </pre>
+        <div class="post-container">
+            <div class="post-thumb"><img src="images/ClassAgent.png" alt="alt tag" style="max-width:100%;" /></div>
+            <div class="post-content">
+                <h4 id="exagent"><strong>Agent</strong></h4>
+                <p>
+                    An Agent is something or someone that bears some form of responsibility for an entity or activities which create, transform or manage entities in some way.
+                    Agents might be real and legal persons, groups of persons, organisations etc.. The <a href="#d4e31" title="http://dataid.dbpedia.org/ns/core#Agent"><span>dataid:Agent</span></a>
+                    subsumes both agent concepts of the PROV[needs link] and FOAF[needs link] ontologies. We added <a href="#d4e1872" title="http://dataid.dbpedia.org/ns/core#underAuthorization"><span>dataid:underAuthorization</span></a>
+                    as the inverse property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>, pointing out the
+                    Authorizations which grant this Agent some kind some authority over Entities, which is explained in detail in this example[needs link].
+                </p>
+                <p>
+                    The example of an Agent portrays an Organization:
+                </p>
+            </div>
+        </div>
+        <pre>
+&lt;http://wiki.dbpedia.org/dbpedia-association&gt;
+        a                        dataid:Agent ;
+        dataid:hasAuthorization  &lt;dataid_ar.ttl?auth=creatorAuthorization&gt; ;                  <span>#pointing out an Authorization this Agent is responsible for</span>
+        foaf:homepage            &lt;http://dbpedia.org&gt; ;
+        foaf:mbox                &quot;dbpedia@infai.org&quot; ;                                        <span>#to identify and contact an Agent we recommend to demand the email address</span>
+        foaf:name                &quot;DBpedia Association&quot; .
+        </pre>
         <div class="post-container">
             <div class="post-thumb"><img src="images/ClassAuthorization.png" alt="alt tag" style="max-width:100%;" /></div>
             <div class="post-content">
-                <h4 id="#exauthorization"><strong>Authorization</strong></h4>
+                <h4 id="exauthorization"><strong>Authorization</strong></h4>
                 <p>
-                    The class dataid:DataId subsumes
-                    dcat:CatalogRecord, which describes a dataset entry in a dcat:Catalog. It does not represent a dataset,
-                    but provenance information about dataset entries in a catalog. It is the root entity in any DataID description.
-                    Most general information about the DataID document and the relations to its context (e.g. to a Catalog, Repository) are entered here.
+                    One objective of DataID core is the detailed expression of the relations between Agents and Entities.
+                    We want to qualify these relations (summarized under the property <a href="#d4e1112" title="http://dataid.dbpedia.org/ns/core#associatedAgent"><span>dataid:associatedAgent</span></a>)
+                    by assigning Roles to the involved Agents (like Maintainer, Publisher etc.).
+                    This is achieved by the class <a href="#d4e137" title="http://dataid.dbpedia.org/ns/core#Authorization"><span>dataid:Authorization</span></a>,
+                    which is a subclass of <a href="https://www.w3.org/TR/prov-o/#Attribution">prov:Attribution</a>, a qualification of the property
+                    <a href="https://www.w3.org/TR/prov-o/#wasAttributedTo">prov:wasAttributedTo</a>. Basically it states, which Role(s) (pointed out with <a href="#d4e1148" title="http://dataid.dbpedia.org/ns/core#authorityAgentRole"><span>dataid:authorityAgentRole</span></a>)
+                    an agent (<a href="#d4e1438" title="http://dataid.dbpedia.org/ns/core#authorizedAgent"><span>dataid:authorizedAgent</span></a>) has,
+                    regarding a certain collection of Entities (<a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>).
+                    This mediator is further qualified by an optional period of time for which it is valid and access restrictions by the Entities themselves,
+                    allowing only specific Authorizations to exert influence over them (<a href="#d4e1619" title="http://dataid.dbpedia.org/ns/core#needsSpecialAuthorization"><span>dataid:needsSpecialAuthorization</span></a>).
+                    <a href="#d4e1872" title="http://dataid.dbpedia.org/ns/core#underAuthorization"><span>dataid:underAuthorization</span></a> is the inverse property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    and provides the Authorization context for an Entity.
+                    The property <a href="#d4e1403" title="http://dataid.dbpedia.org/ns/core#authorizedAction"><span>dataid:authorizedAction</span></a> can be inferred by the AgentRole assigned and will be addressed in detail in the next section.
+                </p>
+                <p>
+                    Due to the complexity of Authorization and its surroundings we provide a detailed example on Authorization, Agents, Roles, Actions etc. at the end of section 5[needs link].
+                    The following snipped provides a simple example of two Roles being assigned for two Agents for the whole DataID (and thereby for every Entity involved).
                 </p>
             </div>
         </div>
-                    <pre>
-&lt;dataid_ar.ttl?set=dataset&gt;
-        a                       dataid:Dataset ;                                              <span>#The main dataset is a container of other datasets accessible via void:subset. It has no actual manifestations (dcat:distribution) and is therefore more of a root-dataset of a dataset hierarchy.</span>
-        dc:hasVersion           &lt;dataid_ar.ttl?version=1.0&gt; ;
-        dc:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;                          <span>#Languages in use are referenced by using instances of the lexvo.org dataset.</span>
-        dc:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;           <span>#License cc-by-sa3.0 is further described as an instance of odrl:Policy here: todo</span>
-        dc:creator              &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        void:subset             &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;,                   <span>#void:subset points to sub-datasets</span>
-            &lt;dataid_ar.ttl?set=interlanguage_links&gt; ;
-        void:vocabulary         &lt;http://downloads.dbpedia.org/2015-04/dbpedia_2015-10.owl&gt; ;  <span>#The ontology/schema used for structuring the underlying data.</span>
-        dcat:keyword            &quot;DBpedia&quot;@en , &quot;dataset&quot;@en ;
-        dcat:landingPage        &lt;http://dbpedia.org/&gt; ;
-        foaf:isPrimaryTopicOf   &lt;dataid_ar.ttl&gt;                                               <span>#inverse of foaf:primaryTopic</span>
-            </pre>
-    </div>
-</div>
-    <div class="div1">
-        <h2 id="#example">4. A DataID Example</h2>
-
-
-        <p>For this example we reduced an <a href="http://downloads.dbpedia.org/2015-10/core-i18n/af/2015-10_dataid_af.ttl">original DataID of the Afrikaans DBpedia</a>
-            (release: 2015-04). Under the root-dataset only two sub-datasets remain.
-           All distributions of the second dataset (&lt;2015-10_dataid_ar.ttl?set=interlanguage_links&gt;) are also left out, as well as some dataid:MediaType instances.
-           Also we neglected to list the more common properties of DCTERMS and RDFS like dc:title, dc:description, cd:modified, dc:issued and rdfs:label to make this example more easy to read.
-
-        </p>
-
-
         <pre>
-@prefix dataid: &lt;http://dataid.dbpedia.org/ns/core#&gt; .
-@prefix dataid-ld: &lt;http://dataid.dbpedia.org/ns/ld#&gt;                                       <span>#Our example describes a Linked Data dataset. Therefore we not only include the DataID-core ontology, but also an official extension for Linked Data.</span>
-@prefix owl:   &lt;http://www.w3.org/2002/07/owl#&gt; .
-@prefix rdf:   &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt; .
-@prefix xsd:   &lt;http://www.w3.org/2001/XMLSchema#&gt; .
-@prefix rdfs:  &lt;http://www.w3.org/2000/01/rdf-schema#&gt; .
-@prefix dcat:  &lt;http://www.w3.org/ns/dcat#&gt; .
-@prefix prov:  &lt;http://www.w3.org/ns/prov#&gt; .
-@prefix void:  &lt;http://rdfs.org/ns/void#&gt; .
-@prefix foaf:  &lt;http://xmlns.com/foaf/0.1/&gt; .
-@prefix dc:    &lt;http://purl.org/dc/terms/&gt; .
-
-@base &lt;http://downloads.dbpedia.org/2015-10/core-i18n/core-i18n/ar/2015-10_&gt; .
-        </pre>
-        <p id="dataid"><strong>The DataID</strong></p>
-        <pre>
-&lt;dataid_ar.ttl&gt;
-        a                          dataid:DataId ;
-        dataid:latestVersion       &lt;dataid_ar.ttl&gt; ;
-        dataid:underAuthorization  &lt;dataid_ar.ttl?auth=maintainerAuthorization&gt; ,         <span>#adding the inverse property of dataid:authorizedFor helps to identify responsible Agents for an Entity</span>
-            &lt;dataid_ar.ttl?auth=creatorAuthorization&gt; ;
-        dc:hasVersion              &lt;dataid_ar.ttl?version=1.0&gt; ;                          <span>#points to a dataid:SimpleStatement at the end of this example</span>
-        dc:publisher               &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;        <span>#while the DataID system of providing provenance on Agents is in place, using established properties to point out Agents does not come amiss</span>
-        dc:creator                 &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        foaf:primaryTopic          &lt;dataid_ar.ttl?set=dataset&gt; .                          <span>#foaf:primaryTopic points out the main dataset described by a DataID. According to the foaf ontology, foaf:primaryTopic is a functional property! Describing multiple datasets with one DataID is possible by using void:subset.</span>
-</pre>
-<span id="maindataset"><strong>Main Dataset</strong></span>
-<pre>
-&lt;dataid_ar.ttl?set=dataset&gt;
-        a                       dataid:Dataset ;                                          <span>#The main dataset is a container of other datasets accessible via void:subset. It has no actual manifestations (dcat:distribution) and is therefore more of a root-dataset of a dataset hierarchy.</span>
-        dc:hasVersion           &lt;dataid_ar.ttl?version=1.0&gt; ;
-    dc:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;                          <span>#Languages in use are referenced by using instances of the lexvo.org dataset.</span>
-    dc:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;           <span>#License cc-by-sa3.0 is further described as an instance of odrl:Policy here: todo</span>
-        dc:creator              &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        void:subset             &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;,               <span>#void:subset points to sub-datasets</span>
-            &lt;dataid_ar.ttl?set=interlanguage_links&gt; ;
-        void:vocabulary         &lt;http://downloads.dbpedia.org/2015-04/dbpedia_2015-10.owl&gt; ;  <span>#The ontology/schema used for structuring the underlying data.</span>
-        dcat:keyword            &quot;DBpedia&quot;@en , &quot;dataset&quot;@en ;
-        dcat:landingPage        &lt;http://dbpedia.org/&gt; ;
-        foaf:isPrimaryTopicOf   &lt;dataid_ar.ttl&gt;                                       <span>#inverse of foaf:primaryTopic</span>
-</pre>
-<span id="datasets"><strong>Datasets &amp; Distributions</strong></span>
-<pre>
-&lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;                                            <span>#This dataset has actual manifestations: see dcat:distribution</span>
-        a                       dataid:Dataset ;
-        dc:hasVersion           &lt;dataid_ar.ttl?version=1.0&gt; ;
-        dc:isPartOf             &lt;dataid_ar.ttl?set=dataset&gt; ;                         <span>#As a sub-dataset this dataset is part of &lt;dataid_ar.ttl?set=dataset&gt;</span>
-        dc:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;
-        dc:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
-        dc:publisher            &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        void:triples            232801 ;                                                      <span>#Since this is a LOD dataset, making use of properties specific for this context (like void:triples) is a useful contribution.</span>
-        dcat:distribution       &lt;dataid_ar.ttl?sparql=DBpediaSparqlEndpoint&gt; ,        <span>#dcat:distribution points out the actual manifestations of a dataset. In this case the dataset is available in two different RDF serializations and via a SPARQL endpoint.</span>
-            &lt;dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2&gt; ,
-            &lt;dataid_ar.ttl?file=long_abstracts_en_uris_ar.tql.bz2&gt; ;
-        dcat:keyword            &quot;long_abstracts_en_uris&quot;@en , &quot;DBpedia&quot;@en ;
-        dcat:landingPage        &lt;http://dbpedia.org/&gt; .
-
-&lt;dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2&gt;
-        a                        dataid:SingleFile ;                                          <span>#This distribution is further specialised as a dataid:SingleFile, stating that the whole dataset is availlable in one single file.</span>
-        dataid:uncompressedByteSize      186573907 ;                                          <span>#Since .bz2 indicates that this is an bzip2 archive file, we can use this property to specify the uncompressed size of the content in bytes.</span>
-        dc:hasVersion            &lt;dataid_ar.ttl?version=1.0&gt; ;
-        dc:license               &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
-        dc:publisher             &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        dcat:byteSize            33428372 ;                                                   <span>#dcat:byteSize specifies the the size of the file described in bytes.</span>
-        dcat:downloadURL         &lt;long_abstracts_en_uris_ar.ttl.bz2&gt; ;                        <span>#dcat:downloadURL points out the url under which this file is available.</span>
-        dcat:mediaType           dataid:MediaType_turtle_x-bzip2                              <span>#The media type of the content described with this instance of a distribution (see bottom of this example).</span>
-
-&lt;dataid_ar.ttl?file=long_abstracts_en_uris_ar.tql.bz2&gt;
-        a                        dataid:SingleFile ;
-        dataid:isDistributionOf  &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt; ;
-        dataid:uncompressedByteSize      204174726 ;
-        dc:hasVersion            &lt;dataid_ar.ttl?version=1.0&gt; ;
-        dc:license               &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
-        dc:publisher             &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        dcat:byteSize            36026709 ;
-        dcat:downloadURL         &lt;long_abstracts_en_uris_ar.tql.bz2&gt; ;                        <span>#We use the location on the web of a downloadable file as the uri of this instance of a distribution.</span>
-        dcat:mediaType           dataid:MediaType_n-quads_x-bzip2 .
-
-&lt;dataid_ar.ttl?sparql=DBpediaSparqlEndpoint&gt;
-        a                        dataid-ld:SparqlEndpoint ;                                   <span>#dataid-ld:SparqlEndpoint is a specialized subclass of dataid:ServiceEndpoint which is introduced with the DataID extension for Linked Data.</span>
-        dataid:accessProcedure   &lt;dataid_ar.ttl?stmt=sparqlaccproc&gt; ;                 <span>#Provides a statement about how to access the data provided with this endpoint (see section <a href="#dataid_ar.ttl?set=interlanguage_links">statements</a>).</span>
-        dataid-ld:graphName      &lt;http://dbpedia.org&gt; ;                                       <span>#The graph under which the data of this dataset is available at this endpoint.</span>
-        dc:hasVersion            &lt;dataid_ar.ttl?version=1.0&gt; ;
-        dc:license               &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
-        void:sparqlEndpoint      &lt;http://dbpedia.org/sparql&gt; ;                                <span>#In this case void:sparqlEndpoint and dcat:accessURL are the same.</span>
-        dcat:accessURL           &lt;http://dbpedia.org/sparql&gt; ;                                <span>#Opposed to dataid:SingleFile, dataid:ServiceEndpoint provides a dcat:accessURL. The data is accessible via this URL (e.g. by providing a query).</span>
-        dcat:mediaType           &lt;http://dataid.dbpedia.org/ns/core#MediaType_sparql-results+xml&gt; .
-
-&lt;dataid_ar.ttl?set=interlanguage_links&gt;
-        a                       dataid:Dataset ;                                              <span>#This is a different subset of the main dataset.</span>
-        dc:hasVersion           &lt;dataid_ar.ttl?version=1.0&gt; ;
-        dc:isPartOf             &lt;dataid_ar.ttl?set=dataset&gt; ;
-        dc:language             &lt;http://lexvo.org/id/iso639-3/ara&gt; ;
-        dc:license              &lt;http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0&gt; ;
-        dc:publisher            &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        void:triples            7480764 ;
-        dcat:distribution       &lt;dataid_ar.ttl?file=interlanguage_links_ar.ttl.bz2&gt; ,
-            &lt;dataid_ar.ttl?file=interlanguage_links_ar.tql.bz2&gt; ;
-        dcat:keyword            &quot;DBpedia&quot;@en , &quot;interlanguage_links&quot;@en ;
-        dcat:landingPage        &lt;http://dbpedia.org/&gt; ;
-        foaf:page               &lt;http://wiki.dbpedia.org/Downloads2015-10&gt; .
-</pre>
-<span id="agents"><strong>Agents &amp; Authorizations</strong></span>
-<pre>
 &lt;http://wiki.dbpedia.org/dbpedia-association/persons/Freudenberg&gt;
         a                        dataid:Agent ;                                               <span>#dataid:Agent is at its core a foaf:Agent with additional properties.</span>
-        dataid:hasAuthorization  &lt;dataid_ar.ttl?auth=maintainerAuthorization&gt; ;       <span>#This property points out all authorizations an Agent might have.</span>
+        dataid:hasAuthorization  &lt;dataid_ar.ttl?auth=maintainerAuthorization&gt; ;
         foaf:mbox                &quot;freudenberg@informatik.uni-leipzig.de&quot; ;
         foaf:name                &quot;Markus Freudenberg&quot;                     ;
-        dataid:identifier        &lt;http://www.researcherid.com/rid/L-2180-2016&gt; .      <span>#reference to a researcherID (see below)</span>
+        dataid:identifier        &lt;http://www.researcherid.com/rid/L-2180-2016&gt; .              <span>#reference to a researcherID (see below)</span>
 
 &lt;dataid_ar.ttl?auth=maintainerAuthorization&gt;
         a                          dataid:Authorization ;                                     <span>#An Authorization instance pertaining to &lt;http://wiki.dbpedia.org/dbpedia-association/persons/Freudenberg&gt;.</span>
         dataid:authorityAgentRole  dataid:Maintainer ;                                        <span>#The role in the context of this Authorization for the pertaining Agent is a Maintainer.</span>
         dataid:authorizedAgent     &lt;http://wiki.dbpedia.org/dbpedia-association/persons/Freudenberg&gt; ;
-        dataid:authorizedFor       &lt;dataid_ar.ttl&gt; .                                  <span>#This property, together with its sub-properties, points auth the Entities for which it is valid. In this case this Authorization is valid for all Entities (datasets, distributions etc.) of this DataID.</span>
-
-
-&lt;http://www.researcherid.com/rid/L-2180-2016&gt;
-        a                              dataid:Identifier ;                                  <span>#We could also neglect this instance under the assumption that &lt;http://www.researcherid.com/rid/L-2180-2016&gt; is indeed a dataid:Identifier and also the URL to the actual web page.</span>
-        dataid:statement               "L-2180-2016" ;
-        dc:issued                      "2016-08-01"^^xsd:date ;
-        dc:references                  &lt;http://www.researcherid.com/rid/L-2180-2016&gt; ;
-        datacite:usesIdentifierScheme  datacite:researcherid .                              <span>#The identifier scheme is defined in the datacite ontology. If a scheme for an identifier is missing there, we could define it for the use in the domain of a use case.</span>
+        dataid:authorizedFor       &lt;dataid_ar.ttl&gt; .                                          <span>#This property, together with its sub-properties, points auth the Entities for which it is valid. In this case this Authorization is valid for all Entities (datasets, distributions etc.) of this DataID.</span>
 
 &lt;http://wiki.dbpedia.org/dbpedia-association&gt;
-        a                        dataid:Agent ;
+        a                        dataid:Agent ;                                               <span>#In this case we define an organization and assign the Creator role for it.</span>
         dataid:hasAuthorization  &lt;dataid_ar.ttl?auth=creatorAuthorization&gt; ;
         foaf:homepage            &lt;http://dbpedia.org&gt; ;
         foaf:mbox                &quot;dbpedia@infai.org&quot; ;
@@ -658,51 +824,105 @@
 
 &lt;dataid_ar.ttl?auth=creatorAuthorization&gt;
         a                          dataid:Authorization ;
-        dataid:authorityAgentRole  dataid:Creator ;
+        dataid:authorityAgentRole  dataid:Creator ;                                           <span>#In the predefined AgentRole hierarchy of DataID core the Creator is the highest ranking Role. This could be interpreted for deciding on which Role has the power to override actions of other Roles.</span>
         dataid:authorizedAgent     &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
         dataid:authorizedFor       &lt;dataid_ar.ttl&gt; .
-</pre>
-<span id="statements"><strong>Statements</strong></span>
-<pre>
+        </pre>
+        <div class="post-container">
+            <div class="post-thumb"><img src="images/ClassAuthorizedAction.png" alt="alt tag" style="max-width:100%;" /></div>
+            <div class="post-content">
+                <h4 id="exactions"><strong>AuthorizedAction & AgentRole</strong></h4>
+                <p>
+                    The Role an agent can take (<a href="#d4e49" title="http://dataid.dbpedia.org/ns/core#AgentRole"><span>dataid:AgentRole</span></a>) is defined only by property <a href="#d4e1097" title="http://dataid.dbpedia.org/ns/core#allowsFor"><span>dataid:allowsFor</span></a>,
+                    pointing out Actions it entails. A <a href="#d4e150" title="http://dataid.dbpedia.org/ns/core#AuthorizedAction"><span>dataid:AuthorizedAction</span></a> <em class="rfc2119" title="SHALL">SHALL</em>
+                    either be a <a href="#d4e581" title="http://dataid.dbpedia.org/ns/core#EntitledAction"><span>dataid:EntitledAction</span></a>, representing
+                    all Actions an Agent could take, as well as the Actions an Agent has to take (<a href="#d4e987" title="http://dataid.dbpedia.org/ns/core#ResponsibleAction"><span>dataid:ResponsibleAction</span></a>).
+                    Actions and Roles defined in this ontology are only examples of possible implementations, reflecting a common environment of file or document management system.
+                    They can be replaced to fit the use case at hand. Implementing them as a <a href="https://www.w3.org/2009/08/skos-reference/skos.html#ConceptScheme">skos:ConceptScheme</a>
+                    offers additional semantics, for example in determining which AgentRole can override Actions initiated by Agents with other Roles for the same Entity.
+                </p>
+                <p>
+                    This example is not part of our running demonstration of an overall example, but has been lend from the DataID core ontology document itself.
+                    Here we see how the AgentRole 'Contact' is defined in the context of a <a href="https://www.w3.org/2009/08/skos-reference/skos.html#ConceptScheme">skos:ConceptScheme</a>.
+                </p>
+            </div>
+        </div>
+        <pre>
+dataid:Contact
+	a owl:NamedIndividual, dataid:AgentRole;
+	rdfs:isDefinedBy &lt;http://dataid.dbpedia.org/ns/core#&gt; ;
+	dataid:allowsFor dataid:ReadDataId;                                                   <span>#we point out which Actions are allowed for an Agent occupying this Role</span>
+	dataid:allowsFor dataid:ModifyContent;
+	dataid:allowsFor dataid:ReadContent;
+	dataid:allowsFor dataid:ResponseToContact;
+        rdfs:comment &quot;Contact agent. An agent that can be contacted for general requests about the resource.&quot;@en ;
+        skos:prefLabel &quot;contact&quot;@en ;
+	skos:inScheme dataid:AgentRoleScheme ;                                                <span>#we point out the skos:ConceptScheme this induvidual belongs to</span>
+	skos:broader dataid:Publisher, dataid:Maintainer .                                    <span>#we define the hierarchical structure with skos:broader, skos:narrower</span>
+        </pre>
+        <div class="post-container">
+            <div class="post-thumb"><img src="images/ClassIdentifier.png" alt="alt tag" style="max-width:100%;" /></div>
+            <div class="post-content">
+                <h4 id="exidentifier"><strong>Identifier</strong></h4>
+                <p>
+                    The class <a href="#d4e677" title="http://dataid.dbpedia.org/ns/core#Identifier"><span>dataid:Identifier</span></a> uniquely identifies any resource (incl. Entities and Agents),
+                    given an identifier as a literal (<a href="http://purl.org/dc/terms/identifier" title="http://purl.org/dc/terms/identifier"><span>dct:identifier</span></a>) and a corresponding
+                    <a href="http://www.sparontologies.net/ontologies/datacite/source.html#d4e462">datacite:IdentifierScheme</a> (e.g. ORCID, ResearcherID etc.). Typically an organization
+                    is responsible for issuing and managing identifiers described with this concept, which can be referred to with dct:creator. DataID core adopted this approach from Datacite[needs link]
+                    to provide a schematic way of adding additional, existing identifiers to Entities and Agents referenced in a DataID.
+                 </p>
+                <p>
+                    The following Identifier is an actual ResearchID[needs link] identifier for one of the involved Agents.
+                </p>
+            </div>
+        </div>
+        <pre>
+&lt;http://www.researcherid.com/rid/L-2180-2016&gt;
+        a                              dataid:Identifier ;
+        dct:identifier                 "L-2180-2016" ;                                        <span>#The actual identifier as literal.</span>
+        dct:issued                     "2016-08-01"^^xsd:date ;
+        dct:references                 &lt;http://www.researcherid.com/rid/L-2180-2016&gt; ;        <span>#If available, the pertaining web resource for more information about the Agent or Entity.</span>
+        datacite:usesIdentifierScheme  datacite:researcherid .                                <span>#The scheme of the Identifier is defined in the datacite ontology. If a scheme for an identifier is missing there, we could define it for the use in the domain of a use case.</span>
+        </pre>
+        <div class="post-container">
+            <div class="post-thumb" style="margin-top:30px;"><img src="images/ClassSimpleStatement.png" alt="alt tag" style="max-width:100%;" /></div>
+            <div class="post-content">
+                <h4 id="exstatement"><strong>SimpleStatement</strong></h4>
+                <p>
+                    The concept <a href="#d4e1017" title="http://dataid.dbpedia.org/ns/core#SimpleStatement"><span>dataid:SimpleStatement</span></a> is intended as a tool for conveying a statement, definition  or point of view about a certain topic.
+                    Using either a simple literal (using <a href="#d4e1762" title="http://dataid.dbpedia.org/ns/core#statement"><span>dataid:statement</span></a>) to provide a quotation,
+                    or by a referencing a web resource providing or representing the statement in any medium (picture, text, video etc.).
+                    This class implements the following Dublin Core classes:
+                    <ul>
+                        <li><a href="http://purl.org/dc/terms/ProvenanceStatement">dct:ProvenanceStatement</a></li>
+                        <li><a href="http://purl.org/dc/terms/RightsStatement">dct:RightsStatement</a></li> 
+                        <li><a href="http://purl.org/dc/terms/Standard">dct:Standard</a></li>
+                    </ul>
+                    Thereby we can use <a href="#d4e1017" title="http://dataid.dbpedia.org/ns/core#SimpleStatement"><span>dataid:SimpleStatement</span></a> together with <a href="http://purl.org/dc/terms/rights">dct:rights</a> and its sub-properties,
+                    <a href="http://purl.org/dc/terms/provenance">dct:provenance</a>, <a href="http://purl.org/dc/terms/conformsTo">dct:conformsTo</a> and others.
+                </p>
+                <p>
+                    The two instances from our running example exemplifies different usage scenarios of this concept.
+                </p>
+            </div>
+        </div>
+        <pre>
 &lt;dataid_ar.ttl?rights=dbpedia-rights&gt;
-        a                 dataid:SimpleStatement ;
+        a                 dataid:SimpleStatement ;                                            <span>#A simple textual rights statement.</span>
         dataid:statement  &quot;&quot;&quot;DBpedia is derived from Wikipedia and is distributed under the same licensing terms as Wikipedia itself.
         As Wikipedia has moved to dual-licensing, we also dual-license DBpedia starting with release 3.4. Data comprising DBpedia
         release 3.4 and subsequent releases is licensed under the terms of the Creative Commons Attribution-ShareAlike 3.0 license
         and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only
         under the terms of the GNU Free Documentation License.&quot;&quot;&quot;@en .
 
-&lt;dataid_ar.ttl?version=1.0&gt;
-        a                 dataid:SimpleStatement ;
-        dataid:statement  &quot;1.0&quot; .
-
 &lt;dataid_ar.ttl?stmt=sparqlaccproc&gt;
-        a                 dataid:SimpleStatement ;
-        dc:references     &lt;https://www.w3.org/TR/sparql11-overview/&gt ;
-        dataid:statement  &quot;An endpoint for sparql queries: provide valid queries.&quot;@en .
-</pre>
-<span id="mediatypes"><strong>MediaTypes</strong></span>
-<pre>
-dataid:MediaType_turtle_x-bzip2
-        a                      dataid:MediaType ;
-        dataid:innerMediaType  dataid:MediaType_turtle ;
-        dataid:typeExtension   &quot;.bz2&quot; ;
-        dataid:typeTemplate    &quot;application/x-bzip2&quot; ;
-        dc:conformsTo          &lt;http://dataid.dbpedia.org/ns/core&gt; .
-
-dataid:MediaType_turtle
-        a                     dataid:MediaType ;
-        dataid:typeExtension  &quot;.ttl&quot; ;
-        dataid:typeTemplate   &quot;text/turtle&quot; ;
-        dc:conformsTo         &lt;http://dataid.dbpedia.org/ns/core&gt; .
-
-&lt;http://dataid.dbpedia.org/ns/core#MediaType_sparql-results+xml&gt;
-        a                    dataid:MediaType ;
-        dataid:typeTemplate  &quot;application/sparql-results+xml&quot; ;
-        dc:conformsTo        &lt;http://dataid.dbpedia.org/ns/core&gt; .
+        a                 dataid:SimpleStatement ;                                            <span>#We use this statement for a sparql endpoint to point with property dataid:accessProcedure to the official SPARQL 1.1 definition.</span>
+        dct:references    &lt;https://www.w3.org/TR/sparql11-overview/&gt ;                        <span>#Instead of a statement we can also reference a web site containing the statement we want to convey.</span>
+        dataid:statement  &quot;An endpoint for sparql queries: provide valid queries.&quot;@en .       <span>#an additional sentence underlines the need of understanding SPARQL</span>
         </pre>
+    </div>
         <div class="div1">
-            <h2 id="authorizationexample">Example on Authorizations<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+            <h4 id="authorizationexample"><strong>Special Example on Authorizations</strong><span class="backlink"> back to <a href="#toc">ToC</a></span></h4>
             <p>
                 The <a href="#d4e137">dataid:Authorization</a> is one of the more complex concepts of the DataID core ontology. While properties like <a href="#d4e1438">dataid:authorizedAgent</a>
                 (pointing out the Agent(s) holding an Authorization) and <a href="#d4e1148">dataid:authorityAgentRole</a> (specifying the AgentRole(s) an Agent has in the context of an Authorization)
@@ -762,142 +982,10 @@ dataid:MediaType_turtle
             Since <a href="#d4e1619">dataid:needsSpecialAuthorization</a> is a subproperty of <a href="#d4e1872">dataid:underAuthorization</a> which, in turn, is an inverse property of <a href="#d4e1456">dataid:authorizedFor</a> .
             </p>
         </div>
-    </div>
-    <div class="div1">
-        <h2 id="glance">6. DataID core Ontology at Glance<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
-        <p>An alphabetical index of DataID core terms, by class (concepts) and properties are given below. All the
-            terms are hyperlinked to their detailed description for quick reference.</p>
 
-        <div>
-            <p><strong>Classes</strong>:</p>
-            <ul class="hlist">
-                <li><a href="#d4e31" title="http://dataid.dbpedia.org/ns/core#Agent"><span>Agent</span></a></li>
-                <li><a href="#d4e49" title="http://dataid.dbpedia.org/ns/core#AgentRole"><span>AgentRole</span></a></li>
-                <li><a href="#d4e137" title="http://dataid.dbpedia.org/ns/core#Authorization"><span>Authorization</span></a>
-                </li>
-                <li><a href="#d4e150" title="http://dataid.dbpedia.org/ns/core#AuthorizedAction"><span>AuthorizedAction</span></a></li>
-                <li><a href="#d4e259" title="http://dataid.dbpedia.org/ns/core#DataId"><span>DataId</span></a></li>
-                <li><a href="#d4e341" title="http://dataid.dbpedia.org/ns/core#Dataset"><span>Dataset</span></a></li>
-                <li><a href="#d4e491" title="http://dataid.dbpedia.org/ns/core#Directory"><span>Directory</span></a></li>
-                <li><a href="#d4e505" title="http://dataid.dbpedia.org/ns/core#Distribution"><span>Distribution</span></a></li>
-                <li><a href="#d4e581" title="http://dataid.dbpedia.org/ns/core#EntitledAction"><span>EntitledAction</span></a>
-                </li>
-                <li><a href="#d4e596" title="http://dataid.dbpedia.org/ns/core#FileCollection"><span>FileCollection</span></a>
-                </li>
-                <li><a href="#d4e677" title="http://dataid.dbpedia.org/ns/core#Identifier"><span>Identifier</span></a></li>
-                <li><a href="#d4e738" title="http://dataid.dbpedia.org/ns/core#MediaType"><span>MediaType</span></a></li>
-                <li><a href="#d4e987" title="http://dataid.dbpedia.org/ns/core#ResponsibleAction"><span>ResponsibleAction</span></a>
-                </li>
-                <li><a href="#d4e1002" title="http://dataid.dbpedia.org/ns/core#ServiceEndpoint"><span>ServiceEndpoint</span></a></li>
-                <li><a href="#d4e1017" title="http://dataid.dbpedia.org/ns/core#SimpleStatement"><span>SimpleStatement</span></a></li>
-                <li><a href="#d4e1047" title="http://dataid.dbpedia.org/ns/core#SingleFile"><span>SingleFile</span></a></li>
-            </ul>
-            <p><strong>Object Properties:</strong></p>
-            <ul class="hlist">
-                <li><a href="#d4e1082" title="http://dataid.dbpedia.org/ns/core#accessProcedure"><span>accessProcedure</span></a></li>
-                <li><a href="#d4e1097" title="http://dataid.dbpedia.org/ns/core#allowsFor"><span>allowsFor</span></a></li>
-                <li><a href="#d4e1112" title="http://dataid.dbpedia.org/ns/core#associatedAgent"><span>associatedAgent</span></a></li>
-                <li><a href="#d4e1148" title="http://dataid.dbpedia.org/ns/core#authorityAgentRole"><span>authorityAgentRole</span></a></li>
-                <li><a href="#d4e1403" title="http://dataid.dbpedia.org/ns/core#authorizedAction"><span>authorizedAction</span></a>
-                </li>
-                <li><a href="#d4e1438" title="http://dataid.dbpedia.org/ns/core#authorizedAgent"><span>authorizedAgent</span></a></li>
-                <li><a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>authorizedFor</span></a>
-                </li>
-                <li><a href="#d4e1463" title="http://dataid.dbpedia.org/ns/core#checksum"><span>checksum</span></a></li>
-                <li><a href="#d4e1471" title="http://dataid.dbpedia.org/ns/core#dataDescription"><span>dataDescription</span></a></li>
-                <li><a href="#d4e1486" title="http://dataid.dbpedia.org/ns/core#growth"><span>growth</span></a></li>
-                <li><a href="#d4e1501" title="http://dataid.dbpedia.org/ns/core#hasAuthorization"><span>hasAuthorization</span></a>
-                </li>
-                <li><a href="#d4e1533" title="http://dataid.dbpedia.org/ns/core#identifierScheme"><span>identifierScheme</span></a>
-                </li>
-                <li><a href="#d4e1550" title="http://dataid.dbpedia.org/ns/core#inCatalog"><span>inCatalog</span></a></li>
-                <li><a href="#d4e1548" title="http://dataid.dbpedia.org/ns/core#innerMediaType"><span>innerMediaType</span></a>
-                </li>
-                <li><a href="#d4e1568" title="http://dataid.dbpedia.org/ns/core#isDistributionOf"><span>isDistributionOf</span></a>
-                </li>
-                <li><a href="#d4e1604" title="http://dataid.dbpedia.org/ns/core#latestVersion"><span>latestVersion</span></a>
-                </li>
-                <li><a href="#d4e1619" title="http://dataid.dbpedia.org/ns/core#needsSpecialAuthorization"><span>needsSpecialAuthorization</span></a>
-                </li>
-                <li><a href="#d4e1638" title="http://dataid.dbpedia.org/ns/core#nextVersion"><span>nextVersion</span></a></li>
-                <li><a href="#d4e1653" title="http://dataid.dbpedia.org/ns/core#openness"><span>openness</span></a></li>
-                <li><a href="#d4e1668" title="http://dataid.dbpedia.org/ns/core#preview"><span>preview</span></a></li>
-                <li><a href="#d4e1683" title="http://dataid.dbpedia.org/ns/core#previousVersion"><span>previousVersion</span></a></li>
-                <li><a href="#d4e1698" title="http://dataid.dbpedia.org/ns/core#reuseAndIntegration"><span>reuseAndIntegration</span></a></li>
-                <li><a href="#d4e1713" title="http://dataid.dbpedia.org/ns/core#similarData"><span>similarData</span></a></li>
-                <li><a href="#d4e1729" title="http://dataid.dbpedia.org/ns/core#similarDataset"><span>similarDataset</span></a>
-                </li>
-                <li><a href="#d4e1747" title="http://dataid.dbpedia.org/ns/core#softwareRquirement"><span>softwareRquirement</span></a></li>
-                <li><a href="#d4e1777" title="http://dataid.dbpedia.org/ns/core#transitiveSubset"><span>transitiveSubset</span></a>
-                </li>
-                <li><a href="#d4e1821" title="http://dataid.dbpedia.org/ns/core#typeReference"><span>typeReference</span></a>
-                </li>
-                <li><a href="#d4e1872" title="http://dataid.dbpedia.org/ns/core#underAuthorization"><span>underAuthorization</span></a></li>
-                <li><a href="#d4e1892" title="http://dataid.dbpedia.org/ns/core#usefulness"><span>usefulness</span></a></li>
-            </ul>
-            <p><strong>Data Properties:</strong></p>
-            <ul class="hlist">
-                <li><a href="#d4e1586" title="http://dataid.dbpedia.org/ns/core#isInheritable"><span>isInheritable</span></a>
-                </li>
-                <li><a href="#d4e1762" title="http://dataid.dbpedia.org/ns/core#statement"><span>statement</span></a></li>
-                <li><a href="#d4e1790" title="http://dataid.dbpedia.org/ns/core#typeExtension"><span>typeExtension</span></a>
-                </li>
-                <li><a href="#d4e1805" title="http://dataid.dbpedia.org/ns/core#typeName"><span>typeName</span></a></li>
-                <li><a href="#d4e1836" title="http://dataid.dbpedia.org/ns/core#typeTemplate"><span>typeTemplate</span></a></li>
-                <li><a href="#d4e1854" title="http://dataid.dbpedia.org/ns/core#uncompressedByteSize"><span>uncompressedByteSize</span></a></li>
-                <li><a href="#d4e1907" title="http://dataid.dbpedia.org/ns/core#validFrom"><span>validFrom</span></a></li>
-                <li><a href="#d4e1926" title="http://dataid.dbpedia.org/ns/core#validUntil"><span>validUntil</span></a></li>
-            </ul>
-            <p><strong>Authority Chain Properties:</strong></p>
-            <ul class="hlist">
-                <li><a href="#d4e1166" title="http://dataid.dbpedia.org/ns/core#authoritySubChain1"><span>authoritySubChain1</span></a></li>
-                <li><a href="#d4e1210" title="http://dataid.dbpedia.org/ns/core#authoritySubChain2"><span>authoritySubChain2</span></a></li>
-                <li><a href="#d4e1247" title="http://dataid.dbpedia.org/ns/core#authoritySubChain3"><span>authoritySubChain3</span></a></li>
-                <li><a href="#d4e1283" title="http://dataid.dbpedia.org/ns/core#authoritySubChain4"><span>authoritySubChain4</span></a></li>
-                <li><a href="#d4e1311" title="http://dataid.dbpedia.org/ns/core#authoritySubChain5"><span>authoritySubChain5</span></a></li>
-                <li><a href="#d4e1339" title="http://dataid.dbpedia.org/ns/core#authoritySubChain6"><span>authoritySubChain6</span></a></li>
-                <li><a href="#d4e1367" title="http://dataid.dbpedia.org/ns/core#authoritySubChain7"><span>authoritySubChain7</span></a></li>
-            </ul>
-            <p><strong>Named Individuals:</strong></p>
-            <ul class="hlist">
-                <li><a href="#d4e64" title="http://dataid.dbpedia.org/ns/core#AgentRoleScheme"><span>AgentRoleScheme</span></a>
-                </li>
-                <li><a href="#d4e77" title="http://dataid.dbpedia.org/ns/core#AgentSupervision"><span>AgentSupervision</span></a></li>
-                <li><a href="#d4e99" title="http://dataid.dbpedia.org/ns/core#AllEntitlements"><span>AllEntitlements</span></a>
-                </li>
-                <li><a href="#d4e118" title="http://dataid.dbpedia.org/ns/core#AllResponsibilities"><span>AllResponsibilities</span></a></li>
-                <li><a href="#d4e163" title="http://dataid.dbpedia.org/ns/core#AuthorizedActionScheme"><span>AuthorizedActionScheme</span></a>
-                </li>
-                <li><a href="#d4e178" title="http://dataid.dbpedia.org/ns/core#Contact"><span>Contact</span></a></li>
-                <li><a href="#d4e211" title="http://dataid.dbpedia.org/ns/core#Contributor"><span>Contributor</span></a></li>
-                <li><a href="#d4e236" title="http://dataid.dbpedia.org/ns/core#Creator"><span>Creator</span></a></li>
-                <li><a href="#d4e470" title="http://dataid.dbpedia.org/ns/core#DeleteContent"><span>DeleteContent</span></a>
-                </li>
-                <li><a href="#d4e609" title="http://dataid.dbpedia.org/ns/core#Guest"><span>Guest</span></a></li>
-                <li><a href="#d4e634" title="http://dataid.dbpedia.org/ns/core#GuestAgent"><span>GuestAgent</span></a></li>
-                <li><a href="#d4e655" title="http://dataid.dbpedia.org/ns/core#GuestAuthorization"><span>GuestAuthorization</span></a></li>
-                <li><a href="#d4e700" title="http://dataid.dbpedia.org/ns/core#Maintainer"><span>Maintainer</span></a></li>
-                <li><a href="#d4e751" title="http://dataid.dbpedia.org/ns/core#ModifyAgentRoles"><span>ModifyAgentRoles</span></a></li>
-                <li><a href="#d4e772" title="http://dataid.dbpedia.org/ns/core#ModifyAuthorization"><span>ModifyAuthorization</span></a></li>
-                <li><a href="#d4e793" title="http://dataid.dbpedia.org/ns/core#ModifyAuthorizedAgents"><span>ModifyAuthorizedAgents</span></a>
-                </li>
-                <li><a href="#d4e815" title="http://dataid.dbpedia.org/ns/core#ModifyContent"><span>ModifyContent</span></a>
-                </li>
-                <li><a href="#d4e836" title="http://dataid.dbpedia.org/ns/core#Publisher"><span>Publisher</span></a></li>
-                <li><a href="#d4e881" title="http://dataid.dbpedia.org/ns/core#PublishingDecision"><span>PublishingDecision</span></a></li>
-                <li><a href="#d4e902" title="http://dataid.dbpedia.org/ns/core#ReadContent"><span>ReadContent</span></a></li>
-                <li><a href="#d4e923" title="http://dataid.dbpedia.org/ns/core#ReadDataId"><span>ReadDataId</span></a></li>
-                <li><a href="#d4e944" title="http://dataid.dbpedia.org/ns/core#ResponseToContact"><span>ResponseToContact</span></a>
-                </li>
-                <li><a href="#d4e966" title="http://dataid.dbpedia.org/ns/core#ResponseToLifeCycleEvent"><span>ResponseToLifeCycleEvent</span></a>
-                </li>
-                <li><a href="#d4e1060" title="http://dataid.dbpedia.org/ns/core#UpdateDataId"><span>UpdateDataId</span></a></li>
-            </ul>
-        </div>
-
-    </div>
+</div>
     <div class="div1">
-        <h2 id="terms">7. DataID core term descriptions<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+        <h2 id="terms">6. DataID core term descriptions<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
 
         <div id="classes"><h2>Classes</h2>
             <ul class="hlist">
@@ -1215,7 +1303,6 @@ dataid:MediaType_turtle
                     </dd>
                     <dd><a href="http://purl.org/dc/terms/Standard" title="http://purl.org/dc/terms/Standard">dct:Standard</a>
                     </dd>
-                    <dd><a href="http://www.essepuntato.it/2010/06/literalreification/Literal" title="http://www.essepuntato.it/2010/06/literalreification/Literal">litre:Literal</a></dd>
                     <dd><a href="http://purl.org/dc/terms/references" title="http://purl.org/dc/terms/references">dct:references</a> <span class="logic">only</span> <a href="http://xmlns.com/foaf/0.1/Document" title="http://xmlns.com/foaf/0.1/Document">foaf:Document</a></dd>
                     <dt>is in range of</dt>
                     <dd><a href="#d4e1082" title="http://dataid.dbpedia.org/ns/core#accessProcedure">accessProcedure</a><sup title="object property" class="type-op">op</sup>, <a href="#d4e1471" title="http://dataid.dbpedia.org/ns/core#dataDescription">dataDescription</a><sup title="object property" class="type-op">op</sup>, <a href="#d4e1486" title="http://dataid.dbpedia.org/ns/core#growth">growth</a><sup title="object property" class="type-op">op</sup>, <a href="#d4e1653" title="http://dataid.dbpedia.org/ns/core#openness">openness</a><sup title="object property" class="type-op">op</sup>, <a href="#d4e1698" title="http://dataid.dbpedia.org/ns/core#reuseAndIntegration">reuseAndIntegration</a><sup title="object property" class="type-op">op</sup>, <a href="#d4e1713" title="http://dataid.dbpedia.org/ns/core#similarData">similarData</a><sup title="object property" class="type-op">op</sup>, <a href="#d4e1747" title="http://dataid.dbpedia.org/ns/core#softwareRquirement">softwareRquirement</a><sup title="object property" class="type-op">op</sup>, <a href="#d4e1892" title="http://dataid.dbpedia.org/ns/core#usefulness">usefulness</a><sup title="object property" class="type-op">op</sup></dd>
@@ -1251,6 +1338,7 @@ dataid:MediaType_turtle
                 <li><a href="#d4e1486" title="http://dataid.dbpedia.org/ns/core#growth"><span>growth</span></a></li>
                 <li><a href="#d4e1501" title="http://dataid.dbpedia.org/ns/core#hasAuthorization"><span>hasAuthorization</span></a>
                 </li>
+                <li><a href="#d4e1522" title="http://dataid.dbpedia.org/ns/core#identifier"><span>identifier</span></a></li>
                 <li><a href="#d4e1533" title="http://dataid.dbpedia.org/ns/core#identifierScheme"><span>identifierScheme</span></a>
                 </li>
                 <li><a href="#d4e1550" title="http://dataid.dbpedia.org/ns/core#inCatalog"><span>inCatalog</span></a></li>
@@ -1481,6 +1569,28 @@ dataid:MediaType_turtle
                     <dl>
                         <dt>is inverse of</dt>
                         <dd><a href="#d4e1438" title="http://dataid.dbpedia.org/ns/core#authorizedAgent">authorizedAgent</a><sup title="object property" class="type-op">op</sup></dd>
+                    </dl>
+                </div>
+            </div>
+            <div id="d4e1522" class="entity"><a name="http://dataid.dbpedia.org/ns/core#identifier"></a><a
+                    name="identifier"></a>
+                <h3>identifier<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a
+                        href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
+                <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#identifier</p>
+                <dl class="definedBy"></dl>
+                <div class="comment"><p>An unique identifier for an Agent or Entity (for other, non DataID related
+                    identifiers).</p>
+                </div>
+                <div class="description"><p><strong>has characteristics:</strong> inverse functional</p>
+                    <dl>
+                        <dt>has super-properties</dt>
+                        <dd><a href="http://purl.org/spar/datacite/hasIdentifier"
+                               title="http://purl.org/spar/datacite/hasIdentifier">datacite:hasIdentifier</a></dd>
+                        <dd><a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf"
+                               title="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a></dd>
+                        <dt>has range</dt>
+                        <dd><a href="http://purl.org/spar/datacite/Identifier" title="http://purl.org/spar/datacite/Identifier">datacite:Identifier</a>
+                        </dd>
                     </dl>
                 </div>
             </div>
@@ -1838,9 +1948,6 @@ dataid:MediaType_turtle
                 </div>
                 <div class="description">
                     <dl>
-                        <dt>has super-properties</dt>
-                        <dd><a href="http://www.essepuntato.it/2010/06/literalreification/hasLiteralValue" title="http://www.essepuntato.it/2010/06/literalreification/hasLiteralValue">litre:hasLiteralValue</a>
-                        </dd>
                         <dt>has range</dt>
                         <dd><a href="http://www.w3.org/2000/01/rdf-schema#Literal" title="http://www.w3.org/2000/01/rdf-schema#Literal">rdfs:Literal</a></dd>
                     </dl>
@@ -2463,7 +2570,7 @@ dataid:MediaType_turtle
         </div>
     </div>
     <div class="references">
-        <h2 id="references">8. References</h2>
+        <h2 id="references">7. References</h2>
 
         <a id="ref1">
             <p class="hang">Michael Compton, Payam Barnaghi, Luis Bermudez, Raul Garcia-Castro, Oscar Corcho, Simon Cox,
