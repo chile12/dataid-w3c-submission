@@ -83,8 +83,8 @@
     <p><span class="notetoeditor">
         The DataID core ontology is the central part of the DataID multilayer metadata system, describing datasets and their different manifestations,
         as well as relations to agents, like persons or organisations, in regard to their rights and responsibilities.
-        This extensive metadata vocabulary is based on DCAT[needs link] for a structured representation of datasets and PROV-O[needs link] to portray the relations between agents and dataset entities.
-        We introduced multiple concepts and properties, as well as incorporating different external concepts to provide a well structured, comprehensive format to approach a unified view of dataset metadta.
+        This extensive metadata vocabulary is based on the Data Catalog Vocabulary <cite><a class="bibref" href="#ref-DCAT">DCAT</a></cite> for a structured representation of datasets and the PROV Ontology <cite><a class="bibref" href="#ref-PROV-O">PROV-O</a></cite> to portray the relations between agents and dataset entities.
+        We introduced multiple concepts and properties, as well as incorporating different external concepts to provide a well structured, comprehensive format to approach a unified view of dataset metadata.
                 </span></p>
 
     <h2 id="namespaceuri">Namespace URI of DataID core</h2>
@@ -134,20 +134,21 @@
     <div class="div1">
         <h2 id="intro">1. Introduction</h2>
         <p>
-            This document describes the set of classes, properties, and restrictions that constitute the DataID core ontology in OWL2 Web Ontology Language encoding [OWL2-OVERVIEW].
+            This document describes the set of classes, properties, and restrictions that constitute the DataID core ontology in OWL2 Web Ontology Language encoding <cite><a class="bibref" href="#ref-owl-2">OWL2</a></cite>.
             This ontology specification provides the essential concepts to provide structured dataset metadata for any domain, type of data or dataset structure.
-            We placed particular emphasis on the ability to extend easily on the one hand, while preserving interoperability with other existing dataset metadata formats
+            We placed particular emphasis on the ability to extend easily (<em class="keyword">Extensibility</em>) on the one hand, while preserving <em class="keyword">Interoperability</em> with other existing dataset metadata formats
             (ontologies, XSLT schemata etc.) on the other hand.
         </p>
         <p>
             DataID core is a midweight ontology that can be adopted in a wide range of scenarios. We intended to provide an ontology which reflects the essential
             concepts and properties needed to describe a dataset and all its manifestations comprehensively. We focused particularly on providing dataset metadata for
-            (1)provenance, (2)licensing and (3)access. To achieve this, we incorporated well established (e.g. PROV-O) and ground-breaking vocabularies (like ODRL).
+            <em class="keyword">Provenance</em>, <em class="keyword">Licensing</em> and <em class="keyword">Access</em>.
+            To achieve this, we incorporated well established (e.g. <cite><a class="bibref" href="#ref-PROV-O">PROV-O</a></cite>) and ground-breaking vocabularies (like <cite><a class="bibref" href="#bib-LEXVO">LEXVO</a></cite>).
             Qualifying relations between agents and dataset entities, by introducing a flexible management of roles, actions and responsibilities,
             is the second focal point of this vocabulary.
         </p>
         <p>
-            Disregarding the imported axioms of other ontologies, DataID core was constructed with with the compliance to OWL2 RL profile[needs link] in mind.
+            Disregarding the imported axioms of other ontologies, DataID core was constructed with with the compliance to OWL2 RL profile <cite><a class="bibref" href="#ref-owl-2-profiles">OWL2 Profiles</a></cite> in mind.
             As a result we do not offer any cardinality restrictions, supporting our goal of easy extensibility.
         </p>
         <p>
@@ -174,19 +175,19 @@
         <p>
             Readers of this document should be familiar with the core concepts of <a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">RDF</a> [<a href="#ref-RDF-PRIMER">RDF-PRIMER</a>],
             <a href="http://www.w3.org/TR/2004/REC-rdf-schema-20040210/">RDF Schema</a> [<a href="#ref-RDFS">RDFS</a>] and
-            <a href="https://www.w3.org/TR/owl2-overview/">OWL 2 Web Ontology Language</a> [<a href="#ref-OWL2">OWL2</a>].
-            Knowledge of the <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle syntax</a> [<a href="#ref-TURTLE">TURTLE</a>] for RDF is required to read the examples.
-            Some knowledge of widely-used vocabularies (<a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">Dublin Core</a> [<a href="#ref-DC">DC</a>],
+            <a href="https://www.w3.org/TR/owl2-overview/">OWL 2 Web Ontology Language</a> [<a href="#ref-owl-2">OWL2</a>].
+            Knowledge of the <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle syntax</a> [<a href="#ref-turtle">TURTLE</a>] for RDF is required to read the examples.
+            Some knowledge of widely-used vocabularies (<a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">Dublin Core</a> [<a href="#ref-DCTERMS">DCTERMS</a>],
             <a href="http://xmlns.com/foaf/spec/20100809.html">Friend of a Friend</a> [<a href="#ref-FOAF">FOAF</a>],
             <a href="https://www.w3.org/TR/vocab-dcat/">Data Catalog Vocabulary</a> [<a href="#ref-DCAT">DCAT</a>],
-            <a href="https://www.w3.org/TR/prov-o/">PROV Ontology</a> [<a href="#ref-PROV">PROV</a>],
+            <a href="https://www.w3.org/TR/prov-o/">PROV Ontology</a> [<a href="#ref-PROV-O">PROV</a>],
             <a href="https://www.w3.org/TR/void/">Vocabulary of Interlinked Datasets</a> [<a href="#ref-VOID">VOID</a>],
             ) is also assumed.
         </p>
 
         <h3 id="#namespaces">1.2 Namespaces and Conventions<span class="backlink"> back to <a href="#toc">ToC</a></span></h3>
         <div id="namespacedeclarations">
-            <p>All examples in this document are written in the <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle RDF syntax</a> [<a href="#ref-TURTLE">TURTLE</a>].
+            <p>All examples in this document are written in the <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle RDF syntax</a> [<a href="#ref-turtle">TURTLE</a>].
             <p>The table below indicates the full list of namespaces and prefixes used in this document and for all examples.</p>
             <table>
                 <thead>
@@ -218,6 +219,10 @@
                 <tr>
                     <td>foaf</td>
                     <td>http://xmlns.com/foaf/0.1/</td>
+                </tr>
+                <tr>
+                    <td>geonames</td>
+                    <td>http://www.geonames.org/ontology#</td>
                 </tr>
                 <tr>
                     <td>lvont</td>
@@ -295,7 +300,7 @@
                 We will abstain from this practice to prevent unnecessary confusion.
             </p>
             <p id="respecRFC2119">The keywords <em class="rfc2119" title="MAY">MAY</em>, <em class="rfc2119" title="MUST">MUST</em>, <em class="rfc2119" title="MUST NOT">MUST NOT</em>, and <em class="rfc2119" title="SHOULD">SHOULD</em> are
-                to be interpreted as described in [<cite><a class="bibref" href="#bib-RFC2119">RFC2119</a></cite>].
+                to be interpreted as described in <cite><a class="bibref" href="#ref-RFC2119">RFC2119</a></cite>.
             </p>
         </div>
     </div>
@@ -325,27 +330,27 @@
         </p>
         <h3>Note on Extensibility vs. Interoperability</h3>
         <p>
-            When regarding aspects <em class="keyword">Extensibility</em> and <em class="keyword">Interoperability</em>, taking into account the intricate requirements of many use cases, <strong>Extensibility</strong> and <strong>Interoperability</strong> seem contradictory when leaving the more general levels of a domain description.
+            When regarding aspects <em class="keyword">Extensibility</em> and <em class="keyword">Interoperability</em>, taking into account the intricate requirements of many use cases,
+            <em class="keyword">Extensibility</em> and <em class="keyword">Interoperability</em> seem contradictory when leaving the more general levels of a domain description.
             A vocabulary capable of interacting with other metadata vocabularies might be too general to fit certain scenarios of use. Restrictive extensions to a vocabulary might encroach on its ability to translate into other useful metadata formats.
-            This notion is corroborated by this document on <a href="https://www.w3.org/Protocols/Design/Interevol.html">Interoperability  and  Evolvability</a>[needs reference]. The discrepancies with \interoperability are true for both concepts.
+            This notion is corroborated by this document on <em class="keyword">Interoperability</em>  and  <em class="keyword">Evolvability</em>: <cite><a class="bibref" href="#ref-IVSE">IVSE</a></cite>.
         </p>
         <p>
             We do not differentiate between <em class="keyword">Extensibility</em> and <em class="keyword">Evolvability</em> , as opposed to the author of the document discussed.
-            Letting features 'die out' over time (or replacing them with new ones) does not impact, in our understanding, the aspect of <em class="keyword">Extensibility</em> of a system.
-        </p>
-        <p>
-            One approach to this problem is the
-            modularization of a growing ontology into multiple components. The multilayer metadata system, introduced by the next section, is manifestation of this approach in the context of DataID.
+            Letting features 'die out' over time does not impact, in our understanding, the aspect of <em class="keyword">Extensibility</em> of a system.
+            The discrepancies with <em class="keyword">Interoperability</em> are true for both concepts.
         </p>
     </div>
     <div class="div1">
         <h2 id="onion">3. Multilayer Concept<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
         <p>
             While this section does not directly describe the DataID core ontology, it serves as a backdrop, necessary to understand certain design decisions made in the core ontology.
+        </p>
+        <p>
             We modularised the former DataID ontology (version 1.0.0) into a multilayer composition arranged around a single core ontology. This was necessary to preserve
             <em class="keyword">Extensibility</em> and <em class="keyword">Interoperability</em>, as the vocabulary was growing due to a plethora of requirements of different use cases.
             Our scaling approach adopts principles of the modular programming technique, separating concepts and properties of a large ontology into independent, interchangeable modules,
-            specialized to fit common use cases, dependend only on DataID core.
+            specialized to fit common use cases, dependent only on DataID core.
         </p>
         <p>
             Therefore, DataID core <em class="rfc2119" title="MUST">MUST</em> be imported into a use case specific metadata extension, many use cases may profit by importing one or more extensions
@@ -353,7 +358,7 @@
         </p>
         <p>
             Alongside DataID core we created first extensions, to satisfy different use cases in a reusable manner.
-            The onion-like layer model below illustrates the import restrictions of the different ontologies.
+            The onion-like layer model below illustrates the import restrictions of the different ontologies:
             <ul>
                 <li>Every ontology (in the DataID sphere) <em class="rfc2119" title="MUST">MUST</em> import DataID core.</li>
                 <li>An ontology of a certain layer <em class="rfc2119" title="SHALL">SHALL</em> only import ontologies from layers below its own.</li>
@@ -363,13 +368,13 @@
         <img src="images/DataID onion.png" alt="alt tag" width="800px" style="max-width:100%;" />
 
         <p><strong>DataID core</strong> provides the basic description of a dataset and serves as foundation for all extensions in the mid-layer or use case specificontology extensions.</p>
-        <p><strong>Linked Data</strong> extends DataID core with many concepts of the VOID vocabulary[needs link] and some additional properties specific to LOD datasets.</p>
-        <p><strong>Activities & Plans</strong> provides provenance information of activities which generated, changed or used datasets. The goal is to record all activities needed to replicate a dataset as described by a DataID. Plans can describe which steps(activities, precautionary measures) are put in place to reach a certain goal. This extension relies heavily on the Prov ontology[needs link].</p>
-        <p><strong>Statistics</strong> will provide the necessary measures to publish multi-dimensional data, such as statistics about datasets or surveys as a dataset. This recently created ontology will be based on the Data Cube Vocabulary.</p>
+        <p id="extension-ld"><strong>Linked Data</strong> extends DataID core with many concepts of the VOID vocabulary[needs link] and some additional properties specific to LOD datasets.</p>
+        <p id="extension-acp"><strong>Activities & Plans</strong> provides provenance information of activities which generated, changed or used datasets. The goal is to record all activities needed to replicate a dataset as described by a DataID. Plans can describe which steps(activities, precautionary measures) are put in place to reach a certain goal. This extension relies heavily on the Prov ontology[needs link].</p>
+        <p id="extension-st"><strong>Statistics</strong> will provide the necessary measures to publish multi-dimensional data, such as statistics about datasets or surveys as a dataset. This recently created ontology will be based on the Data Cube Vocabulary.</p>
         <p><strong>Other Ontologies</strong> of similar general character, as the ontologies of that layer, which could be useful in multiple use cases.</p>
         <p>
             We plan to enforce multiple requirements on the adoption of new ontologies in the common (or mid) layer of the DataID sphere.<br/>
-            They will might contain (while not being restricted to):
+            They might contain (while not being restricted to):
             <ul>
                 <li>Authors <em class="rfc2119" title="MUST">MUST</em> provide information about the reason for the new extension (and why the expected result is no achievable with existing extensions).</li>
                 <li>Authors <em class="rfc2119" title="MUST">MUST</em> document the <em class="keyword">Interoperability</em> with other extensions of this layer (and where problems are to be expected).</li>
@@ -527,20 +532,21 @@
         <h2 id="core">5. DataID core Ontology<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
         <p>
             This section grants an overview of the DataID core ontology, sectioned by concepts.
-            The depiction below provides most of the concepts and properties which make up DataID core.
+            The depiction below shows most of the concepts and properties which make up DataID core.
             A complete description of all concepts, properties and individuals is available in <a href="#terms">section 6</a>.
         </p>
         <p>
-            DataID core is founded on two pillars: the DCAT and PROV ontologies[needs links]. The base structure of DCAT (Catalog, CatalogRecord, Dataset and Distribution)
-            is clearly visible in the upper part of this diagram. The PROV ontology is used to qualify the relation an Agent might have with an Entity.
-            The Role an Agent has in regard to this Entity and what this Role might entail (the lower part of the diagram).
+            DataID core is founded on two pillars: the DCAT <cite><a class="bibref" href="#ref-DCAT">DCAT</a></cite> and PROV <cite><a class="bibref" href="#ref-PROV-O">PROV-O</a></cite> ontologies. 
+            The base structure of DCAT (Catalog, CatalogRecord, Dataset and Distribution)
+            is clearly visible in the upper part of the diagram. The PROV ontology is used to qualify the relation an <em class="keyword">Agent</em> might have with an <em class="keyword">Entity</em>.
+            The <em class="keyword">Role</em> an <em class="keyword">Agent</em> has in regard to this <em class="keyword">Entity</em> and what this <em class="keyword">Role</em> might entail (see lower part of the diagram).
         </p>
         <img src="images/DataIdOntology.png" alt="alt tag" style="max-width:100%;" />
         <p>
-            Throughout DataID core we opted to restrict ranges of imported properties (like dct:language, dct:temporal or dataid:checksum) to concepts of vocabularies, which have proven either to be
-            sound and expressive enough, or have been widely adopted in the Linked Data community. This step is necessary to provide a unified model of structured data without ambiguity.
-            If the need arises these restrictions shall either be extended to cover additional concepts or be abolished all together. For example, we use the ODRL ontology[needs link] to describe
-            licenses and other policies (dct:license), or to specify dct:language we use the very useful Lexvo ontology and dataset[needs link].
+            Throughout DataID core we opted to restrict ranges of imported properties (like <a href="http://dublincore.org/documents/dcmi-terms/#terms-language">dct:language</a> or <a href="http://dublincore.org/documents/dcmi-terms/#terms-temporal">dct:temporal</a>)
+            to concepts of vocabularies, which have proven either to be sound and expressive enough, or have been widely adopted in the Linked Data community. This step is necessary to provide a unified model of structured data without ambiguity.
+            If the need arises these restrictions shall either be extended to cover additional concepts or be abolished all together. For example, we use the ODRL ontology <cite><a class="bibref" href="#ref-odrl">ODRL</a></cite> 
+            to describe licenses and other policies (<a href="http://dublincore.org/documents/dcmi-terms/#terms-license">dct:license</a>), or to specify dct:language we use the very useful Lexvo ontology <cite><a class="bibref" href="#ref-lexvo">LEXVO</a></cite> and dataset.
         </p>
 
 
@@ -551,24 +557,25 @@
                 <h4 id="exoverview"><strong>Example Overview</strong></h4>
                 <p>
                     For illustration purposes we will weave a running example into the descriptions of concepts and properties.
-                    This example is a reduced version of an <a href="http://downloads.dbpedia.org/2015-10/core-i18n/ar/2015-10_dataid_ar.ttl">original DataID of the Arabic DBpedia</a> (release: 2015-04).
+                    This example is a reduced version of an <a href="http://downloads.dbpedia.org/2015-10/core-i18n/ar/2015-10_dataid_ar.ttl">original DataID of the Arabic DBpedia</a> (release: 2015-04) <cite><a class="bibref" href="#ref-DBPEDIA">DBPEDIA</a></cite>.
                     Under the main dataset only two sub-datasets remain (as opposed to 50). We also left out some instances referenced in the example for reasons of redundancy.
-                    Also we refrain to list the more common properties of DCTERMS [needs link] and RDFS [needs link] like dc:title, dc:description, cd:modified, dc:issued and rdfs:label to make this example more easy to read.
-                    The example was constructed in a way to cover many aspects of DataID core and to provide an easy use case which could arise in a similar fashion outside the DBpedia domain.
-                    We added remarks in the next to some statements, explaining their use and our decisions.
-                    The full example is available in Turtle serialization here: <a href="/dataid-w3c-submission/html/2015-10_dataid_ar.ttl">2015-10_dataid_ar.ttl</a>.
-                    The basic structure of its DataID is outlined on the right.
+                    Also we refrain to list the more common properties of DCTERMS <cite><a class="bibref" href="#ref-DCTERMS">DCTERMS</a></cite> and <cite><a class="bibref" href="#ref-RDFS">RDFS</a></cite>
+                    like dct:title, dct:description, dct:modified, dct:issued and rdfs:label to make this example more easy to read.
+                    The example was constructed in a way, to cover many aspects of DataID core and to provide an easy use case which could arise in a similar fashion outside the DBpedia domain.
+                    We added remarks next to some statements, explaining their use.
+                    The full example is available in Turtle serialization <cite><a class="bibref" href="#ref-turtle">TURTLE</a></cite> here: <a href="/dataid-w3c-submission/html/2015-10_dataid_ar.ttl">2015-10_dataid_ar.ttl</a>.
+                    The basic structure of its DataID is outlined on the right, short names translate to the following URIs:
                 </p>
                 <ul>
-                    <li>DataId:                 dataid_ar.ttl</li>
-                    <li>MainDataset:            dataid_ar.ttl?set=maindataset</li>
-                    <li>Dataset A:              dataid_ar.ttl?set=interlanguage_links</li>
-                    <li>Dataset C:              dataid_ar.ttl?set=long_abstracts_en_uris</li>
-                    <li>Distribution A1:        dataid_ar.ttl?file=interlanguage_links_ar.ttl.bz2</li>
-                    <li>Distribution A2:        dataid_ar.ttl?file=interlanguage_links_ar.tql.bz2</li>
-                    <li>Distribution C1:        dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2</li>
-                    <li>Distribution C2:        dataid_ar.ttl?file=long_abstracts_en_uris_ar.tql.bz2</li>
-                    <li>Distribution C3:        dataid_ar.ttl?sparql=DBpediaSparqlEndpoint</li>
+                    <li>DataId:&emsp;&emsp;&emsp;&emsp;&ensp;&lt;dataid_ar.ttl&gt;</li>
+                    <li>MainDataset:&emsp;&ensp;&nbsp;&lt;dataid_ar.ttl?set=maindataset&gt;</li>
+                    <li>Dataset A:&emsp;&emsp;&emsp;&lt;dataid_ar.ttl?set=interlanguage_links&gt;</li>
+                    <li>Dataset C:&emsp;&emsp;&emsp;&lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;</li>
+                    <li>Distribution A1:&emsp;&lt;dataid_ar.ttl?file=interlanguage_links_ar.ttl.bz2&gt;</li>
+                    <li>Distribution A2:&emsp;&lt;dataid_ar.ttl?file=interlanguage_links_ar.tql.bz2&gt;</li>
+                    <li>Distribution C1:&emsp;&lt;dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2&gt;</li>
+                    <li>Distribution C2:&emsp;&lt;dataid_ar.ttl?file=long_abstracts_en_uris_ar.tql.bz2&gt;</li>
+                    <li>Distribution C3:&emsp;&lt;dataid_ar.ttl?sparql=DBpediaSparqlEndpoint&gt;</li>
                 </ul>
                 <p>The base URI used in our example is:</p>
             </div>
@@ -580,15 +587,15 @@
                 <h4 id="exdataid"><strong>DataId</strong></h4>
                 <p>
                     The class <a href="#d4e259">dataid:DataId</a> subsumes
-                    dcat:CatalogRecord, which describes a dataset entry in a dcat:Catalog. It does not represent a dataset,
-                    but provenance information about dataset entries in a catalog. It is the root entity in any DataID description.
+                    <a href="http://www.w3.org/ns/dcat#CatalogRecord">dcat:CatalogRecord</a>, which describes a dataset entry in a <a href="http://www.w3.org/ns/dcat#Catalog">dcat:Catalog</a>. It does not represent a datset,
+                    but provenance information about dataset entries in a catalog. A <em class="keyword">DataId</em> is the root entity in any DataID description.
                     Most general information about the DataID document and the relations to its context (e.g. to a Catalog, Repository etc.) are entered here.
-                    We created the <a href="#d4e1550">dataid:inCatalog</a> property as the inverse of dcat:record to be able to reference the catalog used.
-                    As in the DCAT vocabulary we use foaf:primaryTopic to point out the dataset this DataId is about. This is a functional property.
+                    We created the <a href="#d4e1550">dataid:inCatalog</a> property as the inverse of <a href="http://www.w3.org/ns/dcat#record">dcat:record</a> to be able to reference the catalog used.
+                    As in the DCAT vocabulary <cite><a class="bibref" href="#ref-DCAT">DCAT</a></cite> we use <a href="http://xmlns.com/foaf/spec/#term_primaryTopic">foaf:primaryTopic</a> to point out the <em class="keyword">Dataset</em> this <em class="keyword">DataId</em> is about. This is a functional property.
                     To cover multiple datasets with one DataID/DataId you have to make use of sub datasets (see <a href="https://www.w3.org/TR/void/#subset">void:subset</a>).
                 </p>
                 <p>
-                    The DataId instance below exemplifies a typical DataId entry  in a dcat:Catalog.
+                    The <em class="keyword">DataId</em> instance below exemplifies a typical <em class="keyword">DataId</em> entry in a <a href="http://www.w3.org/ns/dcat#Catalog">dcat:Catalog</a>.
                 </p>
             </div>
         </div>
@@ -602,7 +609,7 @@
         dct:title                   "DataID metadata for the Afrikaans DBpedia"@en ;
         dct:publisher               &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;           <span>#while the DataID system of providing provenance on Agents is in place, using established properties to point out Agents does not come amiss</span>
         dct:creator                 &lt;http://wiki.dbpedia.org/dbpedia-association&gt; ;
-        foaf:primaryTopic          &lt;dataid_ar.ttl?set=maindataset&gt; .                              <span>#foaf:primaryTopic points out the main dataset described by a DataID.</span>
+        foaf:primaryTopic          &lt;dataid_ar.ttl?set=maindataset&gt; .                          <span>#foaf:primaryTopic points out the main dataset described by a DataID.</span>
             </pre>
 
         <div class="post-container">
@@ -610,16 +617,28 @@
             <div class="post-content">
                 <h4 id="exdataset"><strong>Dataset</strong></h4>
                 <p>
-                    The VOID vocabulary[needs link] plays a central role in DataID core as well, as the dataset concept of both the DCAT and VOID were merged into <a href="#d4e341">dataid:Dataset</a>,
+                    The VOID vocabulary <cite><a class="bibref" href="#ref-VOID">VOID</a></cite> plays a central role in DataID core as well, as the dataset concept of both the
+                    DCAT <cite><a class="bibref" href="#ref-DCAT">DCAT</a></cite> and VOID were merged into <a href="#d4e341">dataid:Dataset</a>,
                     providing useful properties about the content of a dataset from both ontologies. In particular, the property <a href="https://www.w3.org/TR/void/#subset">void:subset</a> allows for
-                    the creation of dataset hierarchies, while <a href="https://www.w3.org/TR/vocab-dcat/#Property:dataset_distribution">dcat:distribution</a> points out the distributions of a dataset.
-                    While DataID core does not restrict with cardinalities, it is strongly recommended that each Dataset shall either have at least one Distribution or one Subset.
-                    We have to differentiate between the main (or root) dataset of a DataID (referenced via foaf:primaryTopic) and optional Subsets, hierarchically below the main dataset.
+                    the creation of dataset hierarchies, while <a href="https://www.w3.org/TR/vocab-dcat/#Property:dataset_distribution">dcat:distribution</a> points out the <em class="keyword">Distributions</em> of a <em class="keyword">Dataset</em>.
+                    While DataID core does not require any cardinality restrictions, it is strongly <em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em> that each <em class="keyword">Dataset</em> shall either have at least one <em class="keyword">Distribution</em> or one <em class="keyword">Subset</em>.
+                    Note: It is necessary to differentiate between the main (or root) <em class="keyword">Dataset</em> of a DataID (referenced via <a href="http://xmlns.com/foaf/spec/#term_primaryTopic">foaf:primaryTopic</a>)
+                    and (optional) <em class="keyword">Subsets</em>, hierarchically below the main <em class="keyword">Dataset</em>.
                 </p>
                 <p>
-                    The main dataset of our example is a container of other Datasets without any actual manifestations (Distributions), which can be seen in the first snipped below (&lt;dataid_ar.ttl?set=maindataset&gt;).
-                    The second Dataset (&lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;) is a Subset of the first and provides actual data (Distributins). We use dct:isPartOf as a quasi-inverse property of void:subset.
-                    As we are portraying a Linked Data Dataset we are using properties like void:triples and dataid-ld:graphName.
+                    We added multiple properties for textual statements on different (general) aspects of a <em class="keyword">Dataset</em>:
+                    <a href="#d4e1471" title="http://dataid.dbpedia.org/ns/core#dataDescription"><span>dataid:dataDescription</span></a>,
+                    <a href="#d4e1653" title="http://dataid.dbpedia.org/ns/core#openness"><span>dataid:openness</span></a>,
+                    <a href="#d4e1486" title="http://dataid.dbpedia.org/ns/core#growth"><span>dataid:growth</span></a>,
+                    <a href="#d4e1698" title="http://dataid.dbpedia.org/ns/core#reuseAndIntegration"><span>dataid:reuseAndIntegration</span></a>,
+                    <a href="#d4e1713" title="http://dataid.dbpedia.org/ns/core#similarData"><span>dataid:similarData</span></a>,
+                    <a href="#d4e1892" title="http://dataid.dbpedia.org/ns/core#usefulness"><span>dataid:usefulness</span></a>.
+                    All of which provide <em class="keyword">Publishers</em> and <em class="keyword">Maintainers</em> a way to convey general information about the topics represented by these properties.
+                    This information will be useful in many scenarios related to dissemination tasks.
+                </p>
+                <p>
+                    The main <em class="keyword">Dataset</em> of our example is a container of other <em class="keyword">Datasets</em> without any actual <em class="keyword">Distributions</em>, 
+                    which can be seen in the first snipped below:
                 </p>
             </div>
         </div>
@@ -636,6 +655,11 @@
         dcat:landingPage        &lt;http://dbpedia.org/&gt; ;
         foaf:isPrimaryTopicOf   &lt;dataid_ar.ttl&gt;                                               <span>#inverse of foaf:primaryTopic</span>
         </pre>
+        <p>
+            The second <em class="keyword">Dataset</em> is a <em class="keyword">Subset</em> of the first and provides actual data (<em class="keyword">Distributions</em>).
+            As we are portraying a Linked Data dataset we are using properties like <a href="http://vocab.deri.ie/void#triples">void:triples</a> and dataid-ld:graphName, introduced
+            (or especially useful) with the <a href="#extension-ld">Linked Data extension</a> (dataid-ld:) of DataID.
+        </p>
         <pre>
 &lt;dataid_ar.ttl?set=long_abstracts_en_uris&gt;                                                    <span>#This dataset has actual manifestations: see dcat:distribution</span>
         a                       dataid:Dataset ;
@@ -657,16 +681,16 @@
                 <h4 id="exdistribution"><strong>Distribution</strong></h4>
                 <p>
                     The class <a href="#d4e505">dataid:Distribution</a> is a subclass of <a href="https://www.w3.org/TR/vocab-dcat/#class-distribution">dcat:Distribution</a> and
-                    provides the technical description of the data itself, as opposed to the Dataset concept. In addition it serves as documentation of how to access the data described
+                    provides the technical description of the data itself. In addition it serves as documentation of how to access the data described
                     (via <a href="https://www.w3.org/TR/vocab-dcat/#Property:distribution_accessurl">dcat:accessURL</a> or <a href="https://www.w3.org/TR/vocab-dcat/#Property:distribution_downloadurl">dcat:downloadURL</a>),
                     and which conditions apply (e.g. <a href="#d4e1082" title="http://dataid.dbpedia.org/ns/core#accessProcedure"><span>dataid:accessProcedure</span></a>,
                     <a href="#d4e1747" title="http://dataid.dbpedia.org/ns/core#softwareRquirement"><span>dataid:softwareRquirement</span></a>).
-                    Every Distribution of a Dataset <em class="rfc2119" title="MUST">MUST</em> contain the whole Dataset in the format and location described.
-                    It <em class="rfc2119" title="MAY">MAY</em> contain additional data on top of that, for example when describing a ServiceEndpoint. This practice is
+                    Every <em class="keyword">Distribution</em> of a Dataset <em class="rfc2119" title="MUST">MUST</em> contain the whole <em class="keyword">Dataset</em> in the format and location described.
+                    It <em class="rfc2119" title="MAY">MAY</em> contain additional data on top of that, for example when describing a <em class="keyword">ServiceEndpoint</em>. This practice is
                     <em class="rfc2119" title="NOT RECOMMENDED">NOT RECOMMENDED</em> outside of this example.
-                    Two Distributions of the same Dataset therefore must either contain the exact same data (for example in two different serializations), or one  Distribution must
-                    completely subsume the other.
-                    The distribution concept, introduced by the DCAT vocabulary[needs link], is crucial to be able to automatically retrieve and use the data described in a DataID,
+                    Two <em class="keyword">Distributions</em> of the same <em class="keyword">Dataset</em> therefore must either contain the exact same data (for example in two different serializations),
+                    or one  <em class="keyword">Distribution</em> must completely subsume the other.
+                    The <em class="keyword">Distribution</em> concept, introduced by the DCAT vocabulary <cite><a class="bibref" href="#ref-DCAT">DCAT</a></cite>, is crucial to be able to automatically retrieve and use the data described in a DataID,
                     simplifying, for example, data analysis. We introduced additional subclasses to further distinguish how the data is available on the web:
                     <ul>
                         <li><a href="#d4e1047">dataid:SingleFile</a></li>
@@ -674,16 +698,17 @@
                         <li><a href="#d4e596">dataid:FileCollection</a></li>
                         <li><a href="#d4e1002">dataid:ServiceEndpoint</a></li>
                     </ul>
-                    The range of dataid:checksum is <a href="http://spdx.org/rdf/terms/classes/Checksum___-238837136.html">spdx:Checksum</a>,
+                    The range of <a href="#d4e1463" title="http://dataid.dbpedia.org/ns/core#checksum"><span>dataid:checksum</span></a> is
+                    <a href="http://spdx.org/rdf/terms/classes/Checksum___-238837136.html">spdx:Checksum</a>,
                     providing <a href="http://spdx.org/rdf/terms/dataproperties/checksumValue___-1263904517.html">spdx:checksumValue</a>
                     and <a href="http://spdx.org/rdf/terms/objectproperties/algorithm___-1614899588.html">spdx:algorithm</a> properties.
                     The <a href="http://www.w3.org/ns/dcat#mediaType">dcat:mediaType</a> property is restricted to the range of <a href="#d4e738">dataid:MediaType</a>.
                     Similar to <a href="http://www.w3.org/ns/dcat#size">dcat:byteSize</a>, <a href="#d4e1854">dataid:uncompressedByteSize</a> provides an integer value for the number of bytes a compression or archive file has stored as
-                    content inside. A glimpse of the (uncompressed) data of a Distribution can be offered with the property <a href="#d4e1668">dataid:preview</a>.
+                    content inside. A glimpse of the (uncompressed) data of a <em class="keyword">Distribution</em> can be offered with the property <a href="#d4e1668">dataid:preview</a>.
                     This is useful when data providers want to convey the format or serialization of a very large or compressed file as an example.
                 </p>
                 <p>
-                    The first example is an instance of <a href="#d4e1047">dataid:SingleFile</a>, describing a single RDF file (which contains the whole Dataset) in
+                    The first example is an instance of <a href="#d4e1047">dataid:SingleFile</a>, describing a single RDF file (which contains the whole <em class="keyword">Dataset</em>) in
                     <a href="http://www.w3.org/TeamSubmission/turtle/">Turtle</a> serialization, compressed with the bzip2 compression.
                     It can directly be downloaded (without any intermediate steps), hence the property <a href="http://www.w3.org/ns/dcat#downloadURL">dcat:downloadURL</a>
                     is used to point out the resource on the web. Since it is a compression file we provide its compressed and uncompressed size in bytes.
@@ -720,12 +745,12 @@
             <div class="post-content">
                 <h4 id="exmediatype"><strong>MediaType</strong></h4>
                 <p>
-                    DCAT does not offer an intrinsic way of specifying the exact format of the content described by a distribution. While the property <a href="http://www.w3.org/ns/dcat#mediaType">dcat:mediaType</a> does exist,
-                    its expected range dct:MediaTypeOrExtend is an empty concept, not extended by the DCAT vocabulary.
+                    DCAT <cite><a class="bibref" href="#ref-DCAT">DCAT</a></cite> does not offer an intrinsic way of specifying the exact format of the content described by a <em class="keyword">Distribution</em>.
+                    While the property <a href="http://www.w3.org/ns/dcat#mediaType">dcat:mediaType</a> does exist, its expected range <a href="http://dublincore.org/documents/dcmi-terms/#terms-MediaTypeOrExtent">dct:MediaTypeOrExtend</a> is an empty concept, not extended by the DCAT vocabulary.
                     Therefore, we created <a href="#d4e738" title="http://dataid.dbpedia.org/ns/core#MediaType"><span>dataid:MediaType</span></a> to better qualify this crucial piece of information.
                     Besides a name and a reference the following properties are of interest:
                     <ul>
-                    <li><a href="#d4e1836" title="http://dataid.dbpedia.org/ns/core#typeTemplate"><span>dataid:typeTemplate</span></a> - the IANA[needs link] media- or mime type </li>
+                    <li><a href="#d4e1836" title="http://dataid.dbpedia.org/ns/core#typeTemplate"><span>dataid:typeTemplate</span></a> - the IANA media- or mime type <cite><a class="bibref" href="#ref-RFC2046">RFC2046</a></cite></li>
                     <li><a href="#d4e1790" title="http://dataid.dbpedia.org/ns/core#typeExtension"><span>dataid:typeExtension</span></a> - common file extension for the type described</li>
                     </ul>
                     With the property <a href="#d4e1548" title="http://dataid.dbpedia.org/ns/core#innerMediaType"><span>dataid:innerMediaType</span></a>
@@ -757,14 +782,15 @@
             <div class="post-content">
                 <h4 id="exagent"><strong>Agent</strong></h4>
                 <p>
-                    An Agent is something or someone that bears some form of responsibility for an entity or activities which create, transform or manage entities in some way.
-                    Agents might be real and legal persons, groups of persons, organisations etc.. The <a href="#d4e31" title="http://dataid.dbpedia.org/ns/core#Agent"><span>dataid:Agent</span></a>
-                    subsumes both agent concepts of the PROV[needs link] and FOAF[needs link] ontologies. We added <a href="#d4e1872" title="http://dataid.dbpedia.org/ns/core#underAuthorization"><span>dataid:underAuthorization</span></a>
+                    An <em class="keyword">Agent</em> is something or someone that bears some form of responsibility for an <em class="keyword">Entity</em> or activities which create, transform or manage <em class="keyword">Entities</em> in some way.
+                    <em class="keyword">Agents</em> are real or legal persons, groups of persons, programs, organisations etc. The class <a href="#d4e31" title="http://dataid.dbpedia.org/ns/core#Agent"><span>dataid:Agent</span></a>
+                    subsumes both agent concepts of the PROV <cite><a class="bibref" href="#ref-PROV-O">PROV-O</a></cite> and FOAF <cite><a class="bibref" href="#ref-FOAF">FOAF</a></cite> ontologies. 
+                    We added <a href="#d4e1872" title="http://dataid.dbpedia.org/ns/core#underAuthorization"><span>dataid:underAuthorization</span></a>
                     as the inverse property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>, pointing out the
-                    Authorizations which grant this Agent some kind some authority over Entities, which is explained in detail in this example[needs link].
+                    <em class="keyword">Authorizations</em> which grant this <em class="keyword">Agent</em> some kind some authority over <em class="keyword">Entities</em>, which is explained in detail in the example <a href="#authorizationexample">on Authorizations</a>.
                 </p>
                 <p>
-                    The example of an Agent portrays an Organization:
+                    The example of an <em class="keyword">Agent</em> portrays an organization:
                 </p>
             </div>
         </div>
@@ -781,23 +807,24 @@
             <div class="post-content">
                 <h4 id="exauthorization"><strong>Authorization</strong></h4>
                 <p>
-                    One objective of DataID core is the detailed expression of the relations between Agents and Entities.
+                    One objective of DataID core is the detailed expression of the relations between <em class="keyword">Agents</em> and <em class="keyword">Entities</em>.
                     We want to qualify these relations (summarized under the property <a href="#d4e1112" title="http://dataid.dbpedia.org/ns/core#associatedAgent"><span>dataid:associatedAgent</span></a>)
-                    by assigning Roles to the involved Agents (like Maintainer, Publisher etc.).
+                    by assigning <em class="keyword">Roles</em> to the involved <em class="keyword">Agents</em> (like <em class="keyword">Maintainer</em>, <em class="keyword">Publisher</em> etc.).
                     This is achieved by the class <a href="#d4e137" title="http://dataid.dbpedia.org/ns/core#Authorization"><span>dataid:Authorization</span></a>,
                     which is a subclass of <a href="https://www.w3.org/TR/prov-o/#Attribution">prov:Attribution</a>, a qualification of the property
-                    <a href="https://www.w3.org/TR/prov-o/#wasAttributedTo">prov:wasAttributedTo</a>. Basically it states, which Role(s) (pointed out with <a href="#d4e1148" title="http://dataid.dbpedia.org/ns/core#authorityAgentRole"><span>dataid:authorityAgentRole</span></a>)
-                    an agent (<a href="#d4e1438" title="http://dataid.dbpedia.org/ns/core#authorizedAgent"><span>dataid:authorizedAgent</span></a>) has,
-                    regarding a certain collection of Entities (<a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>).
-                    This mediator is further qualified by an optional period of time for which it is valid and access restrictions by the Entities themselves,
-                    allowing only specific Authorizations to exert influence over them (<a href="#d4e1619" title="http://dataid.dbpedia.org/ns/core#needsSpecialAuthorization"><span>dataid:needsSpecialAuthorization</span></a>).
+                    <a href="https://www.w3.org/TR/prov-o/#wasAttributedTo">prov:wasAttributedTo</a>. Basically it states, which <em class="keyword">Role(s)</em> (pointed out with <a href="#d4e1148" title="http://dataid.dbpedia.org/ns/core#authorityAgentRole"><span>dataid:authorityAgentRole</span></a>)
+                    an <em class="keyword">Agent</em> (<a href="#d4e1438" title="http://dataid.dbpedia.org/ns/core#authorizedAgent"><span>dataid:authorizedAgent</span></a>) has,
+                    regarding a certain collection of <em class="keyword">Entities</em> (<a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>).
+                    This mediator is further qualified by an optional period of time for which it is valid and access restrictions by the <em class="keyword">Entities</em> themselves,
+                    allowing only specific <em class="keyword">Authorizations</em> to exert influence over them (<a href="#d4e1619" title="http://dataid.dbpedia.org/ns/core#needsSpecialAuthorization"><span>dataid:needsSpecialAuthorization</span></a>).
                     <a href="#d4e1872" title="http://dataid.dbpedia.org/ns/core#underAuthorization"><span>dataid:underAuthorization</span></a> is the inverse property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
-                    and provides the Authorization context for an Entity.
-                    The property <a href="#d4e1403" title="http://dataid.dbpedia.org/ns/core#authorizedAction"><span>dataid:authorizedAction</span></a> can be inferred by the AgentRole assigned and will be addressed in detail in the next section.
+                    and provides the <em class="keyword">Authorization</em> context for an <em class="keyword">Entity</em>.
+                    The property <a href="#d4e1403" title="http://dataid.dbpedia.org/ns/core#authorizedAction"><span>dataid:authorizedAction</span></a> can be inferred by the <em class="keyword">AgentRole</em> assigned and will be addressed in detail in the next section.
                 </p>
                 <p>
-                    Due to the complexity of Authorization and its surroundings we provide a detailed example on Authorization, Agents, Roles, Actions etc. at the end of section 5[needs link].
-                    The following snipped provides a simple example of two Roles being assigned for two Agents for the whole DataID (and thereby for every Entity involved).
+                    Due to the complexity of <em class="keyword">Authorization</em> and its surroundings we provide a detailed example on <em class="keyword">Authorization</em>, <em class="keyword">Agents</em>, 
+                    <em class="keyword">Roles</em>, <em class="keyword">Actions</em> etc. at the <a href="#authorizationexample">end of section 5</a>.
+                    The following snipped provides a simple example of two <em class="keyword">Roles</em> being assigned for two <em class="keyword">Agents</em> for the whole DataID (and thereby for every <em class="keyword">Entity</em> involved).
                 </p>
             </div>
         </div>
@@ -833,17 +860,20 @@
             <div class="post-content">
                 <h4 id="exactions"><strong>AuthorizedAction & AgentRole</strong></h4>
                 <p>
-                    The Role an agent can take (<a href="#d4e49" title="http://dataid.dbpedia.org/ns/core#AgentRole"><span>dataid:AgentRole</span></a>) is defined only by property <a href="#d4e1097" title="http://dataid.dbpedia.org/ns/core#allowsFor"><span>dataid:allowsFor</span></a>,
-                    pointing out Actions it entails. A <a href="#d4e150" title="http://dataid.dbpedia.org/ns/core#AuthorizedAction"><span>dataid:AuthorizedAction</span></a> <em class="rfc2119" title="SHALL">SHALL</em>
-                    either be a <a href="#d4e581" title="http://dataid.dbpedia.org/ns/core#EntitledAction"><span>dataid:EntitledAction</span></a>, representing
-                    all Actions an Agent could take, as well as the Actions an Agent has to take (<a href="#d4e987" title="http://dataid.dbpedia.org/ns/core#ResponsibleAction"><span>dataid:ResponsibleAction</span></a>).
-                    Actions and Roles defined in this ontology are only examples of possible implementations, reflecting a common environment of file or document management system.
+                    The <em class="keyword">Role</em> an <em class="keyword">Agent</em> can take (<a href="#d4e49" title="http://dataid.dbpedia.org/ns/core#AgentRole"><span>dataid:AgentRole</span></a>)
+                    is defined only by the property <a href="#d4e1097" title="http://dataid.dbpedia.org/ns/core#allowsFor"><span>dataid:allowsFor</span></a>,
+                    pointing out <em class="keyword">Actions</em> it entails. A <a href="#d4e150" title="http://dataid.dbpedia.org/ns/core#AuthorizedAction"><span>dataid:AuthorizedAction</span></a>
+                    <em class="rfc2119" title="SHALL">SHALL</em> either be a <a href="#d4e581" title="http://dataid.dbpedia.org/ns/core#EntitledAction"><span>dataid:EntitledAction</span></a>, representing
+                    all <em class="keyword">Actions</em> an <em class="keyword">Agent</em> could take, as well as the <em class="keyword">Actions</em> an <em class="keyword">Agent</em> has to take
+                    (<a href="#d4e987" title="http://dataid.dbpedia.org/ns/core#ResponsibleAction"><span>dataid:ResponsibleAction</span></a>).
+                    <em class="keyword">Actions</em> and <em class="keyword">Roles</em> defined in this ontology are only examples of possible implementations, reflecting a common environment of file or document management system.
                     They can be replaced to fit the use case at hand. Implementing them as a <a href="https://www.w3.org/2009/08/skos-reference/skos.html#ConceptScheme">skos:ConceptScheme</a>
-                    offers additional semantics, for example in determining which AgentRole can override Actions initiated by Agents with other Roles for the same Entity.
+                    offers additional semantics, for example in determining which <em class="keyword">AgentRole</em> can override <em class="keyword">Actions</em> initiated by
+                    <em class="keyword">Agents</em> with other <em class="keyword">Roles</em> for the same <em class="keyword">Entity</em>.
                 </p>
                 <p>
                     This example is not part of our running demonstration of an overall example, but has been lend from the DataID core ontology document itself.
-                    Here we see how the AgentRole 'Contact' is defined in the context of a <a href="https://www.w3.org/2009/08/skos-reference/skos.html#ConceptScheme">skos:ConceptScheme</a>.
+                    Here we see how the <em class="keyword">AgentRole</em> 'Contact' is defined in the context of a <a href="https://www.w3.org/2009/08/skos-reference/skos.html#ConceptScheme">skos:ConceptScheme</a>.
                 </p>
             </div>
         </div>
@@ -865,14 +895,14 @@ dataid:Contact
             <div class="post-content">
                 <h4 id="exidentifier"><strong>Identifier</strong></h4>
                 <p>
-                    The class <a href="#d4e677" title="http://dataid.dbpedia.org/ns/core#Identifier"><span>dataid:Identifier</span></a> uniquely identifies any resource (incl. Entities and Agents),
+                    The class <a href="#d4e677" title="http://dataid.dbpedia.org/ns/core#Identifier"><span>dataid:Identifier</span></a> uniquely identifies any resource (incl. <em class="keyword">Entities</em> and <em class="keyword">Agents</em>),
                     given an identifier as a literal (<a href="http://purl.org/dc/terms/identifier" title="http://purl.org/dc/terms/identifier"><span>dct:identifier</span></a>) and a corresponding
                     <a href="http://www.sparontologies.net/ontologies/datacite/source.html#d4e462">datacite:IdentifierScheme</a> (e.g. ORCID, ResearcherID etc.). Typically an organization
-                    is responsible for issuing and managing identifiers described with this concept, which can be referred to with dct:creator. DataID core adopted this approach from Datacite[needs link]
-                    to provide a schematic way of adding additional, existing identifiers to Entities and Agents referenced in a DataID.
+                    is responsible for issuing and managing <em class="keyword">Identifiers</em> described with this concept, which can be referred to with dct:creator. DataID core adopted this approach from Datacite <cite><a class="bibref" href="#ref-DATACITE">DATACITE</a></cite>
+                    to provide a schematic way of adding additional, existing identifiers to <em class="keyword">Entities</em> and <em class="keyword">Agents</em> referenced in a DataID.
                  </p>
                 <p>
-                    The following Identifier is an actual ResearchID[needs link] identifier for one of the involved Agents.
+                    The following <em class="keyword">Identifier</em> is an actual ResearchID <cite><a class="bibref" href="#ref-ResearcherID">ResearcherID</a></cite> identifier for one of the involved <em class="keyword">Agents</em>.
                 </p>
             </div>
         </div>
@@ -925,61 +955,69 @@ dataid:Contact
             <h4 id="authorizationexample"><strong>Special Example on Authorizations</strong><span class="backlink"> back to <a href="#toc">ToC</a></span></h4>
             <p>
                 The <a href="#d4e137">dataid:Authorization</a> is one of the more complex concepts of the DataID core ontology. While properties like <a href="#d4e1438">dataid:authorizedAgent</a>
-                (pointing out the Agent(s) holding an Authorization) and <a href="#d4e1148">dataid:authorityAgentRole</a> (specifying the AgentRole(s) an Agent has in the context of an Authorization)
+                (pointing out the <em class="keyword">Agent(s)</em> holding an <em class="keyword">Authorization</em>) and <a href="#d4e1148">dataid:authorityAgentRole</a> (specifying the
+                <em class="keyword">AgentRole(s)</em> an <em class="keyword">Agent</em> has in the context of an <em class="keyword">Authorization</em>)
                 are easy enough to follow, <a href="#d4e1456">dataid:authorizedFor</a> with all its <a href="#authoritychainproperties">sub-properties</a> might be harder to fathom.
                 For example, <a href="#d4e1311">dataid:authoritySubChain5</a> consists of a <a href="https://www.w3.org/TR/owl2-primer/#Property_Chains">property chain</a> spanning over the properties
-                <a href="#d4e1456">dataid:authorizedFor</a> and <a href="">foaf:primaryTopic</a>.
-                This means, if a knowledge base (KB) holds a statement like:
+                <a href="#d4e1456">dataid:authorizedFor</a> and <a href="http://xmlns.com/foaf/spec/#term_primaryTopic">foaf:primaryTopic</a>. This means, if a knowledge base (KB) holds a statement like:
             <pre><a style="color: orangered;">ex:someAuthorization</a> <a style="color: green;">dataid:authorizedFor</a> <a style="color: blue;">ex:someDataId</a> .</pre>
             and a further statement:
             <pre><a style="color: blue;">ex:someDataId</a> <a style="color: black;">foaf:primaryTopic</a> <a style="color: darkred;">ex:someDataset</a> .</pre>
             we can infer the following statement:
             <pre><a style="color: orangered;">ex:someAuthorization</a> <a style="color: green;">dataid:authorizedFor</a> <a style="color: darkred;">ex:someDataset</a> .</pre>
-            The next depiction illustrates all possible inferences of <a href="#d4e1456">dataid:authorizedFor</a>, based on its subproperties dataid:authoritySubChain1-7:
+            The next depiction illustrates all possible inferences of <a href="#d4e1456">dataid:authorizedFor</a>, based on its sub-properties dataid:authoritySubChain1-7:
             </p>
             <img src="images/AuthorizationExample4.png" alt="alt tag" style="max-width:100%;" />
             <p>
-                Here the Authorization for Agent Yellow is not only valid for the DataId Entity referred to via <a href="#d4e1456">dataid:authorizedFor</a>,
-                by inferring additional statements of this kind, the scope of this Authorization
-                is extended to every Dataset and Distribution connected via foaf:primaryTopic, dcat:distribution and void:subset (note: by using the transitive
-                super-property of void:subset, <a href="#d4e1777">dataid:transitiveSubset</a> to infer additional triples).
-                By this means we can extend the influence (or scope) of an Authorization over multiple Entities without having to point out all of them with <a href="#d4e1456">dataid:authorizedFor</a>.
-                Thereby we are able to define the AgentRole(s) (and consequently the Entitlements and Requirements) an Agents has in regard to different Entities within a DataID, with a minimum of RDF statements.
+                Here the <em class="keyword">Authorization</em> for <em class="keyword">Agent</em> Yellow is not only valid for the <em class="keyword">DataId</em> entity referred to via <a href="#d4e1456">dataid:authorizedFor</a>,
+                by inferring additional statements of this kind, the scope of this <em class="keyword">Authorization</em>
+                is extended to every <em class="keyword">Dataset</em> and <em class="keyword">Distribution</em> connected via <a href="http://xmlns.com/foaf/spec/#term_primaryTopic">foaf:primaryTopic</a>,
+                <a href="http://www.w3.org/ns/dcat#distribution">dcat:distribution</a> and <a href="http://vocab.deri.ie/void#subset">void:subset</a> 
+                (note: by using the transitive super-property of void:subset, <a href="#d4e1777">dataid:transitiveSubset</a> to infer additional triples).
+                By this means we can extend the influence (or scope) of an <em class="keyword">Authorization</em> over multiple <em class="keyword">Entities</em> without having to point out all of them with <a href="#d4e1456">dataid:authorizedFor</a>.
+                Thereby we are able to define the <em class="keyword">AgentRole(s)</em> (and consequently the Entitlements and Requirements) an <em class="keyword">Agents</em>
+                has in regard to different <em class="keyword">Entities</em> within a DataID, with a minimum of RDF statements.
             </p>
             <p>
                 This method has also its drawbacks, which are hereby addressed:<br/>
-                By introducing multiple Authorizations in the context of a DataID, providing the same AgentRole for an Entity the author of a DataID can encounter unintended behaviours.
-                In this example we expend the previous context by introducing an additional Agent Blue:
+                By introducing multiple <em class="keyword">Authorizations</em> in the context of a DataID, providing the same
+                <em class="keyword">AgentRole</em> for an <em class="keyword">Entity</em> the author of a DataID can encounter unintended behaviours.
+                In this example we expend the previous context by introducing an additional <em class="keyword">Agent</em> Blue:
             </p>
             <img src="images/AuthorizationExample2.png" alt="alt tag" style="max-width:100%;" />
             <p>
-                Dataset C (and all its Distributions) now has two Maintainers, both equally permitted to wield AuthorizedActions as allowed by the definition of <a href="#d4e700">dataid:Maintainer</a>.
-                This behaviour may or may not be intended by the author. To provide the means for restricting Entities to specific Authorizations, we created the property <a href="#d4e1619">dataid:needsSpecialAuthorization</a>.
+                <em class="keyword">Dataset</em> C (and all its <em class="keyword">Distributions</em>) now has two <em class="keyword">Maintainers</em>, both equally permitted to wield
+                <em class="keyword">AuthorizedActions</em> as allowed by the definition of <a href="#d4e700">dataid:Maintainer</a>.
+                This behaviour may or may not be intended by the author. To provide the means for restricting <em class="keyword">Entities</em> to specific <em class="keyword">Authorizations</em>,
+                we created the property <a href="#d4e1619">dataid:needsSpecialAuthorization</a>.
                 This sub-property of <a href="#d4e1872">dataid:underAuthorization</a> (the inverse of <a href="#d4e1456">dataid:authorizedFor</a>) allows to point out
-                those Authorizations with sufficient importance to exert its authority over an Entity, to the exclusion of other Authorization referred to via <a href="#d4e1456">dataid:authorizedFor</a>.
-                The following example again expends the already known scenario, by introducing a third Authorization for Agent Green:
+                those <em class="keyword">Authorizations</em> with sufficient importance to exert its authority over an <em class="keyword">Entity</em>,
+                to the exclusion of other <em class="keyword">Authorization</em> referred to via <a href="#d4e1456">dataid:authorizedFor</a>.
+                The following example again expends the already known scenario, by introducing a third <em class="keyword">Authorization</em> for <em class="keyword">Agent</em> Green:
             </p>
             <img src="images/AuthorizationExample.png" alt="alt tag" style="max-width:100%;" />
             <p>
-                While Dataset A and Distributions A1 and A2 are under the Authorizations of Agent Yellow and Agent Green, only Distribution A2 will be maintained by both Agents.
-                Dataset A and Distribution A1 require specifically the Authorization of Agent Green for the purpose of providing the AgentRole of Maintainer.
+                While <em class="keyword">Dataset</em> A and <em class="keyword">Distributions</em> A1 and A2 are under the <em class="keyword">Authorizations</em> of
+                <em class="keyword">Agent</em> Yellow and <em class="keyword">Agent</em> Green, only <em class="keyword">Distribution</em> A2 will be maintained by both <em class="keyword">Agents</em>.
+                <em class="keyword">Dataset</em> A and <em class="keyword">Distribution</em> A1 require specifically the <em class="keyword">Authorization</em> of <em class="keyword">Agent</em> Green
+                for the purpose of providing the <em class="keyword">AgentRole</em> of <em class="keyword">Maintainer</em>.
             </p>
             <p>
                 This mechanism is useful when introducing different levels of privacy into the domain of, for example, a Document Management System (DMS). Suppose we want to specify two groups of users of our DMS:
-                The first group (yellow group) should only be able to read the content of a given collection of documents, while the second group (blue group) is also allowed to modify these docments.
-                Therefore we define two new AgentRoles. AgentRole 'Reader' can only read the content of Entities available to it, while the 'Editor' allows also for modifying the content.
-                These roles are linked to via <a href="#d4e1148">dataid:authorityAgentRole</a> from the respective Authorizations of our two groups (<a href="#d4e1438">dataid:authorizedAgent</a> points out the members of a group).
+                The first group (yellow group) should only be able to read the content of a given collection of documents, while the second group (blue group) is also allowed to modify these documents.
+                Therefore we define two new <em class="keyword">AgentRoles</em>. <em class="keyword">AgentRole</em> 'Reader' can only read the content of <em class="keyword">Entities</em> available to it, while the 'Editor' allows also for modifying the content.
+                These <em class="keyword">Roles</em> are linked to via <a href="#d4e1148">dataid:authorityAgentRole</a> from the respective <em class="keyword">Authorizations</em> of our two groups (<a href="#d4e1438">dataid:authorizedAgent</a> points out the members of a group).
             </p>
             <img src="images/DmsExample.png" alt="alt tag" style="max-width:100%;" />
             <p>
-                Both authorizations are authorized for the same document collection (Dataset) and its Distributions as PDF and MS-Word versions of the same content in the DMS.
+                Both <em class="keyword">Authorizations</em> are authorized for the same document collection (<em class="keyword">Dataset</em>) and its <em class="keyword">Distributions</em> as PDF and MS-Word versions of the same content in the DMS.
                 Since the MS_Word version of the documents is used for editing the content, while its PDF counterpart is the publishing version,
-                it is sensible to allow only the Editors (blue group) access to the MS_Word Distribution by using <a href="#d4e1619">dataid:needsSpecialAuthorization</a>.
+                it is sensible to allow only the Editors (blue group) access to the MS_Word <em class="keyword">Distribution</em> by using <a href="#d4e1619">dataid:needsSpecialAuthorization</a>.
                 <br/>The existence of this statement:
             <pre>ex:distributionMsWord dataid:needsSpecialAuthorization ex:authorizationBlue .</pre>
             lets us directly infer:
             <pre>ex:authorizationBlue dataid:authorizedFor ex:distributionMsWord .</pre>
-            Since <a href="#d4e1619">dataid:needsSpecialAuthorization</a> is a subproperty of <a href="#d4e1872">dataid:underAuthorization</a> which, in turn, is an inverse property of <a href="#d4e1456">dataid:authorizedFor</a> .
+            Since <a href="#d4e1619">dataid:needsSpecialAuthorization</a> is a sub-property of <a href="#d4e1872">dataid:underAuthorization</a> which, in turn, is an inverse property of <a href="#d4e1456">dataid:authorizedFor</a> .
             </p>
         </div>
 
@@ -1014,7 +1052,7 @@ dataid:Contact
                 <h3>Agent<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Agent</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Agents are general entities representing persons, legal persons or organisations.</p>
+                <div class="comment"><p><em class="keyword">Agents</em> are real or legal persons, groups of persons, programs, organisations etc.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1031,8 +1069,8 @@ dataid:Contact
                 <h3>AgentRole<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#AgentRole</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Agent roles are defined by a set of rights and responsibilities (see AuthorizedAction)
-                    an agent, assigned with this role, has to address or can execute.</p>
+                <div class="comment"><p><em class="keyword">AgentRoles</em> are defined by a set of rights and responsibilities (see <em class="keyword">AuthorizedAction</em>)
+                    an <em class="keyword">Agent</em>, assigned with this <em class="keyword">Role</em>, has to address or can execute.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1050,13 +1088,13 @@ dataid:Contact
                 <h3>Authorization<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Authorization</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This concept is a mediator between a set of entities (or scope) defines by the property
-                    dataid:authorizedFor,
-                    a set of AgentRoles defining rights and responsibilities and Agents, fulfilling the AgentRoles, in regard to
-                    the collection of entities.
-                    This subclass of prov:Attribution qualifies the relation prov:wasAttributedTo between prov:Entity and
-                    prov:Agent with the AgentRoles
-                    and AuthorizedActions of the DataID-domain.</p>
+                <div class="comment"><p>This concept is a mediator between a set of <em class="keyword">Entities</em> (or scope) defines by the property
+                    <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>,
+                    a set of <em class="keyword">AgentRoles</em> defining rights and responsibilities (<a href="#d4e1148" title="http://dataid.dbpedia.org/ns/core#authorityAgentRole"><span>dataid:authorityAgentRole</span></a>)
+                    and <em class="keyword">Agents</em> (<a href="#d4e1112" title="http://dataid.dbpedia.org/ns/core#associatedAgent"><span>dataid:associatedAgent</span></a>), fulfilling the <em class="keyword">AgentRoles</em>, in regard to
+                    the collection of <em class="keyword">Entities</em>. This subclass of <a href="https://www.w3.org/TR/prov-o/#Attribution">prov:Attribution</a> qualifies the relation
+                    <a href="https://www.w3.org/TR/prov-o/#wasAttributedTo">prov:wasAttributedTo</a> between <a href="https://www.w3.org/TR/prov-o/#Entity">prov:Entity</a> and <a href="https://www.w3.org/TR/prov-o/#Agent">prov:Agent</a> with the <em class="keyword">AgentRoles</em>
+                    and <em class="keyword">AuthorizedActions</em> of the DataID-domain.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1074,10 +1112,10 @@ dataid:Contact
                 <h3>AuthorizedAction<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#AuthorizedAction</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Authorized actions may constiute either of activities an Agent can execute in regard to
-                    a collection of prov:Entities or of
-                    responsibilities an Agent should act upon (e.g. make certain decisions if necessary or act upon certain
-                    events).</p>
+                <div class="comment"><p><em class="keyword">AuthorizedActions</em> may be comprised either of activities an <em class="keyword">Agent</em> can execute in regard to a collection of <em class="keyword">Entities</em>
+                    (<a href="#d4e581" title="http://dataid.dbpedia.org/ns/core#EntitledAction"><span>dataid:EntitledAction</span></a>), or of
+                    responsibilities an <em class="keyword">Agent</em> should act upon (<a href="#d4e987" title="http://dataid.dbpedia.org/ns/core#ResponsibleAction"><span>dataid:ResponsibleAction</span></a>)
+                    (e.g. make certain decisions if necessary or act upon certain events).</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1092,9 +1130,9 @@ dataid:Contact
                 <h3>DataId<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#DataId</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>A DataId Induvidual serves as a root Entity for every DataID document describing one or
-                    more datasets. As a subclass of dcat:CatalogRecord / void:DatasetDescription it describes not a dataset
-                    itself but provides metadata about its entry in a dcat:Catalog and/or its relations to repositories or other
+                <div class="comment"><p>A <em class="keyword">DataId</em> instance serves as a root entity for every DataID document describing one or
+                    more datasets. As a subclass of <a href="http://www.w3.org/ns/dcat#CatalogRecord">dcat:CatalogRecord</a> / <a href="http://vocab.deri.ie/void#DatasetDescription">void:DatasetDescription</a> it describes not a dataset
+                    itself but provides metadata about its entry in a <a href="http://www.w3.org/ns/dcat#Catalog">dcat:Catalog</a> and/or its relations to repositories or other
                     data collections .</p>
                 </div>
                 <dl class="description">
@@ -1119,11 +1157,9 @@ dataid:Contact
                 <h3>Dataset<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Dataset</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>A collection of data, available for access in one or more formats. Dataset resources
-                    describe the
-                    concept of the dataset, not it's manifestation (the data itself), which can be acquired as a
-                    dataid:Distribution.
-                    Datasets are prov:Entities and can be generated by prov:Activities.</p>
+                <div class="comment"><p>A collection of data, available for access in one or more formats. <em class="keyword">Dataset</em> resources describe the
+                    concept of the dataset, not it's manifestation (the data itself), which can be acquired as a <em class="keyword">Distribution</em>.
+                    <em class="keyword">Datasets</em> are <em class="keyword">Entities</em> and can be generated by <a href="https://www.w3.org/TR/prov-o/#Activity">prov:Activities</a>.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1144,7 +1180,7 @@ dataid:Contact
                     <dd><a href="http://purl.org/dc/terms/temporal" title="http://purl.org/dc/terms/temporal">dct:temporal</a>
                         <span class="logic">only</span> <a href="http://www.w3.org/2006/time#Interval" title="http://www.w3.org/2006/time#Interval">time:Interval</a></dd>
                     <dd><a href="http://purl.org/dc/terms/spatial" title="http://purl.org/dc/terms/spatial">dct:spatial</a>
-                        <span class="logic">only</span> <a href="http://www.geonames.org/ontology#Feature" title="http://www.geonames.org/ontology#Feature">ontology:Feature</a>
+                        <span class="logic">only</span> <a href="http://www.geonames.org/ontology#Feature" title="http://www.geonames.org/ontology#Feature">geonames:Feature</a>
                     </dd>
                     <dd><a href="http://xmlns.com/foaf/0.1/isPrimaryTopicOf" title="http://xmlns.com/foaf/0.1/isPrimaryTopicOf">foaf:isPrimaryTopicOf</a>
                         <span class="logic">only</span> <a href="#d4e259" title="http://dataid.dbpedia.org/ns/core#DataId">DataId</a><sup title="class" class="type-c">c</sup></dd>
@@ -1160,8 +1196,8 @@ dataid:Contact
                 <h3>Directory<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Directory</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>A dedicated directory holding (multiple) files of the same dataset, which, when put
-                    together, make up the whole dataset.</p>
+                <div class="comment"><p>A dedicated directory holding (multiple) files of the same <em class="keyword">Dataset</em>, which, when put
+                    together, make up the whole <em class="keyword">Dataset</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1172,8 +1208,8 @@ dataid:Contact
                 <h3>Distribution<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Distribution</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Distributions describe a single manifestation of the pertaining Dataset (for example;
-                    its data format/serialization or a service endpoint including the procedure required to acces the data).</p>
+                <div class="comment"><p><em class="keyword">Distributions</em> describe a single manifestation of the pertaining <em class="keyword">Dataset</em> (for example;
+                    its data format/serialization or a <em class="keyword">ServiceEndpoint</em> including the procedure required to access the data).</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1198,9 +1234,9 @@ dataid:Contact
                 <h3>EntitledAction<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#EntitledAction</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>EntitledActions describe actions an Agent is allowed to perform when holding a certain
-                    AgentRole.
-                    These actions may address restricted matters like access, modification rights and others.</p>
+                <div class="comment"><p><em class="keyword">EntitledActions</em> describe actions an <em class="keyword">Agent</em> is allowed to perform when holding a certain
+                    <em class="keyword">AgentRole</em>.
+                    These <em class="keyword">Actions</em> may address restricted matters like access, modification rights and others.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1215,8 +1251,7 @@ dataid:Contact
                 <h3>FileCollection<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#FileCollection</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Multiple files constituting one (complete) dataset (files in different locations are
-                    possible).</p>
+                <div class="comment"><p>Multiple files constituting one (complete) <em class="keyword">Dataset</em> (files in different directories or servers are allowed, as opposed to <em class="keyword">Directory</em>).</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1227,10 +1262,9 @@ dataid:Contact
                 <h3>Identifier<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Identifier</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Uniquely identifies any resource, given an identifier as literal (see dataid:statement)
-                    and a corresponding aid/pid scheme
-                    (ORCID, ResearcherID etc. pointed out via datacite:usesIdentifierScheme). Optionally it can point out a
-                    reference document on the web (about this identifier) using dct:references.</p>
+                <div class="comment"><p>Uniquely identifies any resource, given an identifier as literal (see <a href="#d4e1762" title="http://dataid.dbpedia.org/ns/core#statement"><span>dataid:statement</span></a>)
+                    and a corresponding identifier scheme (e.g. a aid/pid scheme like: ORCID, ResearcherID etc. pointed out via <a href="http://www.sparontologies.net/ontologies/datacite/source.html#d4e242">datacite:usesIdentifierScheme</a>).
+                    Optionally it can point out a reference document on the web (about this <em class="keyword">Identifier</em>) using <a href="http://dublincore.org/documents/dcmi-terms/#terms-references">dct:references</a>.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1243,10 +1277,9 @@ dataid:Contact
                 <h3>MediaType<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#MediaType</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Extends the dct:MediaType class of Dublin Core, providing the Iana media type
-                    description (or mime type) and common file extensions used.
-                    A pointer to an inner media types can describe (multiple) layers of compressions and all internal media
-                    types.</p>
+                <div class="comment"><p>Extends the <a href="http://dublincore.org/documents/dcmi-terms/#terms-MediaTypeOrExtent">dct:MediaTypeOrExtend</a> class of Dublin Core, providing the <a href="#ref-RFC2046">IANA media type</a>
+                    description (or mime type) and common file extensions used. A pointer to an inner media (<a href="#d4e1548" title="http://dataid.dbpedia.org/ns/core#innerMediaType"><span>dataid:innerMediaType</span></a>)
+                    can describe (multiple) layers of compressions and all internal media types.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1261,10 +1294,9 @@ dataid:Contact
                 <h3>ResponsibleAction<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ResponsibleAction</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>AgentRoles provide rights as well as responsibilities an agent has to attend to in order
-                    to fulfill this role.
-                    Responsible actions should describe actions pertaining to responsibilities an agent is supposed to do when
-                    holding a specific AgentRole.</p>
+                <div class="comment"><p><em class="keyword">AgentRoles</em> provide rights as well as responsibilities an agent has to attend to in order
+                    to fulfill this <em class="keyword">Role</em>. <em class="keyword">ResponsibleActions</em> should describe actions pertaining to responsibilities an agent is supposed to do when
+                    holding a specific <em class="keyword">AgentRole</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1279,8 +1311,7 @@ dataid:Contact
                 <h3>ServiceEndpoint<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ServiceEndpoint</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>A specific distribution, which is accessible via an access url and provides data as a
-                    web service in a certain format.</p>
+                <div class="comment"><p>A specific <em class="keyword">Distribution</em>, which is accessible via an access url and provides data as a web service in a certain format.</p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1292,9 +1323,12 @@ dataid:Contact
                 <h3>SimpleStatement<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#SimpleStatement</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>A SimpleStatement either a primitive literal containing unstructured text (see
-                    dataid:statement), or a web reference to a statment (using dct:references).
-                    This class implements several classes of Dublin Core which are not further specified within DC.</p>
+                <div class="comment"><p>
+                    A <em class="keyword">SimpleStatement</em> is intended as a tool for conveying a statement, definition or point of view about a certain topic.
+                    Using either a simple literal (using <a href="#d4e1762" title="http://dataid.dbpedia.org/ns/core#statement"><span>dataid:statement</span></a>)
+                    to provide a quotation, or by a referencing a web resource providing or representing the statement in any given medium (picture, text, video etc.).
+                    This class implements several classes of Dublin Core which are not further specified within DC.
+                </p>
                 </div>
                 <dl class="description">
                     <dt>has super-classes</dt>
@@ -1312,7 +1346,7 @@ dataid:Contact
                 <h3>SingleFile<sup title="class" class="type-c">c</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#classes">Class ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#SingleFile</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>A single data dump file representing the whole dataset, in a certain
+                <div class="comment"><p>A single data dump file representing the whole <em class="keyword">Dataset</em>, in a certain
                     format/serialization.</p>
                 </div>
                 <dl class="description">
@@ -1371,7 +1405,7 @@ dataid:Contact
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#accessProcedure</p>
                 <dl class="definedBy"></dl>
                 <div class="comment"><p>Describes the steps which have to be taken to gain access to the described data at the
-                    location of a Distribution (e.g. register an account to gain dct:accessRights).</p>
+                    location of a <em class="keyword">Distribution</em> (e.g. register an account to gain dct:accessRights).</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1386,7 +1420,7 @@ dataid:Contact
                 <h3>allowsFor<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#allowsFor</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>An dataid:AgentRole allows an agent to execute certain AuthorizedActions.</p>
+                <div class="comment"><p>An <em class="keyword">AgentRole</em> allows an <em class="keyword">Agent</em> to execute certain <em class="keyword">AuthorizedActions</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1403,8 +1437,8 @@ dataid:Contact
                 <h3>associatedAgent<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#associatedAgent</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>An agent which is generally connected to the dataset, their exact function in regard to
-                    the Entity has to be specified by the qualification dataid:Authorization.</p>
+                <div class="comment"><p>An <em class="keyword">Agent</em> which is generally connected to the <em class="keyword">Dataset</em>, their exact function in regard to
+                    the <em class="keyword">Entity</em> has to be specified by the qualification of an <em class="keyword">Authorization</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1425,8 +1459,8 @@ dataid:Contact
                 <h3>authorityAgentRole<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authorityAgentRole</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Provides a role an Agent fills out in the scope provided by the dataid:Authorization,
-                    thereby allowing for certain AuthorizedActions an agent can execute.</p>
+                <div class="comment"><p>Provides a <em class="keyword">AgentRole</em> an <em class="keyword">Agent</em> fills out in the scope provided by the <em class="keyword">Authorization</em>,
+                    thereby allowing for certain <em class="keyword">AuthorizedActions</em> an <em class="keyword">Agent</em> can execute.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1445,8 +1479,8 @@ dataid:Contact
                 <h3>authorizedAction<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authorizedAction</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Points out AuthorizedActions, Agents are allowed to execute under a given
-                    dataid:Authorization (and its chosen AgentRoles).</p>
+                <div class="comment"><p>Points out <em class="keyword">AuthorizedActions</em>, <em class="keyword">Agents</em> are allowed to execute under a given
+                    <em class="keyword">Authorization</em> (and its chosen <em class="keyword">AgentRoles</em>).</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1465,8 +1499,8 @@ dataid:Contact
                 <h3>authorizedAgent<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authorizedAgent</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Points out an Agent which holds the rights granted by a dataid:Authorization (e.g. to
-                    modify the metadata of a Dataset).</p>
+                <div class="comment"><p>Points out an <em class="keyword">Agent</em> which holds the rights granted by an <em class="keyword">Authorization</em> (e.g. to
+                    modify the metadata of a <em class="keyword">Dataset</em>).</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1488,10 +1522,10 @@ dataid:Contact
                 <h3>authorizedFor<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authorizedFor</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Defines the scope of a dataid:Authorization. An Agent has the right to execute
-                    AuthorizedActions for all Entities of this scope.
-                    The property chain axioms in its subproperties define how the scope of an dataid:Authorization is spread to
-                    other Entities.</p>
+                <div class="comment"><p>Defines the scope of an <em class="keyword">Authorization</em>. An <em class="keyword">Agent</em> has the right to execute
+                    <em class="keyword">AuthorizedActions</em> for all <em class="keyword">Entities</em> of this scope.
+                    The property chain axioms in its sub-properties define how the scope of an <em class="keyword">Authorization</em> is extended to
+                    other <em class="keyword">Entities</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1512,7 +1546,7 @@ dataid:Contact
                         href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#checksum</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The Checksum value allows the contents of a file to be authenticated, since it shifts
+                <div class="comment"><p>The checksum value allows the contents of a file to be authenticated, since it shifts
                     even with small changes to the file.</p>
                 </div>
                 <div class="description">
@@ -1530,7 +1564,7 @@ dataid:Contact
                 <h3>dataDescription<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#dataDescription</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Provides a general description of the data represented by this dataset.</p>
+                <div class="comment"><p>Provides a general description of the data represented by this <em class="keyword">Dataset</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1546,7 +1580,7 @@ dataid:Contact
                 <h3>growth<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#growth</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Indication of what size the approximated end volume of the data is.</p>
+                <div class="comment"><p>Indication of what size the approximated end volume of the <em class="keyword">Dataset</em> is.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1562,8 +1596,8 @@ dataid:Contact
                 <h3>hasAuthorization<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#hasAuthorization</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Provides an dataid:Agent with the dataid:Authorization for a given scope of Entities
-                    (e.g. Dataset, Distribution etc.), granting rights to certain AuthorizedActions.</p>
+                <div class="comment"><p>Provides an <em class="keyword">Agent</em> with the <em class="keyword">Authorization</em> for a given scope of <em class="keyword">Entities</em>
+                    (e.g. <em class="keyword">Dataset</em>, <em class="keyword">Distribution</em> etc.), granting rights to execute certain <em class="keyword">AuthorizedActions</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1578,8 +1612,7 @@ dataid:Contact
                         href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#identifier</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>An unique identifier for an Agent or Entity (for other, non DataID related
-                    identifiers).</p>
+                <div class="comment"><p>An unique identifier for an <em class="keyword">Agent</em> or <em class="keyword">Entity</em> (for other, non DataID related identifiers).</p>
                 </div>
                 <div class="description"><p><strong>has characteristics:</strong> inverse functional</p>
                     <dl>
@@ -1598,8 +1631,7 @@ dataid:Contact
                 <h3>identifierScheme<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#identifierScheme</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Points out which scheme of identifiers is used to uniquely identify resources inside a
-                    Dataset.</p>
+                <div class="comment"><p>Points out which scheme of identifiers is used to uniquely identify resources inside a <em class="keyword">Dataset</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1616,7 +1648,7 @@ dataid:Contact
                         href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#inCatalog</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The inverse property of dcat:record, pointing back to the dcat:Catalog.</p>
+                <div class="comment"><p>The inverse property of <a href="http://www.w3.org/ns/dcat#record">dcat:record</a>, pointing back to the <a href="http://www.w3.org/ns/dcat#Catalog">dcat:Catalog</a> in which this DataId is recorded.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1637,7 +1669,7 @@ dataid:Contact
                 <h3>innerMediaType<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#innerMediaType</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Points out the MediaType of the (compressed) file inside another file (relevant for
+                <div class="comment"><p>Points out the <em class="keyword">MediaType</em> of the (compressed) file inside another file (relevant for
                     archive files).</p>
                 </div>
                 <div class="description"><p><strong>has characteristics:</strong> functional</p>
@@ -1656,7 +1688,7 @@ dataid:Contact
                 <h3>isDistributionOf<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#isDistributionOf</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Inverse property of dcat:distribution, linking a Distribution to a Dataset</p>
+                <div class="comment"><p>Inverse property of <a href="http://www.w3.org/ns/dcat#distribution">dcat:distribution</a>, linking a <em class="keyword">Distribution</em> to a <em class="keyword">Dataset</em></p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1675,7 +1707,7 @@ dataid:Contact
                 <h3>latestVersion<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#latestVersion</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Latest version of a DataID/Dataset/Distribution.</p>
+                <div class="comment"><p>Latest version of a <em class="keyword">DataId</em>/<em class="keyword">Dataset</em>/<em class="keyword">Distribution</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1692,8 +1724,8 @@ dataid:Contact
                 <h3>needsSpecialAuthorization<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#needsSpecialAuthorization</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Points out a dataid:Authorization which grants some degree of authority over this
-                    resource to the exclusion of other dataid:Authorizations which are not specified with this property.</p>
+                <div class="comment"><p>Points out an <em class="keyword">Authorization</em> which grants some degree of authority over this
+                    resource to the exclusion of other <em class="keyword">Authorizations</em> which are not specified with this property.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1711,7 +1743,7 @@ dataid:Contact
                 <h3>nextVersion<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#nextVersion</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Next version of a DataID/Dataset/Distribution.</p>
+                <div class="comment"><p>Next version of a <em class="keyword">DataId</em>/<em class="keyword">Dataset</em>/<em class="keyword">Distribution</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1731,7 +1763,7 @@ dataid:Contact
                 <div class="comment"><p>General description of how data will be shared.
                     For example: embargo periods (if any), outlines of technical mechanisms for dissemination or a definition of
                     whether access will be widely open or restricted to specific groups.
-                    In case the dataset cannot be shared, the reasons for this should be mentioned (e.g. ethical, rules of
+                    In case the <em class="keyword">Dataset</em> cannot be shared, the reasons for this should be mentioned (e.g. ethical, rules of
                     personal data, intellectual property, commercial, privacy-related, security-related).</p>
                 </div>
                 <div class="description">
@@ -1748,8 +1780,8 @@ dataid:Contact
                 <h3>preview<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#preview</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Provides the url of a short preview of the data provided by a distribution, helpful when
-                    conveying type and format of the data provided.</p>
+                <div class="comment"><p>Provides the url of a short preview of the data provided by a <em class="keyword">Distribution</em>, helpful when
+                    conveying type and format of the data provided as an example.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1765,7 +1797,7 @@ dataid:Contact
                 <h3>previousVersion<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#previousVersion</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Previous version of a DataID/Dataset/Distribution.</p>
+                <div class="comment"><p>Previous version of a <em class="keyword">DataId</em>/<em class="keyword">Dataset</em>/<em class="keyword">Distribution</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1782,7 +1814,7 @@ dataid:Contact
                 <h3>reuseAndIntegration<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#reuseAndIntegration</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Information on the possibilities for integration and reuse of the dataset.</p>
+                <div class="comment"><p>Information on the possibilities for integration and reuse of the <em class="keyword">Dataset</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1799,7 +1831,7 @@ dataid:Contact
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#similarData</p>
                 <dl class="definedBy"></dl>
                 <div class="comment"><p>Information on the existence (or not) of similar data (see also
-                    dataid:similarDataset).</p>
+                    <a href="#d4e1729" title="http://dataid.dbpedia.org/ns/core#similarDataset"><span>dataid:similarDataset</span></a>).</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1815,7 +1847,7 @@ dataid:Contact
                 <h3>similarDataset<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#similarDataset</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Points to other dataset containing related data.</p>
+                <div class="comment"><p>Points to other <em class="keyword">Datasets</em> containing related data.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1833,7 +1865,7 @@ dataid:Contact
                 <h3>softwareRquirement<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#softwareRquirement</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Software needed to access the data provided via this Distribution or otherwise relevant
+                <div class="comment"><p>Software needed to access the data provided via this <em class="keyword">Distribution</em> or otherwise relevant
                     for consuming the data.</p>
                 </div>
                 <div class="description">
@@ -1849,15 +1881,16 @@ dataid:Contact
                 <h3>transitiveSubset<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#transitiveSubset</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Transitive super property of void:subset. This property is used to infer
-                    dataid:authorizedFor statements transitively over dataset hierarchies of arbitrary depth.</p>
+                <div class="comment"><p>Transitive super property of <a href="http://vocab.deri.ie/void#subset">void:subset</a>. This property is used to infer
+                    <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    statements transitively over dataset hierarchies of arbitrary depth.</p>
                 </div>
             </div>
             <div id="d4e1821" class="entity"><a name="http://dataid.dbpedia.org/ns/core#typeReference"></a>
                 <h3>typeReference<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#typeReference</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Refers to a standard document of the mime type described.</p>
+                <div class="comment"><p>Refers to a standard document of the <em class="keyword">MediaType</em> described.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1872,8 +1905,8 @@ dataid:Contact
                 <h3>underAuthorization<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#underAuthorization</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Points out a dataid:Authorization which grants some degree of authority over this
-                    resource (inverse property of dataid:authorizedFor).</p>
+                <div class="comment"><p>Points out an <em class="keyword">Authorization</em> which grants some degree of authority over this
+                    resource (inverse property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>).</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1895,8 +1928,7 @@ dataid:Contact
                 <h3>usefulness<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#usefulness</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Description of to whom the data could be useful, and whether it underpins a scientific
-                    publication.</p>
+                <div class="comment"><p>Description of to whom the <em class="keyword">Dataset</em> could be useful, and whether it underpins a scientific publication.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1927,8 +1959,8 @@ dataid:Contact
                 <h3>isInheritable<sup title="data property" class="type-dp">dp</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#isInheritable</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Indicated whether this dataid:Authorization will be valid after an update to the DataID
-                    or a scope element (by default this property should be 'true').</p>
+                <div class="comment"><p>Indicated whether this <em class="keyword">Authorization</em> will be valid after an update to the DataID
+                    or a scope element.</p>
                 </div>
                 <div class="description"><p><strong>has characteristics:</strong> functional</p>
                     <dl>
@@ -1944,7 +1976,7 @@ dataid:Contact
                 <h3>statement<sup title="data property" class="type-dp">dp</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#statement</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>An actual textual statement (or string).</p>
+                <div class="comment"><p>An actual textual statement or literal (string).</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1957,7 +1989,7 @@ dataid:Contact
                 <h3>typeExtension<sup title="data property" class="type-dp">dp</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#typeExtension</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Lists file extensions commonly used with this mime type.</p>
+                <div class="comment"><p>Lists file extensions commonly used with this <em class="keyword">MediaType</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1972,7 +2004,7 @@ dataid:Contact
                 <h3>typeName<sup title="data property" class="type-dp">dp</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#typeName</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Names the media types described.</p>
+                <div class="comment"><p>Names the <em class="keyword">MediaType</em> described.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -1987,7 +2019,7 @@ dataid:Contact
                 <h3>typeTemplate<sup title="data property" class="type-dp">dp</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#typeTemplate</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The template (or mime type string) of a MediaType.</p>
+                <div class="comment"><p>The template (or mime type string) of a <em class="keyword">MediaType</em>.</p>
                 </div>
                 <div class="description"><p><strong>has characteristics:</strong> functional</p>
                     <dl>
@@ -2021,7 +2053,7 @@ dataid:Contact
                 <h3>validFrom<sup title="data property" class="type-dp">dp</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#validFrom</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The influence an agent has over an Entity is valid from a certain point in time.</p>
+                <div class="comment"><p>The influence an <em class="keyword">Agent</em> has over an <em class="keyword">Entity</em> is valid from a certain point in time.</p>
                 </div>
                 <div class="description"><p><strong>has characteristics:</strong> functional</p>
                     <dl>
@@ -2037,7 +2069,7 @@ dataid:Contact
                 <h3>validUntil<sup title="data property" class="type-dp">dp</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#dataproperties">Data Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#validUntil</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The influence an agent has over an Entity is valid until a certain point in time.</p>
+                <div class="comment"><p>The influence an <em class="keyword">Agent</em> has over an <em class="keyword">Entity</em> is valid until a certain point in time.</p>
                 </div>
                 <div class="description"><p><strong>has characteristics:</strong> functional</p>
                     <dl>
@@ -2067,8 +2099,8 @@ dataid:Contact
                 <h3>authoritySubChain1<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authoritySubChain1</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This sub-property of dataid:authorizedFor provides a property chain axiom, extending the
-                    reach of dataid:authorizedFor to other entities.</p>
+                <div class="comment"><p>This sub-property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    provides a property chain axiom, extending the reach of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a> to other <em class="keyword">Entities</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -2084,8 +2116,8 @@ dataid:Contact
                 <h3>authoritySubChain2<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authoritySubChain2</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This sub-property of dataid:authorizedFor provides a property chain axiom, extending the
-                    reach of dataid:authorizedFor to other entities.</p>
+                <div class="comment"><p>This sub-property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    provides a property chain axiom, extending the reach of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a> to other <em class="keyword">Entities</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -2102,8 +2134,8 @@ dataid:Contact
                 <h3>authoritySubChain3<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authoritySubChain3</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This sub-property of dataid:authorizedFor provides a property chain axiom, extending the
-                    reach of dataid:authorizedFor to other entities.</p>
+                <div class="comment"><p>This sub-property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    provides a property chain axiom, extending the reach of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a> to other <em class="keyword">Entities</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -2119,8 +2151,8 @@ dataid:Contact
                 <h3>authoritySubChain4<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authoritySubChain4</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This sub-property of dataid:authorizedFor provides a property chain axiom, extending the
-                    reach of dataid:authorizedFor to other entities.</p>
+                <div class="comment"><p>This sub-property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    provides a property chain axiom, extending the reach of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a> to other <em class="keyword">Entities</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -2135,8 +2167,8 @@ dataid:Contact
                 <h3>authoritySubChain5<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authoritySubChain5</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This sub-property of dataid:authorizedFor provides a property chain axiom, extending the
-                    reach of dataid:authorizedFor to other entities.</p>
+                <div class="comment"><p>This sub-property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    provides a property chain axiom, extending the reach of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a> to other <em class="keyword">Entities</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -2152,8 +2184,8 @@ dataid:Contact
                 <h3>authoritySubChain6<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authoritySubChain6</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This sub-property of dataid:authorizedFor provides a property chain axiom, extending the
-                    reach of dataid:authorizedFor to other entities.</p>
+                <div class="comment"><p>This sub-property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    provides a property chain axiom, extending the reach of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a> to other <em class="keyword">Entities</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -2169,8 +2201,8 @@ dataid:Contact
                 <h3>authoritySubChain7<sup title="object property" class="type-op">op</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#objectproperties">Object Property ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#authoritySubChain7</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This sub-property of dataid:authorizedFor provides a property chain axiom, extending the
-                    reach of dataid:authorizedFor to other entities.</p>
+                <div class="comment"><p>This sub-property of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a>
+                    provides a property chain axiom, extending the reach of <a href="#d4e1456" title="http://dataid.dbpedia.org/ns/core#authorizedFor"><span>dataid:authorizedFor</span></a> to other <em class="keyword">Entities</em>.</p>
                 </div>
                 <div class="description">
                     <dl>
@@ -2222,7 +2254,8 @@ dataid:Contact
             <div id="d4e64" class="entity"><a name="http://dataid.dbpedia.org/ns/core#AgentRoleScheme"></a>
                 <h3>AgentRoleScheme<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#AgentRoleScheme</p>
-                <div class="comment"><p>Description of the agent role hierarchy.</p>
+                <div class="comment"><p>The <em class="keyword">AgentRole</em> scheme (hierarchy) provided by DataID core, depicting <em class="keyword">Roles</em>
+                    commonly used in the context of a file or document management system. This scheme should be replaced in other use cases.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2233,7 +2266,7 @@ dataid:Contact
                 <h3>AgentSupervision<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#AgentSupervision</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The responsibility to supervise other agents.</p>
+                <div class="comment"><p>The responsibility (<em class="keyword">ResponsibleAction</em>) to supervise other <em class="keyword">Agents</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2244,7 +2277,7 @@ dataid:Contact
                 <h3>AllEntitlements<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#AllEntitlements</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Encompasses all entitlements.</p>
+                <div class="comment"><p>Represents all entitlements (<em class="keyword">EntitledActions</em>). Top concept of the <em class="keyword">AuthorizedActionScheme</em> hierarchy.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2255,7 +2288,7 @@ dataid:Contact
                 <h3>AllResponsibilities<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#AllResponsibilities</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Encompasses all responsibilities.</p>
+                <div class="comment"><p>Encompasses all responsibilities (<em class="keyword">ResponsibleActions</em>). Top concept of the <em class="keyword">AuthorizedActionScheme</em> hierarchy.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2265,7 +2298,7 @@ dataid:Contact
             <div id="d4e163" class="entity"><a name="http://dataid.dbpedia.org/ns/core#AuthorizedActionScheme"></a>
                 <h3>AuthorizedActionScheme<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#AuthorizedActionScheme</p>
-                <div class="comment"><p>Description of the authorized action hierarchy.</p>
+                <div class="comment"><p>Description of the <em class="keyword">AuthorizedAction</em> hierarchy.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2276,8 +2309,7 @@ dataid:Contact
                 <h3>Contact<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Contact</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Contact agent. An agent that can be contacted for general requests about the
-                    resource.</p>
+                <div class="comment"><p>Contact agent. An <em class="keyword">Agent</em> that can be contacted for general requests about the resource.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2298,7 +2330,7 @@ dataid:Contact
                 <h3>Contributor<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Contributor</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Contributor to the resource. An agent that was involved in creating or maintaining the
+                <div class="comment"><p>Contributor to the resource. An <em class="keyword">Agent</em> that was involved in creating or maintaining the
                     resource but does not have the main part in this activity.</p>
                 </div>
                 <dl class="description">
@@ -2316,7 +2348,7 @@ dataid:Contact
                 <h3>Creator<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Creator</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Creator of the resource. An agent that is credited with a main part in the initial
+                <div class="comment"><p>Creator of the resource. An <em class="keyword">AgentRole</em> that is credited with a main part in the initial
                     creation of the resource.</p>
                 </div>
                 <dl class="description">
@@ -2334,7 +2366,7 @@ dataid:Contact
                 <h3>DeleteContent<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#DeleteContent</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Entitled action to delete some content of an entity.</p>
+                <div class="comment"><p><em class="keyword">EntitledAction</em> to delete some content of an entity.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2345,7 +2377,7 @@ dataid:Contact
                 <h3>Guest<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Guest</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>A visitor/anonymous agent has only read rights on public and semi-private documents</p>
+                <div class="comment"><p>A visitor or anonymous <em class="keyword">Agent</em> has only read rights on public documents</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2362,8 +2394,8 @@ dataid:Contact
                 <h3>GuestAgent<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#GuestAgent</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Use this agent as a stand in for any agent not specifically defined in a domain,
-                    granting public access to an entity.</p>
+                <div class="comment"><p>Use this <em class="keyword">Agent</em> as a stand in for any <em class="keyword">Agent</em> not specifically defined in a domain,
+                    granting public access to an <em class="keyword">Entity</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2375,8 +2407,8 @@ dataid:Contact
                 <h3>GuestAuthorization<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#GuestAuthorization</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>This authorization can be used to point out that the content of an entity is public an
-                    can be read by anyone (see also dataid:Guest).</p>
+                <div class="comment"><p>This <em class="keyword">Authorization</em> can be used to point out that the content of an entity is public an
+                    can be read by anyone (see also <a href="#d4e609" title="http://dataid.dbpedia.org/ns/core#Guest"><span>dataid:Guest</span></a>).</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2394,8 +2426,8 @@ dataid:Contact
                 <h3>Maintainer<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Maintainer</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Maintainer of the dataset. An agent that ensures the technical correctness,
-                    accessibility and up-to-dateness of a dataset.</p>
+                <div class="comment"><p>Maintainer of the <em class="keyword">Dataset</em>. An <em class="keyword">Agent</em> that ensures the technical correctness,
+                    accessibility and up-to-dateness of a <em class="keyword">Dataset</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2424,7 +2456,7 @@ dataid:Contact
                 <h3>ModifyAgentRoles<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ModifyAgentRoles</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Entitled action to modify the role of agents on certain entities.</p>
+                <div class="comment"><p><em class="keyword">EntitledAction</em> to modify the role of <em class="keyword">Agents</em> on certain <em class="keyword">Entities</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2435,7 +2467,7 @@ dataid:Contact
                 <h3>ModifyAuthorization<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ModifyAuthorization</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Entitled action to modify an authorization.</p>
+                <div class="comment"><p><em class="keyword">EntitledAction</em> to modify an <em class="keyword">Authorization</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2446,7 +2478,7 @@ dataid:Contact
                 <h3>ModifyAuthorizedAgents<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ModifyAuthorizedAgents</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Entitled action to modify which agents are authorized on certain entities.</p>
+                <div class="comment"><p><em class="keyword">EntitledAction</em> to modify which <em class="keyword">Agents</em> are authorized on certain <em class="keyword">Entities</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2457,7 +2489,7 @@ dataid:Contact
                 <h3>ModifyContent<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ModifyContent</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Entitled action to modify the content of an entity.</p>
+                <div class="comment"><p><em class="keyword">EntitledAction</em> to modify the content of an <em class="keyword">Entity</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2468,7 +2500,7 @@ dataid:Contact
                 <h3>Publisher<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#Publisher</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Publisher of the dataset. An agent that makes the dataset accessible online on a server
+                <div class="comment"><p>Publisher of the <em class="keyword">Dataset</em>. An <em class="keyword">Agent</em> that makes the <em class="keyword">Dataset</em> accessible online on a server
                     or repository without necessarily being involved in its creation.</p>
                 </div>
                 <dl class="description">
@@ -2504,7 +2536,7 @@ dataid:Contact
                 <h3>PublishingDecision<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#PublishingDecision</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The responsibility decide if the entity should be published</p>
+                <div class="comment"><p>The responsibility (<em class="keyword">ResponsibleAction</em>) to decide if an <em class="keyword">Entity</em> should be published</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2515,7 +2547,7 @@ dataid:Contact
                 <h3>ReadContent<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ReadContent</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Entitled action to read the content of an entity.</p>
+                <div class="comment"><p><em class="keyword">EntitledAction</em> to read the content of an <em class="keyword">Entity</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2526,7 +2558,7 @@ dataid:Contact
                 <h3>ReadDataId<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ReadDataId</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>Entitled action to read the DataID dataset metadata</p>
+                <div class="comment"><p><em class="keyword">EntitledAction</em> to read the DataID dataset metadata</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2537,8 +2569,8 @@ dataid:Contact
                 <h3>ResponseToContact<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ResponseToContact</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The responsibility to respond to contact attempts by external agents. A contact point
-                    for the entity.</p>
+                <div class="comment"><p>The responsibility (<em class="keyword">ResponsibleAction</em>) to respond to contact attempts by external <em class="keyword">Agents</em>. A contact point
+                    for the <em class="keyword">Entity</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2549,7 +2581,7 @@ dataid:Contact
                 <h3>ResponseToLifeCycleEvent<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#ResponseToLifeCycleEvent</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The responsibility to manage changes and react to bugs and issues that are reported</p>
+                <div class="comment"><p>The responsibility (<em class="keyword">ResponsibleAction</em>) to manage changes and react to bugs and issues that are reported concerning a <em class="keyword">Dataset</em>.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2560,7 +2592,7 @@ dataid:Contact
                 <h3>UpdateDataId<sup title="named individual" class="type-ni">ni</sup><span class="backlink"> back to <a href="#toc">ToC</a> or <a href="#namedindividuals">Named Individual ToC</a></span></h3>
                 <p><strong>IRI:</strong> http://dataid.dbpedia.org/ns/core#UpdateDataId</p>
                 <dl class="definedBy"></dl>
-                <div class="comment"><p>The responsibility to update dataset metadata.</p>
+                <div class="comment"><p>The responsibility (<em class="keyword">ResponsibleAction</em>) to update dataset metadata.</p>
                 </div>
                 <dl class="description">
                     <dt>belongs to</dt>
@@ -2572,12 +2604,84 @@ dataid:Contact
     <div class="references">
         <h2 id="references">7. References</h2>
 
-        <a id="ref1">
-            <p class="hang">Michael Compton, Payam Barnaghi, Luis Bermudez, Raul Garcia-Castro, Oscar Corcho, Simon Cox,
-                John Graybeal, Manfred Hauswirth, Cory Henson, Arthur Herzog, et al. The ssn ontology of the w3c
-                semantic sensor network incubator group. Web Semantics: Science, Services and Agents on the World Wide
-                Web, 17:25–32, 2012.</p></a>
+        <dl>
+            <dt id="ref-DATACITE">[DATACITE]</dt>
+            <dd><span><a href="http://www.sparontologies.net/ontologies/datacite/source.html">DataCite Ontology</a>
+                David Shotton, Silvio Peroni eds. version 1.0, 21 January 2016, <a
+                        href="http://www.sparontologies.net/ontologies/datacite/source.html">http://www.sparontologies.net/ontologies/datacite/source.html</a>.</span></dd>
+            <dt id="ref-DBPEDIA">[DBPEDIA]</dt>
+            <dd><a href="http://dbpedia.org/">DBpedia project homepage</a>, http://dbpedia.org/</dd>
+            <dt id="ref-DCAT">[DCAT]</dt>
+            <dd>Fadi Maali; John Erickson. W3C. <a href="http://www.w3.org/TR/vocab-dcat/" property="dc:references">Data Catalog Vocabulary (DCAT)</a>. 16 January 2014. W3C Recommendation. URL: <a href="http://www.w3.org/TR/vocab-dcat/" property="dc:references">http://www.w3.org/TR/vocab-dcat/</a>
+            </dd>
+            <dt id="ref-DCTERMS">[DCTERMS]</dt>
+            <dd><a href="http://dublincore.org/documents/2010/10/11/dcmi-terms/">DCMI Metadata Terms</a>, Dublin Core Metadata Initiative, 11 October 2010. http://dublincore.org/documents/2010/10/11/dcmi-terms/</dd>
+            <dt id="ref-FOAF">[FOAF]</dt>
+            <dd><a href="http://xmlns.com/foaf/spec/20100809.html">FOAF Vocabulary Specification</a>, D. Brickley, L. Miller, 9 August 2010. http://xmlns.com/foaf/spec/20100809.html</dd>
+            <dt><span id="ref-IVSE">[IVSE]</span>
+            </dt>
+            <dd><span><a href="https://www.w3.org/Protocols/Design/Interevol.html">Interoperability and Evolvability</a>
+                Henrik Frystyk Nielsen,, 3 May 1999. URL: https://www.w3.org/Protocols/Design/Interevol.html</span></dd>
+            <dt><span id="ref-lexvo">[LEXVO]</span>
+            </dt>
+            <dd><span><a href="http://iiis.tsinghua.edu.cn/~weblt/papers/lexvo-swj.pdf">Lexvo.org: Language-Related Information for the Linguistic Linked Data Cloud</a>
+                Gerard de Melo, 7 August 2015. URL: <a href="http://www.lexvo.org/index.html">http://lexvo.org</a></span></dd>
+            <dt><span id="ref-odrl">[ODRL]</span>
+            </dt>
+            <dd><span><a href="https://www.w3.org/ns/odrl/2/ODRL21">ODRL Version 2.1 Ontology</a>
+                Mo McRoberts (BBC), Víctor Rodríguez Doncel (OEG-UPM) eds. W3C Working Group Final Specification, 5 March 2015, <a
+                    href="http://www.w3.org/ns/odrl/2/ODRL21">http://www.w3.org/ns/odrl/2/ODRL21</a>.  Latest version available at <a
+                    href="http://www.w3.org/ns/odrl/2/">http://www.w3.org/ns/odrl/2/</a>.</span></dd>
+            <dt><span id="ref-owl-2-profiles">[OWL 2 Profiles]</span>
+            </dt>
+            <dd><span><a href="http://www.w3.org/TR/2009/WD-owl2-profiles-20090421/">OWL 2 Web Ontology Language:
+                <span>Profiles</span></a> Boris Motik, Bernardo Cuenca Grau, Ian Horrocks, Zhe Wu, Achille Fokoue, Carsten Lutz, eds. W3C Working Draft, 21 April 2009, <a
+                    href="http://www.w3.org/TR/2009/WD-owl2-profiles-20090421/">http://www.w3.org/TR/2009/WD-owl2-profiles-20090421/</a>.  Latest version available at <a
+                    href="http://www.w3.org/TR/owl2-profiles/">http://www.w3.org/TR/owl2-profiles/</a>.</span></dd>
+            <dt><span id="ref-owl-2">[OWL 2]</span>
+            </dt>
+            <dd><span><a href="http://www.w3.org/TR/2009/WD-owl2-syntax-20090421/">OWL 2 Web Ontology Language:
+                <span>Structural Specification and Functional-Style Syntax</span></a> Boris Motik, Peter F. Patel-Schneider, Bijan Parsia, eds. W3C Working Draft, 21 April 2009, <a
+                    href="http://www.w3.org/TR/2009/WD-owl2-syntax-20090421/">http://www.w3.org/TR/2009/WD-owl2-syntax-20090421/</a>.  Latest version available at <a
+                    href="http://www.w3.org/TR/owl2-syntax/">http://www.w3.org/TR/owl2-syntax/</a>.</span></dd>
+            <dt id="ref-PROV-O">[PROV-O]</dt>
+            <dd><a href="http://www.w3.org/TR/prov-o/" property="dc:references">PROV-O: The PROV Ontology</a> Timothy Lebo; Satya Sahoo; Deborah McGuinness. W3C., 30 April 2013. W3C Recommendation. URL: <a href="http://www.w3.org/TR/prov-o/" property="dc:references">http://www.w3.org/TR/prov-o/</a>
+            </dd>
+            <dt id="ref-RDF-PRIMER">[RDF-PRIMER]</dt>
+            <dd><cite><a href="http://www.w3.org/TR/2004/REC-rdf-primer-20040210/">RDF Primer</a></cite>, F. Manola, E. Miller, W3C Recommendation 10 February 2004. http://www.w3.org/TR/2004/REC-rdf-primer-20040210/</dd>
+            <dt><span id="ref-rdf">[RDF]</span></dt>
+            <dd><a class="external text" href="http://www.w3.org/TR/rdf-concepts/"
+                         title="http://www.w3.org/TR/rdf-concepts/">Resource Description Framework (RDF): Concepts and
+                Abstract Syntax</a>. Graham Klyne, and Jeremy J. Carroll, eds., W3C Recommendation 10 February
+                2004
+            </dd>
+            <dt id="ref-RDFS">[RDFS]</dt>
+            <dd><a href="http://www.w3.org/TR/2004/REC-rdf-schema-20040210/">RDF Vocabulary Description Language 1.0: RDF Schema</a>, D. Brickley, R.V. Guha, W3C Recommendation 10 February 2004. http://www.w3.org/TR/2004/REC-rdf-schema-20040210/</dd>
+            <dt><span id="ref-turtle">[RDF Turtle Syntax]</span>
+            </dt>
+            <dd><a class="external text" href="http://www.w3.org/TeamSubmission/2008/SUBM-turtle-20080114/"
+                         title="http://www.w3.org/TeamSubmission/2008/SUBM-turtle-20080114/">Turtle - Terse RDF Triple
+                Language</a>. David Beckett and Tim Berners-Lee, 14 January 2008
+            </dd>
+            <dt id="ref-ResearcherID">[ResearcherID]</dt>
+            <dd><a href="http://www.researcherid.com/">ResearcherID homepage</a>, URL: http://www.researcherid.com/</dd>
+            <dt id="ref-RFC2046">[RFC2046]</dt>
+            <dd>Ned Freed. <a href="https://tools.ietf.org/html/rfc2046" property="dc:requires">Multipurpose Internet Mail Extensions (MIME) Part Two: Media Types</a>. November 1996. DRAFT STANDARD. URL: <a href="https://tools.ietf.org/html/rfc2046" property="dc:requires">https://tools.ietf.org/html/rfc2046</a>
+            </dd>
+            <dt id="ref-RFC2119">[RFC2119]</dt>
+            <dd>S. Bradner. <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">Key words for use in RFCs to Indicate Requirement Levels</a>. March 1997. Best Current Practice. URL: <a href="https://tools.ietf.org/html/rfc2119" property="dc:requires">https://tools.ietf.org/html/rfc2119</a>
+            </dd>
+            <dt id="ref-SKOS">[SKOS]</dt>
+            <dd><a href="http://www.w3.org/TR/2009/NOTE-skos-primer-20090818/">SKOS Simple Knowledge Organization System Primer</a>, A. Isaac, E. Summers, W3C Working Group Note 18 August 2009. http://www.w3.org/TR/2009/NOTE-skos-primer-20090818/</dd>
+            <dt><span id="ref-sparql">[SPARQL]</span></dt>
+            <dd><a class="external text" href="http://www.w3.org/TR/rdf-sparql-query/"
+                         title="http://www.w3.org/TR/rdf-sparql-query/">SPARQL Query Language for RDF</a>. Eric
+                Prud'hommeaux and Andy Seaborne, eds., W3C Recommendation 15 January 2008
+            </dd>
+            <dt id="ref-VOID">[VOID]</dt>
+            <dd><cite><a href="http://rdfs.org/ns/void">VoID Vocabulary</a></cite>, K. Alexander, R. Cyganiak, M. Hausenblas, J. Zhao. http://rdfs.org/ns/void</dd>
+        </dl>
     </div>
-        </div>
+    </div>
 </body>
 </html>

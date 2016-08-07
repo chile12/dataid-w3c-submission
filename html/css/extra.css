@@ -27,6 +27,10 @@ h1 {
     padding: 5px;
 }
 
+.entity h3 {
+    margin:0px;
+}
+
 .type-c {
     cursor:help;
     color:orange;
@@ -218,6 +222,16 @@ a.bibref {
 }
 
 cite .bibref {
+    font-style: normal;
+}
+
+cite::before {
+    content: "[";
+    font-style: normal;
+}
+
+cite::after {
+    content: "]";
     font-style: normal;
 }
 

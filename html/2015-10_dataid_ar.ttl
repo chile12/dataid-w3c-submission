@@ -98,7 +98,7 @@
         dc:description          "Dataset linking a DBpedia resource to the same resource in other languages and in Wikidata."@en ;
         dc:hasVersion           <dataid_ar.ttl?version=1.0> ;
         dc:isPartOf             <dataid_ar.ttl?set=maindataset> ;
-        dc:issued               "2016-08-02"^^xsd:date ;
+        dc:issued               "2016-07-02"^^xsd:date ;
         dc:language             <http://lexvo.org/id/iso639-3/ara> ;
         dc:license              <http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0> ;
         dc:modified             "2016-08-02"^^xsd:date ;
@@ -118,7 +118,7 @@
         dc:description          "Full abstracts of Wikipedia articles, usually the first section. Normalized resources matching English DBpedia."@en ;
         dc:hasVersion           <dataid_ar.ttl?version=1.0> ;
         dc:isPartOf             <dataid_ar.ttl?set=maindataset> ;
-        dc:issued               "2016-08-02"^^xsd:date ;
+        dc:issued               "2016-07-02"^^xsd:date ;
         dc:language             <http://lexvo.org/id/iso639-3/ara> ;
         dc:license              <http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0> ;
         dc:modified             "2016-08-02"^^xsd:date ;
@@ -142,7 +142,7 @@
         dataid:uncompressedByteSize  1184687767 ;
         dc:description               "Dataset linking a DBpedia resource to the same resource in other languages and in Wikidata."@en ;
         dc:hasVersion                <dataid_ar.ttl?version=1.0> ;
-        dc:issued                    "2016-08-02"^^xsd:date ;
+        dc:issued                   "2016-07-02"^^xsd:date ;
         dc:license                   <http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0> ;
         dc:modified                  "2016-08-02"^^xsd:date ;
         dc:publisher                 <http://wiki.dbpedia.org/dbpedia-association> ;
@@ -160,7 +160,7 @@
         dataid:uncompressedByteSize  1598056873 ;
         dc:description               "Dataset linking a DBpedia resource to the same resource in other languages and in Wikidata."@en ;
         dc:hasVersion                <dataid_ar.ttl?version=1.0> ;
-        dc:issued                    "2016-08-02"^^xsd:date ;
+        dc:issued                   "2016-07-02"^^xsd:date ;
         dc:license                   <http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0> ;
         dc:modified                  "2016-08-02"^^xsd:date ;
         dc:publisher                 <http://wiki.dbpedia.org/dbpedia-association> ;
@@ -178,7 +178,7 @@
         dataid:uncompressedByteSize  186573907 ;
         dc:description               "Full abstracts of Wikipedia articles, usually the first section. Normalized resources matching English DBpedia."@en ;
         dc:hasVersion                <dataid_ar.ttl?version=1.0> ;
-        dc:issued                    "2016-08-02"^^xsd:date ;
+        dc:issued                   "2016-07-02"^^xsd:date ;
         dc:license                   <http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0> ;
         dc:modified                  "2016-08-02"^^xsd:date ;
         dc:publisher                 <http://wiki.dbpedia.org/dbpedia-association> ;
@@ -196,7 +196,7 @@
         dataid:uncompressedByteSize  204174726 ;
         dc:description               "Full abstracts of Wikipedia articles, usually the first section. Normalized resources matching English DBpedia."@en ;
         dc:hasVersion                <dataid_ar.ttl?version=1.0> ;
-        dc:issued                    "2016-08-02"^^xsd:date ;
+        dc:issued                   "2016-07-02"^^xsd:date ;
         dc:license                   <http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0> ;
         dc:modified                  "2016-08-02"^^xsd:date ;
         dc:publisher                 <http://wiki.dbpedia.org/dbpedia-association> ;
@@ -214,7 +214,7 @@
         dataid-ld:graphName      <http://dbpedia.org> ;
         dc:description           "The official sparql endpoint of DBpedia, hosted graciously by OpenLink Software (http://virtuoso.openlinksw.com/), containing all datasets of the /core directory."@en ;
         dc:hasVersion            <dataid_ar.ttl?version=1.0> ;
-        dc:issued                "2016-08-02"^^xsd:date ;
+        dc:issued                "2016-07-02"^^xsd:date ;
         dc:license               <http://purl.oclc.org/NET/rdflicense/cc-by-sa3.0> ;
         dc:modified              "2016-08-02"^^xsd:date ;
         dc:title                 "The official DBpedia sparql endpoint"@en ;

@@ -69,7 +69,8 @@ sorting=none
 \author{
 Markus Freudenberg\inst{1} \and
 Martin Brümmer\inst{2} \and
-Jessika Rücknagel\inst{3} \and\\
+Jessika Rücknagel\inst{3} \and
+Robert Ulrich\inst{3} \and\\
 Thomas Eckart\inst{4} \and
 Dimitris Kontokostas\inst{1} \and
 Sebastian Hellmann\inst{1}}
@@ -83,9 +84,10 @@ eccenca GmbH, Hainstr. 8, 04109 Leipzig, Germany,
 \url{http://eccenca.com} \\
 \email{martin.bruemmer@eccenca.com}
 \and
-re3data.org,
+re3data,
 \url{http://www.re3data.org} \\
-\email{ruecknagel@sub.uni-goettingen.de}
+\email{ruecknagel@sub.uni-goettingen.de},
+\email{robert.ulrich@kit.edu}
 \and
 Universit\"at Leipzig, Abteilung Automatische Sprachverarbeitung
 \url{http://asv.informatik.uni-leipzig.de/en} \\
@@ -96,6 +98,7 @@ Universit\"at Leipzig, Abteilung Automatische Sprachverarbeitung
 \maketitle
 
 \begin{abstract}
+\todo{offical project name is now re3data without .org, RU}
 %\todo{please correct email addresses, Martin works at eccenca, also infore3 is surely not the email of jessica, if you don't know, please don't write incorrect things but rather XXX or TODO}
 The rapid increase of data produced in a data-centric economy emphasises the need for rich metadata descriptions of datasets, covering many domains and scenarios. While there are multiple metadata formats, describing datasets for specific purposes, exchanging metadata between them is often a difficult endeavour. More general approaches for domain-independent descriptions, often lack the precision needed in many domain-specific use cases.
 This paper introduces the multilayer ontology of DataID, providing semantically rich metadata for complex datasets. In particular, we focus on the extensibility of its core model and the interoperability with foreign ontologies and other metadata formats.
@@ -206,13 +209,12 @@ of the data as well as the creator by making it discoverable
 and crawlable.
 
 \textbf{(A4)} \extensibility: extending a given core metadata model
-in an easy and reusable way, while leaving the original model
-uncompromised expands its application possibilities fitting many
+in an easy and reusable way, while leaving the original model uncompromised expands its application possibilities fitting many
 different use cases.
 
 \textbf{(A5)} \interoperability: the interoperability with other metadata models is a hallmark for a widely usable and reusable dataset metadata model.
 
-When regarding aspects \textbf{(A4)} and \textbf{(A5)}, taking into account the intricate requirements of many use cases (as we will see in \Cref{requDmp}), \extensibility and \interoperability seem contradictory when leaving the more general levels of a domain description. A vocabulary capable of interacting with other metadata vocabularies might be too general to fit certain scenarios of use. Restrictive extensions to a vocabulary might encroach on its ability to translate into other useful metadata formats. This notion is corroborated by this document~\cite{ivse}. Note: We (the authors) do not differentiate between \evolvability and \extensibility in the context of this paper. The discrapencies with \interoperability are true for both concepts. \todo{added last two sentences}
+When regarding aspects \textbf{(A4)} and \textbf{(A5)}, taking into account the intricate requirements of many use cases (as we will see in \Cref{requDmp}), \extensibility and \interoperability seem contradictory when leaving the more general levels of a domain description. A vocabulary capable of interacting with other metadata vocabularies might be too general to fit certain scenarios of use. Restrictive extensions to a vocabulary might encroach on its ability to translate into other useful metadata formats. This notion is corroborated by this document~\cite{ivse}. Note: We (the authors) do not differentiate between \evolvability and \extensibility in the context of this paper. The discrepancies with \interoperability are true for both concepts. \todo{added last two sentences}
 %as opposed to the author of the document discussed. Letting features 'die out' over time does not impact, in our understanding, the aspect of \textbf{(A4)} \extensibility.
 
 We conclude, not only is there a gap between existing dataset metadata vocabularies and requirements thereof, but it seems unlikely that we are able to solve all these diverse problems with just one, monolithic ontology.
@@ -230,22 +232,23 @@ While trying to solve the different aspects, which we discussed in the previous 
 %SH: rephrased this in a positive way
 %compromising its supposed usefulness by jeopardising \extensibility and \interoperability.
 %To keep the DataID ontology reasonable in size and complexity,
-In order not to jeopardise \extensibility and \interoperability, we modularised DataID in a core ontology and multiple extensions. The onion-like layer model (cf. \Cref{fig:onion}) illustrates dependencies of the different ontologies. An ontology of a certain layer may only import DataID ontologies from layers below.\todo{added last sentence}
+In order not to jeopardise \extensibility and \interoperability, we modularised DataID in a core ontology and multiple extensions. The onion-like layer model (cf. \Cref{fig:onion}) illustrates the import restrictions of different ontologies. An ontology of a certain layer shall only import DataID ontologies from layers below their own.
+The mid-layer (or common extensions) of this model is comprised of highly reusable ontologies, extending DataID core to cover additional aspects of dataset metadata. While non of them are a mandatory import for use case specific extensions, as opposed to DataID core, in many cases some or all of them will be useful contributions.\todo{shifted sentences to clean up, resolved ambiguous phrasing remarked by RU.}
 
 %KM: ground-works --> foundation
-\textbf{DataID core} provides the basic description of a dataset (cf. \Cref{dataidCore}) and serves as foundation for all extensions in the mid-layer or use case specific ontology extensions.
-While the latter do not need any of the mid-level ontologies, in many cases some or all of them will be useful contributions.
+\textbf{DataID core} provides the basic description of a dataset (cf. \Cref{dataidCore}) and serves as foundation for all extensions to DataID.
 
 \textbf{Linked Data}\footnoteurl{https://github.com/dbpedia/DataId-Ontology/tree/master/ld} extends DataID core with the \void vocabulary\cite{void} and some additional properties specific to LOD datasets. Many \void and Linked Data references from the previous version of DataID were outsourced into this ontology.
 
 \textbf{Activities \& Plans}\footnoteurl{https://github.com/dbpedia/DataId-Ontology/tree/DataManagementPlanExtension/acp} provides provenance information of activities which generated, changed or used datasets. The goal is to record all activities needed to replicate a dataset as described by a DataID. Plans can describe which steps (activities, precautionary measures) are put in place to reach a certain goal. This extension relies heavily on the \prov ontology\cite{prov}.
 
-\textbf{Statistics} will provide the necessary measures to publish multi-dimensional data, such as statistics about datasets. This recently created ontology will be based on the Data Cube Vocabulary\cite{datacube}.
+\textbf{Statistics} will provide the necessary measures to publish multi-dimensional data, such as statistics about datasets, based on the Data Cube Vocabulary\cite{datacube}.
 %has just been put forward and has yet to be refined. It
 
 Ontologies under the DataID multilayer concept do not offer cardinality restrictions, making them easy to extend and adhere to OWL profiles. An application profile for the DataID service (cf. \Cref{lessons}) was declared using SHACL\footnoteurl{http://w3c.github.io/data-shapes/shacl/}.\todo{maybe rephrase the last sentence}
 
-Importing DataID core and any number of DataID extensions into a domain-specific OWL ontology can extend this ecosystem of dataset metadata even further, thereby providing far greater opportunity for applications clustered around datasets (cf. \Cref{dmps}).
+Extending this ecosystem of dataset metadata with domain-specific OWL ontologies adds further opportunities for applications clustered around datasets, as we will showcase in \Cref{dmps}.
+%Importing DataID core and any number of DataID extensions into a domain-specific OWL ontology can extend this ecosystem of dataset metadata even further, thereby providing far greater opportunity for applications clustered around datasets (cf. \Cref{dmps}).
 %The use case introduced in \Cref{dmps} will exemplify this approach.
 
 \begin{figure}[t]
@@ -268,20 +271,24 @@ In addition the \void vocabulary plays a central role, as the dataset concept of
 
 The class \prop{dcat:Distribution} is the technical description of the data itself, as well as documentation of how to access the data described (\prop{dcat:accessURL} / \prop{dcat:downloadURL}). This concept is crucial to be able to automatically retrieve and use the data described in the DataID, simplifying, for example, data analysis. We introduced additional subclasses (e.g. \prop{dataid:ServiceEndpoint}), to further distinguish how the data is available on the web.
 
+
 \begin{figure}
 \centering
   \includegraphics[angle=90, width=\textwidth]{DataIdOntologyBlack&White.png}
   \caption{DataID core}
   \label{fig:core}
-  \floatfoot{An exact description of all classes and properties can be found under the DataID namespace uri \url{http://dataid.dbpedia.org/ns/core} including this depiction.}
+  \floatfoot{An exact description of all classes and properties can be found under the DataID namespace uri \url{http://dataid.dbpedia.org/ns/core} including this depiction. The ontology RDF document is also available there:
+  \url{http://dataid.dbpedia.org/ns/core.ttl} (.owl)}
   \vspace{-1.5em}
 \end{figure}
 
-\dcat does not offer an intrinsic way of specifying the exact format of the content described by a distribution. While the property \prop{dcat:mediaType} does exist, its expected range \prop{dct:MediaType} is an empty class (without any further definitions).
+\dcat does not offer an intrinsic way of specifying the exact format of the content described by a distribution. While the property \prop{dcat:mediaType} does exist, its expected range \prop{dct:MediaTypeOrExtend} is an empty class (without any further definitions).
 %it has \prop{dct:MediaType} as range but \prop{dct:MediaType} has no further definitions.
 Therefore, we created \prop{dataid:MediaType} to remedy this matter. With the property \prop{dataid:innerMediaType} we can even describe nested formats (e.g. .xml.bz2), useful in pipeline processing.
 
-The most important change to the previous version of DataID is the possible expression of which role an agent can take in regard to metadata entities (e.g. the whole DataID and all datasets, a single distribution etc.). This is achieved by the class \prop{dataid:Authorization}, which is a subclass of \prop{prov:Attribution}, a qualification of the property \prop{prov:wasAttributedTo}. Basically it states, which role(s) (\prop{dataid:authorityAgentRole}) an agent (\prop{dataid:authorizedAgent}) has regarding a certain collection of entities (\prop{dataid:authorizedFor}). This mediator is further qualified by an optional period of time for which it is valid and access restrictions by the entities themselves, allowing only specific instances of \prop{dataid:Authorization} to exert influence over them (\prop{dataid:needsSpecialAuthorization}).\todo{please prove read this section again}
+The most important change to the previous version of DataID is the possible expression of which role an agent can take in regard to metadata entities (e.g. the whole DataID and all datasets, a single distribution etc.).
+%RU: The most important change to the previous version of DataID is the ability to express which role an agent can have in regard to metadata entities (e.g. the whole DataID and all datasets, a single distribution etc.).
+This is achieved by the class \prop{dataid:Authorization}, which is a subclass of \prop{prov:Attribution}, a qualification of the property \prop{prov:wasAttributedTo}. Basically it states, which role(s) (\prop{dataid:authorityAgentRole}) an agent (\prop{dataid:authorizedAgent}) has regarding a certain collection of entities (\prop{dataid:authorizedFor}). This mediator is further qualified by an optional period of time for which it is valid and authoritative restrictions by the entities themselves, allowing only specific instances of \prop{dataid:Authorization} to exert influence over them (\prop{dataid:needsSpecialAuthorization}).\todo{please prove read this section again, RU: minor/phrasing}
 
 
 The role an agent can take (\prop{dataid:AgentRole}) has only one property, pointing out actions it entails. A \prop{dataid:AuthorizedAction} shall either be a \prop{dataid:EntitledAction}, representing all actions an agent could take, as well as the actions an agent has to take (\prop{dataid:ResponsibleAction}). Actions and roles defined in this ontology (e.g. \prop{dataid:Publisher}) are only examples of possible implementations and can be replaced to fit a use case.
@@ -289,7 +296,7 @@ Hierarchical structures of agent roles or actions can provide additional semanti
 
 \section{Data Management Plans}
 \label{dmps}
-Over the last years Data Management Plans (\dmp) have become a requirement for project proposals within most major research funding institutions. It states what types of data and metadata are employed,\todo{rewritten first part of s.} which limitations apply, where responsibilities lie and how the data is stored, both during research projects, and after the project is completed.
+Over the last years Data Management Plans (\dmp) have become a requirement for project proposals within most major research funding institutions. It states what types of data and metadata are employed,\todo{rewritten first part of s.} which limitations apply, where responsibilities lie and how the data is stored, both during research project, and after the project is completed.
 The use case described here will introduce an extension to the DataID ontology to extensively describe a Data Management Plan for digital data in a universal way, laying the foundation for tools helping researchers and funders with the drafting and implementing \dmp{}s. %Should it not be "an universal way"?
 Based on multiple requirements, raised from different \dmp guidelines, we will showcase the creation of a DataID extension. We incorporated the re3data ontology to describe repositories and institutions, exemplifying the use of external ontologies.
 %A concise summary of how we solved all of our requirements finalises this section.
@@ -333,10 +340,24 @@ In 2014 re3data merged with the DataBib registry for research data repositories 
 %The re3data project was initiated by the Library and Information Services section (LIS) of the German Research Centre for Geosciences (GFZ), the library of the Karlsruhe Institute of Technology (KIT) and the Berlin School of Library and Information Science (BSLIS) at Humboldt-Universität zu Berlin.
 
 
+\begin{figure}
+\centering
+\includegraphics[angle=90, width=\textwidth]{r3dOntologyReducedBlack&White.png}
+  \caption{re3data Ontology}
+  \label{fig:r3d}
+\floatfoot{Note: This is a reduced version of the ontology omitting some properties
+and all instances of controlled vocabularies (white font on grey boxes). The re3data
+ontology has not been finalised by the time of submission. Some minor
+changes are still being discussed with re3data. The current version
+can be accessed here:\\ \url{https://github.com/re3data/ontology/blob/master/r3dOntology.ttl}.
+}
+  \vspace{-1.5em}
+\end{figure}
+
 One central goal of re3data is to enhance the visibility of existing research data repositories and to enable all those who are interested in finding a repository to assess a respective information service. This is achieved by an extensive and quality approved metadata description of the listed research data repositories. The basis for this description is the “Metadata Schema for the Description of Research Data Repositories”, having 42 properties in the current version 3.0~\cite{r3dSchema}.
 Considering the increasing number of funding bodies demanding a research data management plan as an integral part of a grant proposal, information regarding research data repositories is of great importance.
 %To fulfill all requirements of the \dmp use case (see \ref{requDmp}) a comprehensive description of repositories is necessary.
-The re3data schema does provide a thorough description of repositories and the unique opportunity to incorporate an existing, up-to-date collection of research repositories in future DataID-based applications. To accomplish the integration into the \dmp ontology extension, we transformed the current XML-based schema into an OWL-ontology, using established vocabularies like \prov and \org. The schema as well as the data provided by re3data will be available as Linked Data (e.g. via re3data ReSTful-API), thus making it discoverable and more easily accessible for services and applications, reaching a larger circle of users.\todo{add reference or image of ontology}
+The re3data schema does provide a thorough description of repositories and the unique opportunity to incorporate an existing, up-to-date collection of research repositories in future DataID-based applications. To accomplish the integration into the \dmp ontology extension, we transformed the current XML-based schema into an OWL-ontology, using established vocabularies like \prov and \org. The schema as well as the data provided by re3data will be available as Linked Data (e.g. via re3data ReSTful-API), thus making it discoverable and more easily accessible for services and applications, reaching a larger circle of users.
 
 Alongside the repository-concept, a rudimentary description of institutions which are hosting or funding a repository is needed to ensure long-term sustainability and availability of a repository. The derived re3data ontology supplements \prop{r3d:Repository} and \prop{r3d:Institution} with fitting \prov subclasses
 %(\prop{prov:Entity}, \prop{prov:Orgfanization}),
@@ -452,7 +473,7 @@ DataID core is planned to be published as a W3C member submission.
 %\todo{I outcommented acknodlegment section, please incomment for camera ready}
 %TODO
 \subsubsection{Acknowledgements}
-This research has received funding by grants from the H2020 EU projects ALIGNED (GA~644055) and FREME (GA-644771) as well as the Smart Data Web (GA-01MD15010B)
+This research has received funding by grants from the H2020 EU projects ALIGNED (GA~644055) and FREME (GA-644771) as well as the Smart Data Web (GA-01MD15010B).
 
 \section{References}
 \printbibliography[heading=none, title=References]
