@@ -1,15 +1,15 @@
+@prefix dataid: <http://dataid.dbpedia.org/ns/core#> .
+@prefix dataid-ld: <http://dataid.dbpedia.org/ns/ld#> .
+@prefix dataid-mt: <http://dataid.dbpedia.org/ns/mt#> .
+@prefix dcat:  <http://www.w3.org/ns/dcat#> .
+@prefix datacite: <http://purl.org/spar/datacite/> .
 @prefix void:  <http://rdfs.org/ns/void#> .
 @prefix spdx:  <http://spdx.org/rdf/terms#> .
 @prefix owl:   <http://www.w3.org/2002/07/owl#> .
 @prefix dmp:   <http://dataid.dbpedia.org/ns/dmp#> .
 @prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
-@prefix datacite: <http://purl.org/spar/datacite/> .
 @prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix dataid-mt: <http://dataid.dbpedia.org/ns/mt#> .
-@prefix dataid: <http://dataid.dbpedia.org/ns/core#> .
 @prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix dataid-ld: <http://dataid.dbpedia.org/ns/ld#> .
-@prefix dcat:  <http://www.w3.org/ns/dcat#> .
 @prefix prov:  <http://www.w3.org/ns/prov#> .
 @prefix foaf:  <http://xmlns.com/foaf/0.1/> .
 @prefix dc:    <http://purl.org/dc/terms/> .
@@ -46,7 +46,7 @@
 
 <http://www.researcherid.com/rid/L-2180-2016>
         a                              dataid:Identifier ;
-        dataid:statement               "L-2180-2016" ;
+        dataid:literal                  "L-2180-2016" ;
         dc:issued                      "2016-08-01"^^xsd:date ;
         dc:references                  <http://www.researcherid.com/rid/L-2180-2016> ;
         datacite:usesIdentifierScheme  datacite:researcherid .
@@ -137,6 +137,7 @@
         a                            dataid:SingleFile ;
         rdfs:label                   "interlanguage_links_ar.ttl.bz2" ;
         dataid:associatedAgent       <http://wiki.dbpedia.org/dbpedia-association> , <http://wiki.dbpedia.org/dbpedia-association/persons/Freudenberg> ;
+        dataid:checksum              <dataid_ar.ttl?file=interlanguage_links_ar.ttl.bz2&checksum=md5> ;
         dataid:isDistributionOf      <dataid_ar.ttl?set=interlanguage_links> ;
         dataid:preview               <http://downloads.dbpedia.org/preview.php?file=2015-10_sl_core-i18n_sl_ar_sl_interlanguage_links_ar.ttl.bz2> ;
         dataid:uncompressedByteSize  1184687767 ;
@@ -155,6 +156,7 @@
         a                            dataid:SingleFile ;
         rdfs:label                   "interlanguage_links_ar.tql.bz2" ;
         dataid:associatedAgent       <http://wiki.dbpedia.org/dbpedia-association> , <http://wiki.dbpedia.org/dbpedia-association/persons/Freudenberg> ;
+        dataid:checksum              <dataid_ar.ttl?file=interlanguage_links_ar.tql.bz2&checksum=md5> ;
         dataid:isDistributionOf      <dataid_ar.ttl?set=interlanguage_links> ;
         dataid:preview               <http://downloads.dbpedia.org/preview.php?file=2015-10_sl_core-i18n_sl_ar_sl_interlanguage_links_ar.tql.bz2> ;
         dataid:uncompressedByteSize  1598056873 ;
@@ -173,6 +175,7 @@
         a                            dataid:SingleFile ;
         rdfs:label                   "long_abstracts_en_uris_ar.ttl.bz2" ;
         dataid:associatedAgent       <http://wiki.dbpedia.org/dbpedia-association> , <http://wiki.dbpedia.org/dbpedia-association/persons/Freudenberg> ;
+        dataid:checksum              <dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2&checksum=md5> ;
         dataid:isDistributionOf      <dataid_ar.ttl?set=long_abstracts_en_uris> ;
         dataid:preview               <http://downloads.dbpedia.org/preview.php?file=2015-10_sl_core-i18n_sl_ar_sl_long_abstracts_en_uris_ar.ttl.bz2> ;
         dataid:uncompressedByteSize  186573907 ;
@@ -191,6 +194,7 @@
         a                            dataid:SingleFile ;
         rdfs:label                   "long_abstracts_en_uris_ar.tql.bz2" ;
         dataid:associatedAgent       <http://wiki.dbpedia.org/dbpedia-association> , <http://wiki.dbpedia.org/dbpedia-association/persons/Freudenberg> ;
+        dataid:checksum              <dataid_ar.ttl?file=long_abstracts_en_uris_ar.tql.bz2&checksum=md5> ;
         dataid:isDistributionOf      <dataid_ar.ttl?set=long_abstracts_en_uris> ;
         dataid:preview               <http://downloads.dbpedia.org/preview.php?file=2015-10_sl_core-i18n_sl_ar_sl_long_abstracts_en_uris_ar.tql.bz2> ;
         dataid:uncompressedByteSize  204174726 ;
@@ -221,24 +225,47 @@
         void:sparqlEndpoint      <http://dbpedia.org/sparql> ;
         dcat:accessURL           <http://dbpedia.org/sparql> ;
         dcat:mediaType           <http://dataid.dbpedia.org/ns/mt#MediaType_sparql-results+xml> .
+
+########### Checksums ############
+
+<dataid_ar.ttl?file=interlanguage_links_ar.ttl.bz2&checksum=md5>
+        a                   spdx:Checksum ;
+        spdx:algorithm      spdx:checksumAlgorithm_md5 ;
+        spdx:checksumValue  "b1a6885fba528b08c53b0ad800a94f7a"^^xsd:hexBinary .
+
+
+<dataid_ar.ttl?file=interlanguage_links_ar.tql.bz2&checksum=md5>
+        a                   spdx:Checksum ;
+        spdx:algorithm      spdx:checksumAlgorithm_md5 ;
+        spdx:checksumValue  "d34de153e77570f118b7425e5cf1ca0b"^^xsd:hexBinary .
+
+<dataid_ar.ttl?file=long_abstracts_en_uris_ar.ttl.bz2&checksum=md5>
+        a                   spdx:Checksum ;
+        spdx:algorithm      spdx:checksumAlgorithm_md5 ;
+        spdx:checksumValue  "2503179cd96452d33becd1e974d6a163"^^xsd:hexBinary .
+
+<dataid_ar.ttl?file=long_abstracts_en_uris_ar.tql.bz2&checksum=md5>
+        a                   spdx:Checksum ;
+        spdx:algorithm      spdx:checksumAlgorithm_md5 ;
+        spdx:checksumValue  "ffdf034c2477d81b5aaeced0312984d4"^^xsd:hexBinary .
         
 ########### Statements ###########
 
 <dataid_ar.ttl?rights=dbpedia-rights>
         a                 dataid:SimpleStatement ;
-        dataid:statement  """DBpedia is derived from Wikipedia and is distributed under the same licensing terms as Wikipedia itself. As Wikipedia has moved to dual-licensing, 
+        dataid:literal  """DBpedia is derived from Wikipedia and is distributed under the same licensing terms as Wikipedia itself. As Wikipedia has moved to dual-licensing,
         we also dual-license DBpedia starting with release 3.4. Data comprising DBpedia release 3.4 and subsequent releases is licensed under the terms of the Creative Commons 
         Attribution-ShareAlike 3.0 license and the GNU Free Documentation License. Data comprising DBpedia releases up to and including release 3.3 is licensed only under the 
         terms of the GNU Free Documentation License."""@en .
 
 <dataid_ar.ttl?version=1.0>
         a                 dataid:SimpleStatement ;
-        dataid:statement  "1.0" .
+        dataid:literal  "1.0" .
 
 <dataid_ar.ttl?stmt=sparqlaccproc>
         a                 dataid:SimpleStatement ;
         dc:references    <https://www.w3.org/TR/sparql11-overview/> ;  
-        dataid:statement  "An endpoint for sparql queries: provide valid queries." .
+        dataid:literal  "An endpoint for sparql queries: provide valid queries." .
 
 ########### MediaTypes ###########
 

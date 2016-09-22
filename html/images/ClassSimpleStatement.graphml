@@ -20,12 +20,13 @@
           <y:Geometry height="150.13498538048543" width="219.5056000000002" x="1011.4984" y="319.1245073097573"/>
           <y:Fill color="#E8EEF7" color2="#B7C9E3" transparent="false"/>
           <y:BorderStyle color="#000000" type="line" width="1.0"/>
-          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="131.40625" x="44.04967500000009" y="4.0">dataid:SimpleStatement</y:NodeLabel>
-          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="92.20703125" modelName="custom" textColor="#000000" visible="true" width="214.7734375" x="2.0" y="30.701171875">subclassOf: dct:ProvenanceStatement, 
+          <y:NodeLabel alignment="center" autoSizePolicy="content" backgroundColor="#B7C9E3" configuration="com.yworks.entityRelationship.label.name" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasLineColor="false" height="18.701171875" modelName="internal" modelPosition="t" textColor="#000000" visible="true" width="131.40625" x="44.04967500000021" y="4.0">dataid:SimpleStatement</y:NodeLabel>
+          <y:NodeLabel alignment="left" autoSizePolicy="content" configuration="com.yworks.entityRelationship.label.attributes" fontFamily="Droid Sans" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="106.908203125" modelName="custom" textColor="#000000" visible="true" width="214.7734375" x="2.0" y="30.701171875">subclassOf: dct:ProvenanceStatement, 
                     dct:RightsStatement, 
-                    dct:Standard
+                    dct:Standard,
+                    lit:Literal
 
-dataid:statement: rdfs:Literal
+dataid:literal: rdfs:Literal
 dct:references: foaf:Document<y:LabelModel>
               <y:ErdAttributesNodeLabelModel/>
             </y:LabelModel>
