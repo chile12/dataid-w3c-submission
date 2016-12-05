@@ -1,17 +1,17 @@
 <html xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>DataID core Ontology</title>
     <!--<link rel="stylesheet" type="text/css" href="css/custom.css">-->
-    <link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-Member-SUBM">
-    <link href="css/owl.css" rel="stylesheet" type="text/css">
-    <link href="css/primer.css" rel="stylesheet" type="text/css">
-    <link href="css/rec.css" rel="stylesheet" type="text/css">
-    <link href="css/extra.css" rel="stylesheet" type="text/css">
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery.scrollTo.min.js"></script>
-    <script src="js/marked.min.js"></script>
-    <script>
+    <link rel="stylesheet" type="text/css" href="https://www.w3.org/StyleSheets/TR/W3C-Member-SUBM"/>
+    <link href="css/owl.css" rel="stylesheet" type="text/css"/>
+    <link href="css/primer.css" rel="stylesheet" type="text/css"/>
+    <link href="css/rec.css" rel="stylesheet" type="text/css"/>
+    <link href="css/extra.css" rel="stylesheet" type="text/css"/>
+    <script src="js/jquery.min.js" type="application/javascript"></script>
+    <script src="js/jquery.scrollTo.min.js" type="application/javascript"></script>
+    <script src="js/marked.min.js" type="application/javascript"></script>
+    <script  type="application/javascript">
         $(document).ready(
                 function () {
                     jQuery(".markdown").each(function (el) {
@@ -28,8 +28,8 @@
 <body>
 <div class="head">
         <p>
-            <a href="http://www.w3.org/"><img alt="W3C" src="https://www.w3.org/Icons/w3c_home" height="48" width="72"></a>
-            <a href="http://www.w3.org/Submission/"><img src="http://www.w3.org/Icons/member_subm" alt="W3C Member Submission" height="48" width="211"></a></p>
+            <a href="http://www.w3.org/"><img alt="W3C" src="https://www.w3.org/Icons/w3c_home" height="48" width="72"/></a>
+            <a href="http://www.w3.org/Submission/"><img src="http://www.w3.org/Icons/member_subm" alt="W3C Member Submission" height="48" width="211"/></a></p>
     <h1 style="clear: both;" id="title">DataID core Ontology</h1>
     <h2 id="W3C-doctype">W3C Member Submission 1 August 2016</h2>
     <dl>
@@ -64,7 +64,7 @@
     <dl>
         <dt id="sec-acknowledgements"> Acknowledgements:</dt>
         <dd> This research has received funding by grants from the H2020 EU projects
-            <a href="http://aligned-project.eu">ALIGNED (GA~644055)</a> and <a href="http://www.freme-project.eu">FREME (GA-644771)</a>
+            <a href="http://aligned-project.eu">ALIGNED (GA-644055)</a> and <a href="http://www.freme-project.eu">FREME (GA-644771)</a>
             as well as the <a href="http://www.smartdataweb.de">Smart Data Web (GA-01MD15010B)</a>.
         </dd>
     </dl>
@@ -74,7 +74,7 @@
             Document License</a>. See the <a href="http://www.w3.org/Consortium/Legal/ipr-notice#Copyright">W3C
             Intellectual Rights Notice and Legal Disclaimers</a> for additional
         information.</p>
-    <hr>
+    <hr/>
 </div>
 <!-- ################ end of head #################### -->
 
@@ -87,18 +87,18 @@
         the PROV Ontology <cite><a class="bibref" href="#ref-PROV-O">PROV-O</a></cite> to portray the relations between agents and dataset entities.
         We introduced multiple concepts and properties, as well as incorporating different external concepts to provide a well structured, comprehensive format
         to approach a unified view of dataset metadata.-->
-        The DataID core Ontology defines concepts and properties to describe simple and complex datasets in an interoperable way.
+        The DataID core <b><font color="red" >o</font></b>ntology defines concepts and properties to describe simple and complex datasets in an interoperable way.
         DataID expands the Data Catalog Vocabulary <cite><a class="bibref" href="#ref-DCAT">DCAT</a></cite> with capabilities to describe dataset hierarchies,
-        granular technical details of datasets and distributions and machine-readable licensing information.
+        <b><font color="red">fine-grained technical details of datasets, dataset permissions, dataset distributions</font></b> and machine-readable licensing information.
         The descriptions of provenance information are based on the PROV Ontology <cite><a class="bibref" href="#ref-PROV-O">PROV-O</a></cite> and include relations
-        between datasets and agents, such as persons or organisations, in regard to their rights and responsibilities.
+        between datasets and agents, such as persons or organisations, <b><font color="red">with</font></b> regard to their rights and responsibilities.
         In addition, DataID core provides the means to describe inter-dataset relationships and versioning of datasets and metadata.
         DataID core offers a well structured, comprehensive format to approach a unified view of dataset metadata and constitutes the core of
-        a metadata system build around this ontology.
+        a metadata system <b><font color="red">built</font></b> around this ontology.
     </span></p>
 
     <h2 id="namespaceuri">Namespace URI of DataID core</h2>
-        <dd><a href="http://dataid.dbpedia.org/ns/core#">http://dataid.dbpedia.org/ns/core#</a></dd>
+        <a href="http://dataid.dbpedia.org/ns/core#">http://dataid.dbpedia.org/ns/core#</a>
 
     <h2 id="status">Status of this document</h2>
 
@@ -122,7 +122,17 @@
             3.3 of the W3C Patent Policy</a>. Please consult the complete <a href="http://www.w3.org/Submission">list of
             acknowledged W3C Member Submissions</a>.</p>
 
-    <ol id="toc">
+
+    <div >
+        <div class="post-thumb"><a href="http://www.essepuntato.it/lode"><img src="images/lode.png" alt="alt tag" style="max-width:50%;" /></a></div>
+        <div class="post-content">
+            <h2>Further Acknowledgements</h2>
+            <p><a href="#glance">Section 4</a> and <a href="#terms">Section 6</a> of this document were created with the help of the <a href="http://www.essepuntato.it/lode">Live OWL Documentation Environment (LODE)</a> service (<a href="https://github.com/essepuntato/LODE">available on Github</a>).</p>
+        </div>
+    </div>
+
+    <h2 id="toc">Document Structure</h2>
+    <ol>
         <li><a href="#intro">Introduction</a>
             <ol>
                 <li><a href="#scope">Scope</a></li>
@@ -131,7 +141,7 @@
             </ol>
         </li>
         <li><a href="#motivation">Motivation</a></li>
-        <li><a href="#onion">Multilayer Concept</a></li>
+        <li><a href="#onion">The DataID Ecosystem</a></li>
         <li><a href="#glance">DataID core Ontology at Glance</a></li>
         <li><a href="#core">DataID core Ontology</a></li>
         <li><a href="#terms">DataID core term descriptions</a></li>
@@ -352,7 +362,7 @@
         </p>-->
     </div>
     <div class="div1">
-        <h2 id="onion">3. Multilayer Concept<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+        <h2 id="onion">3. The DataID Ecosystem<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
         <p>
             While this section does not directly describe the <em>DataID core Ontology</em>, it serves as a backdrop, necessary to understand certain design decisions made in the core ontology.
         </p>
@@ -362,18 +372,21 @@
             Our scaling approach adopts principles of the modular programming technique, separating concepts and properties of a large ontology into independent, interchangeable modules,
             specialised to fit common use cases, dependent only on DataID core.
         </p>
+        <p><b><font color="red">
+            The DataID Ecosystem is a suit of ontologies comprised of DataID core and its extensions, which are summarised in the common (or mid) layer of the ecosystem (see sphere model below).
+            In a wider sense this ecosystem is extended by every ontology importing DataID core to satisfy a specific use case by adding additional knowledge (represented by the outermost layer of the model).
+        </font></b></p>
+<!--        <p>
+            Therefore, a DataID use case specific metadata extension <em class="rfc2119" title="MUST">MUST</em> import DataID core.
+            Many use cases may profit by importing one or more extensions (as we will see in the example of the next section).
+        </p>-->
         <p>
-            Therefore, DataID core <em class="rfc2119" title="MUST">MUST</em> be imported into a use case specific metadata extension. Many use cases may profit by importing one or more extensions
-            (as we will see in the example of the next section).
-        </p>
-        <p>
-            Alongside DataID core we created first extensions, to satisfy different use cases in a reusable manner.
-            The onion-like layer model below illustrates the import restrictions of the different ontologies:
+            Alongside DataID core we created extensions, to satisfy different use cases in a reusable manner<b><font color="red">, which are part of the mid-layer of the DataID Ecosystem</font></b>.
+            <b><font color="red">The onion-like layer model below illustrates the different types of ontologies in the DataID Ecosystem, for which these restrictions / recommendations apply:</font></b>
             <ul>
-                <li>Every ontology (in the DataID sphere) <em class="rfc2119" title="MUST">MUST</em> import DataID core.</li>
-                <li>An ontology of a certain layer <em class="rfc2119" title="SHALL">SHALL</em> only import ontologies from layers below its own.</li>
+                <li>Every ontology <em class="rfc2119" title="MUST">MUST</em> import DataID core<b><font color="red">, with the exception of DataID core itself.</font></b></li>
+                <li><b><font color="red">It is <em class="rfc2119" title="RECOMMENDED">RECOMMENDED</em> that an ontology</font></b> of a certain layer only import ontologies from layers below its own.</li>
             </ul>
-            The latter restriction does not affect the import of ontologies outside the DataID sphere.
         </p>
         <img src="images/DataID onion.png" alt="alt tag" width="800px" style="max-width:100%;" />
 
@@ -386,9 +399,9 @@
         </p>
         <p id="extension-st"><strong>Statistics</strong> will provide the necessary measures to publish multi-dimensional data, such as statistics about <em class="keyword">Datasets</em>
             or surveys as a <em class="keyword">Dataset</em>. This recently created ontology will be based on the Data Cube Vocabulary <cite><a class="bibref" href="#ref-data-cube">DATA-CUBE</a></cite>.</p>
-        <p><strong>Other Ontologies</strong> of similar general character as the ontologies of that layer, which could be useful in multiple use cases.</p>
+        <p><strong><b><font color="red">Other common extensions</font></b></strong> of similar general character as the ontologies of that layer, which could be useful in multiple use cases.</p>
         <p>
-            We plan to enforce multiple requirements on the adoption of new ontologies in the common (or mid) layer of the DataID sphere.<br/>
+            We plan to enforce multiple requirements on the adoption of new ontologies in the common (or mid) layer of the DataID Ecosystem.<br/>
             They might contain (while not being restricted to):
             <ul>
                 <li>Authors <em class="rfc2119" title="MUST">MUST</em> provide information about the reason for the new extension (and why the expected result is not achievable with existing extensions).</li>
@@ -536,9 +549,9 @@
 
     </div>
     <div class="div1">
-        <h2 id="core">5. DataID core Ontology<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
+        <h2 id="core">5. DataID <b><font color="red">C</font></b>ore Ontology<span class="backlink"> back to <a href="#toc">ToC</a></span></h2>
         <p>
-            This section grants an overview of the DataID core Ontology, sectioned by concepts.
+            This section grants an overview of the DataID core <b><font color="red">o</font></b>ntology, sectioned by concepts.
             The depiction below shows most of the concepts and properties which make up DataID core.
             A complete description of all concepts, properties and individuals is available in <a href="#terms">Section 6</a>.
         </p>
